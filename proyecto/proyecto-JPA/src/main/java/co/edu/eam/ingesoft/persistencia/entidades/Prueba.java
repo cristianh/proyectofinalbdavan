@@ -1,4 +1,4 @@
-package co.edu.eam.ingesoft.pa.persistencia.entidades;
+package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
 
