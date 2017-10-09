@@ -15,7 +15,7 @@ public class Paciente implements Serializable {
 	@Id
 	private String idpaciente;
 	
-	@Column(name="nombre")
+	@Column(name="nombre",length=50)
 	private String nombre;
 	
 }

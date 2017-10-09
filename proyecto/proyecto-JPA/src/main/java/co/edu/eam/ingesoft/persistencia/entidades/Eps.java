@@ -1,0 +1,72 @@
+package co.edu.eam.ingesoft.persistencia.entidades;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="t_eps")
+public class Eps implements Serializable {
+
+	@Id
+	private Integer ideps;
+	
+	@Column(name="nombre",length=50)
+	private String nombre;
+	
+	public Eps() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Eps(Integer ideps, String nombre) {
+		super();
+		this.ideps = ideps;
+		this.nombre = nombre;
+	}
+
+	public Integer getIdeps() {
+		return ideps;
+	}
+
+	public void setIdeps(Integer ideps) {
+		this.ideps = ideps;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ideps == null) ? 0 : ideps.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Eps other = (Eps) obj;
+		if (ideps == null) {
+			if (other.ideps != null)
+				return false;
+		} else if (!ideps.equals(other.ideps))
+			return false;
+		return true;
+	}
+	
+}
