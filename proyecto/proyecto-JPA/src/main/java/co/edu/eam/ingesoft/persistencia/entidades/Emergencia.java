@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,16 +18,29 @@ public class Emergencia implements Serializable {
 	
 	@Column(name="nombre")
 	private String nombre;
-
+	
+	@ManyToOne
+	@JoinColumn(name="tipoemergencia",nullable=false)
+	private Tipoemergencia tipoemergencia;
+	
 	public Emergencia() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Emergencia(Integer idemergencia, String nombre) {
+	/**
+	 * 
+	 * @param idemergencia
+	 * @param nombre
+	 * @param tipoemergencia
+	 */
+	public Emergencia(Integer idemergencia, String nombre, Tipoemergencia tipoemergencia) {
 		super();
 		this.idemergencia = idemergencia;
 		this.nombre = nombre;
+		this.tipoemergencia = tipoemergencia;
 	}
+
+
 
 	public Integer getIdemergencia() {
 		return idemergencia;

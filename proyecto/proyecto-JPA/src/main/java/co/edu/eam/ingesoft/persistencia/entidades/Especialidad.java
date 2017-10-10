@@ -54,5 +54,37 @@ public class Especialidad implements Serializable {
 	public void setEstado(char estado) {
 		this.estado = estado;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id_especialidad == null) ? 0 : id_especialidad.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Especialidad other = (Especialidad) obj;
+		if (id_especialidad == null) {
+			if (other.id_especialidad != null)
+				return false;
+		} else if (!id_especialidad.equals(other.id_especialidad))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Especialidad [id_especialidad=" + id_especialidad + ", nombre=" + nombre + ", estado=" + estado + "]";
+	}
+	
+	
 	
 }

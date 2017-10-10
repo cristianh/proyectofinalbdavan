@@ -1,11 +1,15 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -18,6 +22,9 @@ public class Estadocivil implements Serializable {
 	
 	@Column(name="nombreestadocivil",length=50)
 	private String nombreestadocivil;
+	
+	@OneToMany(mappedBy="estadocivilpersona",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Persona> persona;
 	
 	public Estadocivil() {
 		// TODO Auto-generated constructor stub
@@ -68,6 +75,11 @@ public class Estadocivil implements Serializable {
 		} else if (!idestadocivil.equals(other.idestadocivil))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Estadocivil [idestadocivil=" + idestadocivil + ", nombreestadocivil=" + nombreestadocivil + "]";
 	}
 	
 }
