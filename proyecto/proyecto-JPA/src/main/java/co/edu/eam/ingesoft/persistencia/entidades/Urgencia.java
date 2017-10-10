@@ -19,4 +19,74 @@ public class Urgencia implements Serializable {
 	
 	@Column(name="nombre",length=50)
 	private String nombreurgencia;
+
+	public Urgencia() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Urgencia(Integer idurgencia, String descripcionUrgencia, String nombreurgencia) {
+		super();
+		this.idurgencia = idurgencia;
+		this.descripcionUrgencia = descripcionUrgencia;
+		this.nombreurgencia = nombreurgencia;
+	}
+
+	public Integer getIdurgencia() {
+		return idurgencia;
+	}
+
+	public void setIdurgencia(Integer idurgencia) {
+		this.idurgencia = idurgencia;
+	}
+
+	public String getDescripcionUrgencia() {
+		return descripcionUrgencia;
+	}
+
+	public void setDescripcionUrgencia(String descripcionUrgencia) {
+		this.descripcionUrgencia = descripcionUrgencia;
+	}
+
+	public String getNombreurgencia() {
+		return nombreurgencia;
+	}
+
+	public void setNombreurgencia(String nombreurgencia) {
+		this.nombreurgencia = nombreurgencia;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idurgencia == null) ? 0 : idurgencia.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Urgencia other = (Urgencia) obj;
+		if (idurgencia == null) {
+			if (other.idurgencia != null)
+				return false;
+		} else if (!idurgencia.equals(other.idurgencia))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Urgencia [idurgencia=" + idurgencia + ", descripcionUrgencia=" + descripcionUrgencia
+				+ ", nombreurgencia=" + nombreurgencia + "]";
+	}
+	
+	
+	
+	
 }

@@ -20,11 +20,11 @@ public class afectadoalbergue implements Serializable {
 	private Albergue idalbergue;
 	
 	@ManyToOne
-	@JoinColumn(name="alberguealimento")
+	@JoinColumn(name="alberguealimento",nullable=false)
 	private Alimento alberguealimento;
 	
 	@ManyToOne
-	@JoinColumn(name="albergueafectado")
+	@JoinColumn(name="albergueafectado",nullable=false)
 	private Afectado albergueafectado;
 	
 	public afectadoalbergue() {
