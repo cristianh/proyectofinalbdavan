@@ -1,12 +1,16 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +26,8 @@ public class Emergencia implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="tipoemergencia",nullable=false)
 	private Tipoemergencia tipoemergencia;
+	
+	
 	
 	public Emergencia() {
 		// TODO Auto-generated constructor stub

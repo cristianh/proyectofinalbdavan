@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_afectadoalbergue")
-public class afectadoalbergue implements Serializable {
+public class Afectadoalbergue implements Serializable {
 
 	@Id
 	private Integer idafectadoalbergue;
@@ -27,11 +27,11 @@ public class afectadoalbergue implements Serializable {
 	@JoinColumn(name="albergueafectado",nullable=false)
 	private Afectado albergueafectado;
 	
-	public afectadoalbergue() {
+	public Afectadoalbergue() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public afectadoalbergue(Integer idafectadoalbergue, Albergue idalbergue, Alimento alberguealimento,
+	public Afectadoalbergue(Integer idafectadoalbergue, Albergue idalbergue, Alimento alberguealimento,
 			Afectado albergueafectado) {
 		super();
 		this.idafectadoalbergue = idafectadoalbergue;
@@ -91,7 +91,7 @@ public class afectadoalbergue implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		afectadoalbergue other = (afectadoalbergue) obj;
+		Afectadoalbergue other = (Afectadoalbergue) obj;
 		if (albergueafectado == null) {
 			if (other.albergueafectado != null)
 				return false;
