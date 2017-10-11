@@ -8,6 +8,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import co.edu.eam.ingesoft.persistencia.entidades.PK.DiagnosticopacientePK;
+
 @Entity
 @Table(name="t_diagnostico")
 public class Diagnostico implements Serializable {

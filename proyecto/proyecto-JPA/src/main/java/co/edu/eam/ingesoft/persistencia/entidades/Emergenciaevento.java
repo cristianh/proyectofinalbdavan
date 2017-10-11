@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import co.edu.eam.ingesoft.persistencia.entidades.PK.EmergenciaeventooperadorPK;
+
 @Entity
 @Table(name="t_emergenciaevento")
 public class Emergenciaevento implements Serializable {

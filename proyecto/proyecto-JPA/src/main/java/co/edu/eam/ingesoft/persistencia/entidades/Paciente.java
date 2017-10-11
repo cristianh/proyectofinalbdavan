@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import co.edu.eam.ingesoft.persistencia.entidades.PK.PacientepersonaPK;
+
 @Entity
 @Table(name="t_paciente")
 public class Paciente implements Serializable {
