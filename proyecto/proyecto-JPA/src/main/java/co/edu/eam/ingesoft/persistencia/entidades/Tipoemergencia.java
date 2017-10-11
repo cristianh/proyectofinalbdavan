@@ -3,50 +3,40 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="t_emergencia")
-public class Emergencia implements Serializable {
+@Table(name="t_tipoemergencia")
+public class Tipoemergencia implements Serializable {
 
 	@Id
 	private Integer idemergencia;
 	
+	
 	@Column(name="nombre")
-	private String nombre;
+	private String nombreemergencia;
 	
-	@ManyToOne
-	@JoinColumn(name="tipoemergencia",nullable=false)
-	private Tipoemergencia tipoemergencia;
+	@Column(name="descripcion",length=250)
+	private String descripcionemergencia;
 	
+	@OneToMany(mappedBy="tipoemergencia")
+	private List<Emergencia> emergencias;
 	
-	
-	public Emergencia() {
+	public Tipoemergencia() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	/**
-	 * 
-	 * @param idemergencia
-	 * @param nombre
-	 * @param tipoemergencia
-	 */
-	public Emergencia(Integer idemergencia, String nombre, Tipoemergencia tipoemergencia) {
+
+	public Tipoemergencia(Integer idemergencia, String nombreemergencia, String descripcionemergencia) {
 		super();
 		this.idemergencia = idemergencia;
-		this.nombre = nombre;
-		this.tipoemergencia = tipoemergencia;
+		this.nombreemergencia = nombreemergencia;
+		this.descripcionemergencia = descripcionemergencia;
 	}
-
-
 
 	public Integer getIdemergencia() {
 		return idemergencia;
@@ -56,12 +46,20 @@ public class Emergencia implements Serializable {
 		this.idemergencia = idemergencia;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreemergencia() {
+		return nombreemergencia;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreemergencia(String nombreemergencia) {
+		this.nombreemergencia = nombreemergencia;
+	}
+
+	public String getDescripcionemergencia() {
+		return descripcionemergencia;
+	}
+
+	public void setDescripcionemergencia(String descripcionemergencia) {
+		this.descripcionemergencia = descripcionemergencia;
 	}
 
 	@Override
@@ -80,7 +78,7 @@ public class Emergencia implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Emergencia other = (Emergencia) obj;
+		Tipoemergencia other = (Tipoemergencia) obj;
 		if (idemergencia == null) {
 			if (other.idemergencia != null)
 				return false;
@@ -91,9 +89,8 @@ public class Emergencia implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Emergencia [idemergencia=" + idemergencia + ", nombre=" + nombre + "]";
+		return "Tipoemergencia [idemergencia=" + idemergencia + ", nombreemergencia=" + nombreemergencia
+				+ ", descripcionemergencia=" + descripcionemergencia + "]";
 	}
-	
-    
-	
+
 }

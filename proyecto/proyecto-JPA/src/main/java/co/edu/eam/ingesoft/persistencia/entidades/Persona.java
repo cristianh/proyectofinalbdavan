@@ -40,23 +40,23 @@ public class Persona implements Serializable {
 	private String email;
 	
 	@ManyToOne
-	@JoinColumn(name="genero_persona")
+	@JoinColumn(name="genero_persona",nullable=false)
 	private Genero generopersona;
 	
 	@ManyToOne
-	@JoinColumn(name="estadocivil_persona")
+	@JoinColumn(name="estadocivil_persona",nullable=false)
 	private Estadocivil estadocivilpersona;
 	
 	@ManyToOne
-	@JoinColumn(name="tipodocumento_persona")
+	@JoinColumn(name="tipodocumento_persona",nullable=false)
 	private Tipodocumento tipodocumentopersona;
 	
 	@ManyToOne
-	@JoinColumn(name="eps_persona")
+	@JoinColumn(name="eps_persona",nullable=false)
 	private Eps epspersona;
 	
 	@ManyToOne
-	@JoinColumn(name="ciudad_persona")
+	@JoinColumn(name="ciudad_persona",nullable=false)
 	private Ciudad ciudadpersona;
 	
 	public Persona() {

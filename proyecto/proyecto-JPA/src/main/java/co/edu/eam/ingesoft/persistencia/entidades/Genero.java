@@ -1,9 +1,12 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,6 +25,9 @@ public class Genero implements Serializable {
 	
 	@Column(name="sexo")
 	private char sexo;
+	
+	@OneToMany(mappedBy="generopersona",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Persona> persona;
 	
 	public Genero() {
 		// TODO Auto-generated constructor stub
@@ -73,5 +79,11 @@ public class Genero implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Genero [idgenero=" + idgenero + ", sexo=" + sexo + "]";
+	}
+	
 	
 }

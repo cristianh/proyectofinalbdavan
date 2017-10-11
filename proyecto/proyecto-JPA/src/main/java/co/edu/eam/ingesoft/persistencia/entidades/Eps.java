@@ -1,10 +1,14 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -17,6 +21,9 @@ public class Eps implements Serializable {
 	
 	@Column(name="nombre",length=50)
 	private String nombre;
+	
+	@OneToMany(mappedBy="epspersona",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Persona> persona;
 	
 	public Eps() {
 		// TODO Auto-generated constructor stub
@@ -68,5 +75,12 @@ public class Eps implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Eps [ideps=" + ideps + ", nombre=" + nombre + "]";
+	}
+	
+	
 	
 }

@@ -3,19 +3,31 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Pacientes")
+@Table(name="t_paciente")
 public class Paciente implements Serializable {
 
-	@Id
-	private String idpaciente;
+	@EmbeddedId
+	@Column(name="pacientepersonapk")
+	private PacientepersonaPK pk;
 	
-	@Column(name="nombre",length=50)
-	private String nombre;
+	@ManyToOne
+	@JoinColumn(name="pacienteprioridad")
+	private Prioridad prioridad;
+	
+	@ManyToOne
+	@JoinColumn(name="pacienteantecedentesalud")
+	private Antecedentesalud antecedente;
+	
+	@Column(name="descripcionprioridad", length=250)
+	private String descripcionP;
 	
 }

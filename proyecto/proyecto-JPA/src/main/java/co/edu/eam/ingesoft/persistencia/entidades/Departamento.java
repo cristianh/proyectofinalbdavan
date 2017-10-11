@@ -3,8 +3,10 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,7 +25,7 @@ public class Departamento implements Serializable {
 	@Column(name="descripcion")
 	private String descriptiondepartamento;
 	
-	@OneToMany(mappedBy = "departamento")
+	@OneToMany(mappedBy = "departamento",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Ciudad> Ciudades;
 	
 	
@@ -85,6 +87,42 @@ public class Departamento implements Serializable {
 	public void setDescriptiondepartamento(String descriptiondepartamento) {
 		this.descriptiondepartamento = descriptiondepartamento;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id_departamento == null) ? 0 : id_departamento.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Departamento other = (Departamento) obj;
+		if (id_departamento == null) {
+			if (other.id_departamento != null)
+				return false;
+		} else if (!id_departamento.equals(other.id_departamento))
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Departamento [id_departamento=" + id_departamento + ", nombredepartemento=" + nombredepartemento
+				+ ", descriptiondepartamento=" + descriptiondepartamento + ", Ciudades=" + Ciudades + "]";
+	}
+	
+	
 	
 	
 	

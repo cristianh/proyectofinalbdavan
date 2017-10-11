@@ -1,10 +1,14 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,9 @@ public class Tipodocumento implements Serializable {
 	
 	@Column(name="nombre",length=50)
 	private String nombredocumento;
+	
+	@OneToMany(mappedBy="tipodocumentopersona",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Persona> persona;
 
 	public Tipodocumento() {
 		// TODO Auto-generated constructor stub
