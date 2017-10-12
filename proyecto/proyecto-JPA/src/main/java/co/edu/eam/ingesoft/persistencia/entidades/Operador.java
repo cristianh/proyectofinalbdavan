@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import co.edu.eam.ingesoft.persistencia.entidades.PK.OperadorPersonalPK;
+
 @Entity
 @Table(name="t_operador")
 public class Operador implements Serializable {

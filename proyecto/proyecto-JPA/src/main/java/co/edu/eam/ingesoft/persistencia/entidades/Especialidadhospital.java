@@ -2,7 +2,6 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,21 +9,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_cama")
-public class Cama implements Serializable{
+@Table(name="")
+public class Especialidadhospital implements Serializable {
 
 	@Id
-	private Integer idcama;
-	
-	@Column(name="codigo")
-	private String codigocama;
-	
-	@Column(name="estado",length=1)
-	private char estadocama;
+	private Integer idespecialidadhospital;
 	
 	@ManyToOne
-	@JoinColumn(name="endidadhospitalaria")
-	private Entidadhospitalaria entidadhospitalaria;
+	@JoinColumn(name="especalidadhospital",insertable=false,updatable=false)
+	private Especialidad especialidad;
 	
-
+	@ManyToOne
+	@JoinColumn(name="especalidadhospital")
+	private Entidadhospitalaria entidadhospitalaria;
 }
