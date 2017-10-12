@@ -1,45 +1,53 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import co.edu.eam.ingesoft.persistencia.entidades.PK.AcompañantepersonaPK;
 
 @Entity
-@Table(name="t_acompañante")
-public class Acompañante implements Serializable {
+@Table(name="t_acompanante")
+public class Acompanante implements Serializable {
+
 
 	@EmbeddedId
-	private AcompañantepersonaPK idacompañanate;
+	private AcompañantepersonaPK idacompananate;
 	
-	@Column(name="parentezcoacompañante")
+	@Column(name="parentezcoacompanante")
 	private String parentezcoacompañante;
 	
-	@Column(name="telefonoacompañante")
+	@Column(name="telefonoacompanante")
 	private String telegonoacompañante;
 	
-	public Acompañante() {
+	
+	
+	public Acompanante() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Acompañante(AcompañantepersonaPK idacompañanate, String parentezcoacompañante, String telegonoacompañante) {
+	public Acompanante(AcompañantepersonaPK idacompananate, String parentezcoacompañante, String telegonoacompañante,
+			List<Urgenciaambulancia> urgenciaambulancia) {
 		super();
-		this.idacompañanate = idacompañanate;
+		this.idacompananate = idacompananate;
 		this.parentezcoacompañante = parentezcoacompañante;
 		this.telegonoacompañante = telegonoacompañante;
+		
 	}
 
-	public AcompañantepersonaPK getIdacompañanate() {
-		return idacompañanate;
+	public AcompañantepersonaPK getIdacompananate() {
+		return idacompananate;
 	}
 
-	public void setIdacompañanate(AcompañantepersonaPK idacompañanate) {
-		this.idacompañanate = idacompañanate;
+	public void setIdacompananate(AcompañantepersonaPK idacompananate) {
+		this.idacompananate = idacompananate;
 	}
 
 	public String getParentezcoacompañante() {
@@ -58,11 +66,13 @@ public class Acompañante implements Serializable {
 		this.telegonoacompañante = telegonoacompañante;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idacompañanate == null) ? 0 : idacompañanate.hashCode());
+		result = prime * result + ((idacompananate == null) ? 0 : idacompananate.hashCode());
 		return result;
 	}
 
@@ -74,20 +84,23 @@ public class Acompañante implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Acompañante other = (Acompañante) obj;
-		if (idacompañanate == null) {
-			if (other.idacompañanate != null)
+		Acompanante other = (Acompanante) obj;
+		if (idacompananate == null) {
+			if (other.idacompananate != null)
 				return false;
-		} else if (!idacompañanate.equals(other.idacompañanate))
+		} else if (!idacompananate.equals(other.idacompananate))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Acompañante [idacompañanate=" + idacompañanate + ", parentezcoacompañante=" + parentezcoacompañante
+		return "Acompanante [idacompananate=" + idacompananate + ", parentezcoacompañante=" + parentezcoacompañante
 				+ ", telegonoacompañante=" + telegonoacompañante + "]";
 	}
+
+	
+	
 	 
 	
 }

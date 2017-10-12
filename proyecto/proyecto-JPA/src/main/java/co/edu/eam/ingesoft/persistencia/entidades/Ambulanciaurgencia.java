@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="")
-public class Especialidahospital implements Serializable {
-
+@Table(name="t_ambulanciaurgencia")
+public class Ambulanciaurgencia implements Serializable {
+	
 	@Id
-	private Integer especialidadhospital;
+	private Integer idambulanciaurgencia;
+
 }
