@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Eps implements Serializable {
 
 	@Id
-	private Integer ideps;
+	private String ideps;
 	
 	@Column(name="nombre",length=50)
 	private String nombre;
@@ -29,17 +29,17 @@ public class Eps implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Eps(Integer ideps, String nombre) {
+	public Eps(String ideps, String nombre) {
 		super();
 		this.ideps = ideps;
 		this.nombre = nombre;
 	}
 
-	public Integer getIdeps() {
+	public String getIdeps() {
 		return ideps;
 	}
 
-	public void setIdeps(Integer ideps) {
+	public void setIdeps(String ideps) {
 		this.ideps = ideps;
 	}
 

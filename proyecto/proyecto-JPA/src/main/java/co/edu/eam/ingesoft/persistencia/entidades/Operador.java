@@ -23,6 +23,9 @@ public class Operador implements Serializable {
 	@Column(name="codigooprador",length=50,nullable=false)
 	private String codigooperador;
 	
+	/*@OneToMany(mappedBy="operadorurgencia",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Urgenciaevento> urgenciaevento;*/
+	
 	public Operador() {
 		// TODO Auto-generated constructor stub
 	}

@@ -1,10 +1,14 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +23,9 @@ public class Urgencia implements Serializable {
 	
 	@Column(name="nombre",length=50)
 	private String nombreurgencia;
+	
+	@OneToMany(mappedBy="idurgencia",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Urgenciaevento> urgenciaevento;
 
 	public Urgencia() {
 		// TODO Auto-generated constructor stub

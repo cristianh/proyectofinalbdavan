@@ -25,7 +25,7 @@ public class Departamento implements Serializable {
 	@Column(name="descripcion")
 	private String descriptiondepartamento;
 	
-	@OneToMany(mappedBy = "departamento",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "departamento",fetch = FetchType.LAZY)
 	private List<Ciudad> Ciudades;
 	
 	

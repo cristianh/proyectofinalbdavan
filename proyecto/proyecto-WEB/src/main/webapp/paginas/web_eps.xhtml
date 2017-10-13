@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelests"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h:panelGrid columns="2" id="paneltabla" style="margin: 0 auto;">
+			<h:outputText id="codigoeps" value="Codigo eps:"></h:outputText>
+			<h:inputText id="tfcodigoeps" value="#{controladorEps.ideps}" />
+			<h:outputText id="nombreeps" value="Nombre eps:"></h:outputText>
+			<h:inputText id="tfnombreeps" value="#{controladorEps.nombre}" />
+		</h:panelGrid>
+
+		<h:commandButton id="botonregistrar" value="Registrar"
+			action="#{controladorEps.crearEps}"></h:commandButton>
+	</h:form>
+</h:body>
+</html>
