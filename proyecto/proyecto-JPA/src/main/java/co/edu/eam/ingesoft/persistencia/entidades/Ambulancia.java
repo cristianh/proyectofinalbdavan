@@ -1,10 +1,12 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -32,6 +34,9 @@ public class Ambulancia implements Serializable {
 	
 	@Column(name="cantidad",length=1)
 	private Integer cantidad;
+	
+	@OneToMany(mappedBy="ambulanciaid")
+	private List<Ambulanciaurgencia> ambulanciaurgencia;
 
 	public Ambulancia() {
 		// TODO Auto-generated constructor stub

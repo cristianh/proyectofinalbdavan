@@ -1,6 +1,7 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -21,4 +22,7 @@ public class Tipofuncionario implements Serializable {
 
 	@Column(name = "nombre", length = 40)
 	private String nombre;
+	
+	@OneToMany(mappedBy="tipofuncionario")
+	private List<Funionario> funcionario;
 }

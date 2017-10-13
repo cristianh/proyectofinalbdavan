@@ -62,120 +62,225 @@ public class Persona implements Serializable {
 	public Persona() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	
 
-	/**
-	 * 
-	 * @return
-	 */
+	public Persona(Integer id_persona, String numeroDocumento, String nombre, String apellido, Integer telefono,
+			Date fechanacimiento, String email, Genero generopersona, Estadocivil estadocivilpersona,
+			Tipodocumento tipodocumentopersona, Eps epspersona, Ciudad ciudadpersona) {
+		super();
+		this.id_persona = id_persona;
+		this.numeroDocumento = numeroDocumento;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
+		this.fechanacimiento = fechanacimiento;
+		this.email = email;
+		this.generopersona = generopersona;
+		this.estadocivilpersona = estadocivilpersona;
+		this.tipodocumentopersona = tipodocumentopersona;
+		this.epspersona = epspersona;
+		this.ciudadpersona = ciudadpersona;
+	}
+
+
+
+
+
+	
+
 	public Integer getId_persona() {
 		return id_persona;
 	}
 
-	/**
-	 * 
-	 * @param id_persona
-	 */
+
+
+
+
 	public void setId_persona(Integer id_persona) {
 		this.id_persona = id_persona;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
+
+
+
+
 	public String getNumeroDocumento() {
 		return numeroDocumento;
 	}
 
-	/**
-	 * 
-	 * @param numeroDocumento
-	 */
+
+
+
+
 	public void setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
+
+
+
+
 	public String getNombre() {
 		return nombre;
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 */
+
+
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
+
+
+
+
 	public String getApellido() {
 		return apellido;
 	}
 
-	/**
-	 * 
-	 * @param apellido
-	 */
+
+
+
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
+
+
+
+
 	public Integer getTelefono() {
 		return telefono;
 	}
 
-	/**
-	 * 
-	 * @param telefono
-	 */
+
+
+
+
 	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
+
+
+
+
 	public Date getFechanacimiento() {
 		return fechanacimiento;
 	}
 
-	/**
-	 * 
-	 * @param fechanacimiento
-	 */
+
+
+
+
 	public void setFechanacimiento(Date fechanacimiento) {
 		this.fechanacimiento = fechanacimiento;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
+
+
+
+
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * 
-	 * @param email
-	 */
+
+
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+
+
+
+	public Genero getGeneropersona() {
+		return generopersona;
+	}
+
+
+
+
+
+	public void setGeneropersona(Genero generopersona) {
+		this.generopersona = generopersona;
+	}
+
+
+
+
+
+	public Estadocivil getEstadocivilpersona() {
+		return estadocivilpersona;
+	}
+
+
+
+
+
+	public void setEstadocivilpersona(Estadocivil estadocivilpersona) {
+		this.estadocivilpersona = estadocivilpersona;
+	}
+
+
+
+
+
+	public Tipodocumento getTipodocumentopersona() {
+		return tipodocumentopersona;
+	}
+
+
+
+
+
+	public void setTipodocumentopersona(Tipodocumento tipodocumentopersona) {
+		this.tipodocumentopersona = tipodocumentopersona;
+	}
+
+
+
+
+
+	public Eps getEpspersona() {
+		return epspersona;
+	}
+
+
+
+
+
+	public void setEpspersona(Eps epspersona) {
+		this.epspersona = epspersona;
+	}
+
+
+
+
+	public Ciudad getCiudadpersona() {
+		return ciudadpersona;
+	}
+
+
+
+
+
+	public void setCiudadpersona(Ciudad ciudadpersona) {
+		this.ciudadpersona = ciudadpersona;
+	}
+
+
+
+
 
 	@Override
 	public int hashCode() {

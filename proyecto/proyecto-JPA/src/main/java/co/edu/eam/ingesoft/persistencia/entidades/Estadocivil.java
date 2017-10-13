@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Estadocivil implements Serializable {
 	
 	@Id
-	private Integer idestadocivil;
+	private String idestadocivil;
 	
 	@Column(name="nombreestadocivil",length=50)
 	private String nombreestadocivil;
@@ -30,17 +30,17 @@ public class Estadocivil implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Estadocivil(Integer idestadocivil, String nombreestadocivil) {
+	public Estadocivil(String idestadocivil, String nombreestadocivil) {
 		super();
 		this.idestadocivil = idestadocivil;
 		this.nombreestadocivil = nombreestadocivil;
 	}
 
-	public Integer getIdestadocivil() {
+	public String getIdestadocivil() {
 		return idestadocivil;
 	}
 
-	public void setIdestadocivil(Integer idestadocivil) {
+	public void setIdestadocivil(String idestadocivil) {
 		this.idestadocivil = idestadocivil;
 	}
 

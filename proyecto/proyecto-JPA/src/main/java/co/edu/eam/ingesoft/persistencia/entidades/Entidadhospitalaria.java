@@ -24,6 +24,9 @@ public class Entidadhospitalaria implements Serializable {
 	@OneToMany(mappedBy="entidadhospitalaria",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Cama> camas;
 	
+	@OneToMany(mappedBy="entidadhospitalaria",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Urgenciaambulancia> urgenciaambulancia;
+	
 	
 	
 	public Entidadhospitalaria() {

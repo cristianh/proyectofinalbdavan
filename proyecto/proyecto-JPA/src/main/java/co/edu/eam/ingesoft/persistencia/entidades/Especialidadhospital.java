@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="")
+@Table(name="t_especialidadhospital")
 public class Especialidadhospital implements Serializable {
 
 	@Id
