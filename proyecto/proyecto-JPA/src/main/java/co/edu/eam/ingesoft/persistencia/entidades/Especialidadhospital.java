@@ -17,7 +17,7 @@ public class Especialidadhospital implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="especalidadhospital",insertable=false,updatable=false)
-	private Especialidad especialidad;
+	private Especialidadcristian especialidad;
 	
 	@ManyToOne
 	@JoinColumn(name="especalidadhospital")
