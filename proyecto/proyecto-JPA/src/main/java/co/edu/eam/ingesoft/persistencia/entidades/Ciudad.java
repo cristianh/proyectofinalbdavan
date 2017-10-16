@@ -10,12 +10,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="t_ciudad")
+@NamedQueries({ @NamedQuery(name = "Ciudad.listarciudades", query = "SELECT c FROM Ciudad c"),
+	@NamedQuery(name = "Ciudad.buscarlistarciudades", query = "SELECT c FROM Ciudad c where c.idciudad=:id") })
 public class Ciudad implements Serializable {
 
 	@Id
@@ -103,10 +107,6 @@ public class Ciudad implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Ciudad [idciudad=" + idciudad + ", nombreciudad=" + nombreciudad + ", descripcionciudad="
-				+ descripcionciudad + ", departamento=" + departamento + "]";
-	}
+	
 
 }

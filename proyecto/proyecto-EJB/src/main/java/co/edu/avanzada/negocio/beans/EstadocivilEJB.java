@@ -50,7 +50,16 @@ public class EstadocivilEJB implements IEstadocivil {
 
 	public List<Estadocivil> ListarEstadocivil() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Estadocivil> resultadoTransaccion = null;
+		try {
+			resultadoTransaccion =  em.createNamedQuery("Estadocivil.listarestadocivil").getResultList();
+			System.out.println(resultadoTransaccion);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage().toString());
+			
+		}
+		return resultadoTransaccion;
 	}
 
 	public List<Estadocivil> BuscarListaEstadocivil(String codigoestadocivil) {

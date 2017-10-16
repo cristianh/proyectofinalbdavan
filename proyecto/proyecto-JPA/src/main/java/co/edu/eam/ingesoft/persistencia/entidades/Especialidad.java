@@ -1,3 +1,5 @@
+//package entidades;
+
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
@@ -5,64 +7,72 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 @Entity
-@Table(name = "t_especialidad")
+@Table(name="T_Especialidadp")
 public class Especialidad implements Serializable {
-
+	private static final long serialVersionUID = 1L;
 	@Id
-	private Integer id_especialidad;
-
-	@Column(name = "nombre")
+	@Column(name="CodigoEspecialidad",unique=true,nullable=false,length=70)
+	private String codigo;
+	@Column(name="NombreEspecialidad",nullable=false,length=100)
 	private String nombre;
-
-	@Column(name = "estado",length=1)
-	private char estado;
+	@ManyToOne
+	@JoinColumn(name="CodigoTipoEspecialidad",nullable=false)
+	private TipoEspecialidad tipoEspecialidad;
 	
+	public Especialidad(String codigo, String nombre, TipoEspecialidad tipoEspecialidad) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.tipoEspecialidad = tipoEspecialidad;
+	}
+
+
 	public Especialidad() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Especialidad(Integer id_especialidad, String nombre, char estado) {
-		super();
-		this.id_especialidad = id_especialidad;
-		this.nombre = nombre;
-		this.estado = estado;
+	
+	
+	
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public Integer getId_especialidad() {
-		return id_especialidad;
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setId_especialidad(Integer id_especialidad) {
-		this.id_especialidad = id_especialidad;
-	}
 
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public char getEstado() {
-		return estado;
+	
+	
+	public TipoEspecialidad getTipoEspecialidad() {
+		return tipoEspecialidad;
 	}
 
-	public void setEstado(char estado) {
-		this.estado = estado;
+
+	public void setTipoEspecialidad(TipoEspecialidad tipoEspecialidad) {
+		this.tipoEspecialidad = tipoEspecialidad;
 	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_especialidad == null) ? 0 : id_especialidad.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -72,19 +82,19 @@ public class Especialidad implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Especialidad other = (Especialidad) obj;
-		if (id_especialidad == null) {
-			if (other.id_especialidad != null)
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!id_especialidad.equals(other.id_especialidad))
+		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Especialidad [id_especialidad=" + id_especialidad + ", nombre=" + nombre + ", estado=" + estado + "]";
+		return "Especialidad [codigo=" + codigo + ", nombre=" + nombre + ", tipoEspecialidad=" + tipoEspecialidad + "]";
 	}
-	
 	
 	
 }
