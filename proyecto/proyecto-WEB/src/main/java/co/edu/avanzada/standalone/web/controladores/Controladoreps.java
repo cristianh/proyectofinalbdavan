@@ -31,7 +31,7 @@ public class Controladoreps implements Serializable {
 
 	@PostConstruct
 	public void initializar() {
-
+		nombre="Juan";
 	}
 
 	public EpsEJB getEpsejb() {

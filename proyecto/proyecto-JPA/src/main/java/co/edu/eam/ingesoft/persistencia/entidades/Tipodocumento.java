@@ -8,11 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="t_tipodocumento")
+@NamedQueries({ @NamedQuery(name = "Tipodocumento.listartipodocumento", query = "SELECT t FROM Tipodocumento t"),
+	@NamedQuery(name = "Tipodocumento.buscarlistartipodocumento", query = "SELECT t FROM Tipodocumento t where t.nombredocumento=:id") })
 public class Tipodocumento implements Serializable {
 
 	@Id

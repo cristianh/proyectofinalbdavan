@@ -10,8 +10,9 @@ import javax.persistence.PersistenceContext;
 
 import co.edu.avanzada.negocio.benas.remote.IPersonaremote;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
-
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
+
+
 
 @LocalBean
 @Stateless
@@ -23,7 +24,7 @@ public class PersonaEJB implements IPersonaremote{
 
 	public void crearPersona(Persona persona) {
 		// TODO Auto-generated method stub
-		Persona buscpersona = buscarPersona(persona.getNumeroDocumento());
+		Persona buscpersona = buscarPersona(String.valueOf(persona.getIdpersona()));
 		// no existe, se puede crear...
 		if (buscpersona == null) {
 			em.persist(persona);
@@ -47,9 +48,18 @@ public class PersonaEJB implements IPersonaremote{
 		
 	}
 
-	public List<Persona> ListarPerosonas() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Persona> ListarPersonas() {
+		List<Persona> resultadoTransaccion = null;
+		try {
+			resultadoTransaccion =  em.createNamedQuery("Persona.listarpersonas").getResultList();
+			System.out.println(resultadoTransaccion);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage().toString());
+			
+		}
+		return resultadoTransaccion;
+		
 	}
 
 	public List<Persona> BuscarListaPersonas(String cedula) {

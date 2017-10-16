@@ -8,11 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="t_genero")
+@NamedQueries({ @NamedQuery(name = "Genero.listargenero", query = "Select e from Eps e") })
 public class Genero implements Serializable {
 
 	/**
@@ -24,7 +27,7 @@ public class Genero implements Serializable {
 	private Integer idgenero;
 	
 	@Column(name="sexo")
-	private char sexo;
+	private String sexo;
 	
 	@OneToMany(mappedBy="generopersona",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Persona> persona;
@@ -33,7 +36,7 @@ public class Genero implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Genero(Integer idgenero, char sexo) {
+	public Genero(Integer idgenero, String sexo) {
 		super();
 		this.idgenero = idgenero;
 		this.sexo = sexo;
@@ -47,11 +50,11 @@ public class Genero implements Serializable {
 		this.idgenero = idgenero;
 	}
 
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
