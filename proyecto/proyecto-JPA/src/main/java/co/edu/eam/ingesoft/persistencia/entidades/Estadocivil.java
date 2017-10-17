@@ -9,16 +9,12 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="t_estadocivil")
-@NamedQueries({ @NamedQuery(name = "Estadocivil.listarestadocivil", query = "SELECT es FROM Estadocivil es"),
-	@NamedQuery(name = "Estadocivil.buscarlistarestadocivil", query = "SELECT es FROM Estadocivil es where es.idestadocivil=:id") })
 public class Estadocivil implements Serializable {
 	
 	@Id

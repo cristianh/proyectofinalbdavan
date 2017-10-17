@@ -8,16 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="t_departamento")
-@NamedQueries({ @NamedQuery(name = "Departamento.listardepartamentos", query = "SELECT d FROM Departamento d"),
-	@NamedQuery(name = "Departamento.buscarlistardepartamentos", query = "SELECT d FROM Departamento d where d.id_departamento=:id") })
 public class Departamento implements Serializable {
 
 	@Id
@@ -120,7 +116,11 @@ public class Departamento implements Serializable {
 	}
 
 
-	
+	@Override
+	public String toString() {
+		return "Departamento [id_departamento=" + id_departamento + ", nombredepartemento=" + nombredepartemento
+				+ ", descriptiondepartamento=" + descriptiondepartamento + ", Ciudades=" + Ciudades + "]";
+	}
 	
 	
 	

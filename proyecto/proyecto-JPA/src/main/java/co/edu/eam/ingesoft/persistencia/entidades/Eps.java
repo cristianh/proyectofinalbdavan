@@ -8,30 +8,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "t_eps")
-@NamedQueries({ @NamedQuery(name = "Eps.listareps", query = "Select e from Eps e") })
-public class Eps implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name="t_eps")
+public class Eps implements Serializable {
 
 	@Id
 	private String ideps;
-
-	@Column(name = "nombre", length = 50)
+	
+	@Column(name="nombre",length=50)
 	private String nombre;
-
-	@OneToMany(mappedBy = "epspersona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	
+	@OneToMany(mappedBy="epspersona",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Persona> persona;
-
+	
 	public Eps() {
 		// TODO Auto-generated constructor stub
 	}
@@ -87,5 +80,7 @@ public class Eps implements Serializable {
 	public String toString() {
 		return "Eps [ideps=" + ideps + ", nombre=" + nombre + "]";
 	}
-
+	
+	
+	
 }

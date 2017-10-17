@@ -14,7 +14,7 @@ public interface IPersonaremote {
 
 	public void eliminar(String cedula);
 
-	public List<Persona> ListarPersonas();
+	public List<Persona> ListarPerosonas();
 
 	public List<Persona> BuscarListaPersonas(String cedula);
 

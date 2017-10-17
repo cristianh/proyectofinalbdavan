@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import co.edu.avanzada.negocio.benas.remote.IEpsremote;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
-import co.edu.eam.ingesoft.persistencia.entidades.Genero;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
 
 @LocalBean
@@ -52,16 +51,7 @@ public class EpsEJB implements IEpsremote {
 
 	public List<Eps> ListarEps() {
 		// TODO Auto-generated method stub
-		List<Eps> resultadoTransaccion = null;
-		try {
-			resultadoTransaccion =  em.createNamedQuery("Eps.listareps").getResultList();
-			System.out.println(resultadoTransaccion);
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage().toString());
-			
-		}
-		return resultadoTransaccion;
+		return null;
 	}
 
 	public List<Eps> BuscarListaEps(String codigoeps) {
