@@ -56,10 +56,8 @@ public class PersonaEJB implements IPersonaremote{
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage().toString());
-			
 		}
 		return resultadoTransaccion;
-		
 	}
 
 	public List<Persona> BuscarListaPersonas(String cedula) {
