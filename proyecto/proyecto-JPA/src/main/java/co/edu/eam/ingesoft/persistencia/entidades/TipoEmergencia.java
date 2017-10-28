@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_tipoemergencia")
-public class Tipoemergencia implements Serializable {
+public class TipoEmergencia implements Serializable {
 
 	@Id
 	private Integer idemergencia;
@@ -27,11 +27,11 @@ public class Tipoemergencia implements Serializable {
 	@OneToMany(mappedBy="tipoemergencia")
 	private List<Emergencia> emergencias;
 	
-	public Tipoemergencia() {
+	public TipoEmergencia() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tipoemergencia(Integer idemergencia, String nombreemergencia, String descripcionemergencia) {
+	public TipoEmergencia(Integer idemergencia, String nombreemergencia, String descripcionemergencia) {
 		super();
 		this.idemergencia = idemergencia;
 		this.nombreemergencia = nombreemergencia;
@@ -78,7 +78,7 @@ public class Tipoemergencia implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tipoemergencia other = (Tipoemergencia) obj;
+		TipoEmergencia other = (TipoEmergencia) obj;
 		if (idemergencia == null) {
 			if (other.idemergencia != null)
 				return false;

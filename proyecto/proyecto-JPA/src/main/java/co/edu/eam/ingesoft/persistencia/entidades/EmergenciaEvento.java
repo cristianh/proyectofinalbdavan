@@ -18,7 +18,7 @@ import co.edu.eam.ingesoft.persistencia.entidades.PK.EmergenciaeventooperadorPK;
 
 @Entity
 @Table(name="t_emergenciaevento")
-public class Emergenciaevento implements Serializable {
+public class EmergenciaEvento implements Serializable {
 
 	@EmbeddedId
 	private EmergenciaeventooperadorPK emergenciaoperadorPK;
@@ -36,11 +36,11 @@ public class Emergenciaevento implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechahora;
 
-	public Emergenciaevento() {
+	public EmergenciaEvento() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Emergenciaevento(EmergenciaeventooperadorPK emergenciaoperadorPK, String descripcionevento,
+	public EmergenciaEvento(EmergenciaeventooperadorPK emergenciaoperadorPK, String descripcionevento,
 			String lugarevento, Date fechahora) {
 		super();
 		this.emergenciaoperadorPK = emergenciaoperadorPK;
@@ -98,7 +98,7 @@ public class Emergenciaevento implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Emergenciaevento other = (Emergenciaevento) obj;
+		EmergenciaEvento other = (EmergenciaEvento) obj;
 		if (emergenciaoperadorPK == null) {
 			if (other.emergenciaoperadorPK != null)
 				return false;
