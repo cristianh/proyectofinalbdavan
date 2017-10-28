@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_antecedentessalud")
-public class Antecedentesalud implements Serializable {
+public class AntecedenteSalud implements Serializable {
 
 	@Id
 	private Integer idantecedentessalud;
@@ -18,11 +18,11 @@ public class Antecedentesalud implements Serializable {
 	@Column(name="antecedentessalud",length=100)
 	private String antecedentesdalus;
 	
-	public Antecedentesalud() {
+	public AntecedenteSalud() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Antecedentesalud(Integer idantecedentessalud, String antecedentesdalus) {
+	public AntecedenteSalud(Integer idantecedentessalud, String antecedentesdalus) {
 		super();
 		this.idantecedentessalud = idantecedentessalud;
 		this.antecedentesdalus = antecedentesdalus;
@@ -60,7 +60,7 @@ public class Antecedentesalud implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Antecedentesalud other = (Antecedentesalud) obj;
+		AntecedenteSalud other = (AntecedenteSalud) obj;
 		if (idantecedentessalud == null) {
 			if (other.idantecedentessalud != null)
 				return false;

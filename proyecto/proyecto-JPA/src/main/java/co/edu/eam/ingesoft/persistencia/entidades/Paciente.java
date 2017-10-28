@@ -27,7 +27,7 @@ public class Paciente implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="pacienteantecedentesalud")
-	private Antecedentesalud antecedente;
+	private AntecedenteSalud antecedente;
 	
 	@Column(name="descripcionprioridad", length=250)
 	private String descripcionP;

@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import co.edu.avanzada.negocio.benas.remote.IDepartamento;
+import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 import co.edu.eam.ingesoft.persistencia.entidades.Departamento;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
@@ -20,11 +21,11 @@ public class DepartamentoEJB implements IDepartamento {
 
 	@PersistenceContext
 	EntityManager em;
-	
+
 	public void crearDepartamento(Departamento departamento) {
 		// TODO Auto-generated method stub
 		em.persist(departamento);
-		
+
 	}
 
 	public Departamento buscarDepartamento(String codigodepartamento) {
@@ -33,25 +34,29 @@ public class DepartamentoEJB implements IDepartamento {
 	}
 
 	public void editarDepartamento(Departamento departamento) {
-		// TODO Auto-generated method stub
-		
+		em.merge(departamento);
+
 	}
 
 	public void eliminar(String departamento) {
-		// TODO Auto-generated method stub
-		
+		Departamento depto = buscarDepartamento(departamento);
+		if (depto != null) {
+			em.remove(departamento);
+		} else {
+			throw new ExcepcionNegocio("Error al borrar el departamento");
+		}
 	}
 
 	public List<Departamento> Listardepartamento() {
 		// TODO Auto-generated method stub
 		List<Departamento> resultadoTransaccion = null;
 		try {
-			resultadoTransaccion =  em.createNamedQuery("Departamento.listardepartamentos").getResultList();
+			resultadoTransaccion = em.createNamedQuery("Departamento.listardepartamentos").getResultList();
 			System.out.println(resultadoTransaccion);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage().toString());
-			
+
 		}
 		return resultadoTransaccion;
 	}

@@ -36,7 +36,7 @@ public class Ambulancia implements Serializable {
 	private Integer cantidad;
 	
 	@OneToMany(mappedBy="ambulanciaid")
-	private List<Ambulanciaurgencia> ambulanciaurgencia;
+	private List<AmbulanciaUrgencia> ambulanciaurgencia;
 
 	public Ambulancia() {
 		// TODO Auto-generated constructor stub

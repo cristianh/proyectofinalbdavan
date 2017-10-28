@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_tipoevento")
-public class Tipoevento implements Serializable {
+public class TipoEvento implements Serializable {
 
 	@Id
 	private Integer idevento;
@@ -17,11 +17,11 @@ public class Tipoevento implements Serializable {
 	@Column(name="nombre_evento")
 	private String nombreevento;
 	
-	public Tipoevento() {
+	public TipoEvento() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tipoevento(Integer idevento, String nombreevento) {
+	public TipoEvento(Integer idevento, String nombreevento) {
 		super();
 		this.idevento = idevento;
 		this.nombreevento = nombreevento;
@@ -59,7 +59,7 @@ public class Tipoevento implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tipoevento other = (Tipoevento) obj;
+		TipoEvento other = (TipoEvento) obj;
 		if (idevento == null) {
 			if (other.idevento != null)
 				return false;

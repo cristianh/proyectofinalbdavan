@@ -38,7 +38,7 @@ public class Acompanante implements Serializable {
 	}
 
 	public Acompanante(AcompañantepersonaPK idacompananate, String parentezcoacompañante, String telegonoacompañante,
-			List<Urgenciaambulancia> urgenciaambulancia) {
+			List<UrgenciaAmbulancia> urgenciaambulancia) {
 		super();
 		this.idacompananate = idacompananate;
 		this.parentezcoacompañante = parentezcoacompañante;
