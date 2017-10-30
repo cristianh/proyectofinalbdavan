@@ -28,9 +28,9 @@ public class Urgenciaevento implements Serializable {
 	@JoinColumn(name = "idurgencia",nullable=false)
 	private Urgencia idurgencia;
 
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "idoperador")
-	private Operador operadorurgencia;*/
+	private Operador operadorurgencia;
 
 	public Urgenciaevento() {
 		// TODO Auto-generated constructor stub
