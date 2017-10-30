@@ -25,7 +25,7 @@ public class Emergencia implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="tipoemergencia",nullable=false)
-	private Tipoemergencia tipoemergencia;
+	private TipoEmergencia tipoemergencia;
 	
 	
 	
@@ -39,7 +39,7 @@ public class Emergencia implements Serializable {
 	 * @param nombre
 	 * @param tipoemergencia
 	 */
-	public Emergencia(Integer idemergencia, String nombre, Tipoemergencia tipoemergencia) {
+	public Emergencia(Integer idemergencia, String nombre, TipoEmergencia tipoemergencia) {
 		super();
 		this.idemergencia = idemergencia;
 		this.nombre = nombre;

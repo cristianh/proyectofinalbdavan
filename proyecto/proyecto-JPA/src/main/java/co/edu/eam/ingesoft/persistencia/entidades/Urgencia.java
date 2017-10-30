@@ -25,7 +25,7 @@ public class Urgencia implements Serializable {
 	private String nombreurgencia;
 	
 	@OneToMany(mappedBy="idurgencia",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<Urgenciaevento> urgenciaevento;
+	private List<UrgenciaEvento> urgenciaevento;
 
 	public Urgencia() {
 		// TODO Auto-generated constructor stub

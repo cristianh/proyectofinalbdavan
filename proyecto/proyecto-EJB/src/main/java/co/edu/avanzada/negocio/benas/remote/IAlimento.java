@@ -6,15 +6,15 @@ import co.edu.eam.ingesoft.persistencia.entidades.Alimento;
 
 public interface IAlimento  {
 	
-	public void crearAlimento(Alimento persona);
+	public void crearAlimento(Alimento alimento);
 
-	public Alimento buscarPersona(Integer idAlimento);
+	public Alimento buscarAlimento(Integer idAlimento);
 
-	public void editarPersona(Alimento persona);
+	public void editarAlimento(Alimento alimento);
 
 	public void eliminar(Integer idAlimento);
 
-	public List<Alimento> ListarPersonas();
+	public List<Alimento> listarAlimentos();
 
-	public List<Alimento> BuscarListaPersonas(Integer idAlimento);
+	public List<Alimento> buscarListaAlimentos(Integer idAlimento);
 }

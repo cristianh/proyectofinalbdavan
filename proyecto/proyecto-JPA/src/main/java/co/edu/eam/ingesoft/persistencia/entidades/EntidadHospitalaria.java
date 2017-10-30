@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="t_entidadhospitalaria")
-public class Entidadhospitalaria implements Serializable {
+public class EntidadHospitalaria implements Serializable {
 
 	@Id
 	private Integer identidadhospitalaria;
@@ -25,15 +25,15 @@ public class Entidadhospitalaria implements Serializable {
 	private List<Cama> camas;
 	
 	@OneToMany(mappedBy="entidadhospitalaria",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<Urgenciaambulancia> urgenciaambulancia;
+	private List<UrgenciaAmbulancia> urgenciaambulancia;
 	
 	
 	
-	public Entidadhospitalaria() {
+	public EntidadHospitalaria() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Entidadhospitalaria(Integer identidadhospitalaria, String nombreentidadhospitalaria,
+	public EntidadHospitalaria(Integer identidadhospitalaria, String nombreentidadhospitalaria,
 			Integer gradocomplejidad, char estado) {
 		super();
 		this.identidadhospitalaria = identidadhospitalaria;
@@ -100,7 +100,7 @@ public class Entidadhospitalaria implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Entidadhospitalaria other = (Entidadhospitalaria) obj;
+		EntidadHospitalaria other = (EntidadHospitalaria) obj;
 		if (identidadhospitalaria == null) {
 			if (other.identidadhospitalaria != null)
 				return false;

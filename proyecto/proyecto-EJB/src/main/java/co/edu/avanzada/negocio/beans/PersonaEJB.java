@@ -34,17 +34,21 @@ public class PersonaEJB implements IPersonaremote{
 	}
 
 	public Persona buscarPersona(String cedula) {
-		// TODO Auto-generated method stub
 		return em.find(Persona.class, cedula);
 	}
 
 	public void editarPersona(Persona persona) {
-		// TODO Auto-generated method stub
+		em.merge(persona);
 		
 	}
 
 	public void eliminar(String cedula) {
-		// TODO Auto-generated method stub
+		Persona busqPersona = buscarPersona(cedula);
+		if(busqPersona != null){
+			em.remove(cedula);
+		}else{
+			throw new ExcepcionNegocio("Error al borrar la persona");
+		}
 		
 	}
 
