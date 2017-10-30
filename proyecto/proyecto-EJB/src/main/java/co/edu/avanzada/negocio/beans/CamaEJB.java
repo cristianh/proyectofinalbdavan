@@ -81,5 +81,6 @@ public class CamaEJB implements Serializable {
 		}
 		return result;
 	}
+}
 	
 
