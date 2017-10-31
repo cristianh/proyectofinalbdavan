@@ -15,11 +15,15 @@ import co.edu.eam.ingesoft.persistencia.entidades.PK.PacientepersonaPK;
 
 @Entity
 @Table(name="t_paciente")
+
 public class Paciente implements Serializable {
 
-	@EmbeddedId
-	@Column(name="pacientepersonapk")
-	private PacientepersonaPK pk;
+	
+	@Id
+	@Column(name="idPaciente")
+	private Integer idPaciente;
+	
+	private Persona persona;
 	
 	@ManyToOne
 	@JoinColumn(name="pacienteprioridad")
