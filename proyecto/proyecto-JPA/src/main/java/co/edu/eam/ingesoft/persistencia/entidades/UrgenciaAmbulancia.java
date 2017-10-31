@@ -9,6 +9,11 @@ import javax.persistence.*;
 @Table(name = "t_urgenciaambulancia")
 public class UrgenciaAmbulancia implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private Integer idurgenciaambulacia;
 
