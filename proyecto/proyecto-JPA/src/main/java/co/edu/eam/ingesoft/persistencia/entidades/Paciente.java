@@ -21,6 +21,8 @@ public class Paciente implements Serializable {
 	@Column(name="pacientepersonapk")
 	private PacientepersonaPK pk;
 	
+	//private Persona persona;
+	
 	@ManyToOne
 	@JoinColumn(name="pacienteprioridad")
 	private Prioridad prioridad;

@@ -28,16 +28,20 @@ public class UrgenciaEvento implements Serializable {
 	@JoinColumn(name = "idurgencia",nullable=false)
 	private Urgencia idurgencia;
 
-	@ManyToOne
-	@JoinColumn(name = "idoperador")
-	private Operador operadorurgencia;
+
+	
+	/*@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="operadorpe")
+	private OperadorPersonal operadorurgencia;*/
 
 	public UrgenciaEvento() {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	public UrgenciaEvento(Integer idurgenciaevento, TipoEvento tipoevento, String descripcionurgenciaevento,
-			String lugarurgenciaevento, char estadourgenciaevento, Urgencia idurgencia, Operador operadorurgencia) {
+			String lugarurgenciaevento, char estadourgenciaevento, Urgencia idurgencia) {
 		super();
 		this.idurgenciaevento = idurgenciaevento;
 		this.tipoevento = tipoevento;
@@ -45,8 +49,12 @@ public class UrgenciaEvento implements Serializable {
 		this.lugarurgenciaevento = lugarurgenciaevento;
 		this.estadourgenciaevento = estadourgenciaevento;
 		this.idurgencia = idurgencia;
-		this.operadorurgencia = operadorurgencia;
 	}
+
+
+
+
+
 
 	public Integer getIdurgenciaevento() {
 		return idurgenciaevento;
@@ -96,13 +104,7 @@ public class UrgenciaEvento implements Serializable {
 		this.idurgencia = idurgencia;
 	}
 
-	public Operador getOperadorurgencia() {
-		return operadorurgencia;
-	}
-
-	public void setOperadorurgencia(Operador operadorurgencia) {
-		this.operadorurgencia = operadorurgencia;
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -129,13 +131,17 @@ public class UrgenciaEvento implements Serializable {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "UrgenciaEvento [idurgenciaevento=" + idurgenciaevento + ", tipoevento=" + tipoevento
 				+ ", descripcionurgenciaevento=" + descripcionurgenciaevento + ", lugarurgenciaevento="
 				+ lugarurgenciaevento + ", estadourgenciaevento=" + estadourgenciaevento + ", idurgencia=" + idurgencia
-				+ ", operadorurgencia=" + operadorurgencia + "]";
+				+ "]";
 	}
+
+	
 	
 	
 	
