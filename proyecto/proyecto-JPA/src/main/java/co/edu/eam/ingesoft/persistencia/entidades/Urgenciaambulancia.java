@@ -11,20 +11,27 @@ public class UrgenciaAmbulancia implements Serializable {
 
 	@Id
 	private Integer idurgenciaambulacia;
+	
+	@Column(name="acompananteid")
+	private Acompanante acompanante;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "entidadhospitalariaenvento", nullable = false)
+	private EntidadHospitalaria entidadhospitalaria;
 
 	@OneToMany(mappedBy = "urgenciaambulancia")
 	private List<AmbulanciaUrgencia> ambulanciaurgencia;
 
-	/*
+	@Column(name="gradpcomplejidad")
+	private Integer gradoComplejidad;	/*
 	 * @ManyToOne
 	 * 
 	 * @JoinColumn(name="acompananteurgenciaambulancia") private Acompanante
 	 * acompananteid;
 	 */
 
-	@ManyToOne
-	@JoinColumn(name = "entidadhospitalariaenvento", nullable = false)
-	private EntidadHospitalaria entidadhospitalaria;
+	
 
 	public Integer getIdurgenciaambulacia() {
 		return idurgenciaambulacia;
