@@ -12,8 +12,6 @@ import javax.persistence.Table;
 @Table(name = "t_ambulanciaurgencia")
 public class AmbulanciaUrgencia implements Serializable {
 
-
-
 	/**
 	 * 
 	 */
