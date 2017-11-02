@@ -2,7 +2,7 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
 import java.util.List;
-
+import co.edu.eam.ingesoft.persistencia.entidades.*;
 import javax.persistence.*;
 
 @Entity
