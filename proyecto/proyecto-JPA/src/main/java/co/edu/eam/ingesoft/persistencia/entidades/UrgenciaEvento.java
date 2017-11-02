@@ -1,6 +1,7 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -12,7 +13,21 @@ public class UrgenciaEvento implements Serializable {
 	private Integer idurgenciaevento;
 
 	@ManyToOne
-	@JoinColumn(name = "tipoeventourgencia",nullable=false)
+	@JoinColumn(name = "idurgencia", nullable = false)
+	private Urgencia idurgencia;
+
+	@ManyToOne
+	@JoinColumns({
+			@JoinColumn(name = "ippersonal", referencedColumnName = "id_peronal"),
+			@JoinColumn(name = "idoperador", referencedColumnName = "id_operador") })
+	private OperadorPersonal operador;
+
+	@ManyToOne
+	@JoinColumn(name = "idurgenciaambulancia", nullable = false)
+	private UrgenciaAmbulancia urgenciaambulancia;
+
+	@ManyToOne
+	@JoinColumn(name = "tipoeventourgencia", nullable = false)
 	private TipoEvento tipoevento;
 
 	@Column(name = "descripciourgenciaevento", length = 100)
@@ -24,16 +39,32 @@ public class UrgenciaEvento implements Serializable {
 	@Column(name = "estadourgenciaevento", length = 1)
 	private char estadourgenciaevento;
 
-	@ManyToOne
-	@JoinColumn(name = "idurgencia",nullable=false)
-	private Urgencia idurgencia;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaurgenciaevento;
 
-	/*@ManyToOne
-	@JoinColumn(name = "idoperador")
-	private Operador operadorurgencia;*/
+	/*
+	 * @ManyToOne(fetch=FetchType.LAZY)
+	 * 
+	 * @JoinColumn(name="operadorpe") private OperadorPersonal operadorurgencia;
+	 */
 
 	public UrgenciaEvento() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public UrgenciaEvento(Integer idurgenciaevento, Urgencia idurgencia, OperadorPersonal operador,
+			UrgenciaAmbulancia urgenciaambulancia, TipoEvento tipoevento, String descripcionurgenciaevento,
+			String lugarurgenciaevento, char estadourgenciaevento, Date fechaurgenciaevento) {
+		super();
+		this.idurgenciaevento = idurgenciaevento;
+		this.idurgencia = idurgencia;
+		this.operador = operador;
+		this.urgenciaambulancia = urgenciaambulancia;
+		this.tipoevento = tipoevento;
+		this.descripcionurgenciaevento = descripcionurgenciaevento;
+		this.lugarurgenciaevento = lugarurgenciaevento;
+		this.estadourgenciaevento = estadourgenciaevento;
+		this.fechaurgenciaevento = fechaurgenciaevento;
 	}
 
 	public Integer getIdurgenciaevento() {
@@ -42,6 +73,30 @@ public class UrgenciaEvento implements Serializable {
 
 	public void setIdurgenciaevento(Integer idurgenciaevento) {
 		this.idurgenciaevento = idurgenciaevento;
+	}
+
+	public Urgencia getIdurgencia() {
+		return idurgencia;
+	}
+
+	public void setIdurgencia(Urgencia idurgencia) {
+		this.idurgencia = idurgencia;
+	}
+
+	public OperadorPersonal getOperador() {
+		return operador;
+	}
+
+	public void setOperador(OperadorPersonal operador) {
+		this.operador = operador;
+	}
+
+	public UrgenciaAmbulancia getUrgenciaambulancia() {
+		return urgenciaambulancia;
+	}
+
+	public void setUrgenciaambulancia(UrgenciaAmbulancia urgenciaambulancia) {
+		this.urgenciaambulancia = urgenciaambulancia;
 	}
 
 	public TipoEvento getTipoevento() {
@@ -76,24 +131,19 @@ public class UrgenciaEvento implements Serializable {
 		this.estadourgenciaevento = estadourgenciaevento;
 	}
 
-	public Urgencia getIdurgencia() {
-		return idurgencia;
+	public Date getFechaurgenciaevento() {
+		return fechaurgenciaevento;
 	}
 
-	public void setIdurgencia(Urgencia idurgencia) {
-		this.idurgencia = idurgencia;
+	public void setFechaurgenciaevento(Date fechaurgenciaevento) {
+		this.fechaurgenciaevento = fechaurgenciaevento;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((descripcionurgenciaevento == null) ? 0 : descripcionurgenciaevento.hashCode());
-		result = prime * result + estadourgenciaevento;
-		result = prime * result + ((idurgencia == null) ? 0 : idurgencia.hashCode());
-		result = prime * result + ((idurgenciaevento == null) ? 0 : idurgenciaevento.hashCode());
 		result = prime * result + ((lugarurgenciaevento == null) ? 0 : lugarurgenciaevento.hashCode());
-		result = prime * result + ((tipoevento == null) ? 0 : tipoevento.hashCode());
 		return result;
 	}
 
@@ -106,44 +156,21 @@ public class UrgenciaEvento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		UrgenciaEvento other = (UrgenciaEvento) obj;
-		if (descripcionurgenciaevento == null) {
-			if (other.descripcionurgenciaevento != null)
-				return false;
-		} else if (!descripcionurgenciaevento.equals(other.descripcionurgenciaevento))
-			return false;
-		if (estadourgenciaevento != other.estadourgenciaevento)
-			return false;
-		if (idurgencia == null) {
-			if (other.idurgencia != null)
-				return false;
-		} else if (!idurgencia.equals(other.idurgencia))
-			return false;
-		if (idurgenciaevento == null) {
-			if (other.idurgenciaevento != null)
-				return false;
-		} else if (!idurgenciaevento.equals(other.idurgenciaevento))
-			return false;
 		if (lugarurgenciaevento == null) {
 			if (other.lugarurgenciaevento != null)
 				return false;
 		} else if (!lugarurgenciaevento.equals(other.lugarurgenciaevento))
-			return false;
-		if (tipoevento == null) {
-			if (other.tipoevento != null)
-				return false;
-		} else if (!tipoevento.equals(other.tipoevento))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "UrgenciaEvento [idurgenciaevento=" + idurgenciaevento + ", tipoevento=" + tipoevento
+		return "UrgenciaEvento [idurgenciaevento=" + idurgenciaevento + ", idurgencia=" + idurgencia + ", operador="
+				+ operador + ", urgenciaambulancia=" + urgenciaambulancia + ", tipoevento=" + tipoevento
 				+ ", descripcionurgenciaevento=" + descripcionurgenciaevento + ", lugarurgenciaevento="
-				+ lugarurgenciaevento + ", estadourgenciaevento=" + estadourgenciaevento + ", idurgencia=" + idurgencia
-				+ "]";
+				+ lugarurgenciaevento + ", estadourgenciaevento=" + estadourgenciaevento + ", fechaurgenciaevento="
+				+ fechaurgenciaevento + "]";
 	}
 
-	
-	
 }

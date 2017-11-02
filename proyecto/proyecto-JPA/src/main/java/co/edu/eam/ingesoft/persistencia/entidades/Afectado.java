@@ -16,70 +16,62 @@ public class Afectado implements Serializable {
 	@Id
 	private Integer idafectado;
 	
-	@Column(name="estado")
-	private String estadoafectado;
-	
-	@Column(name="canthijos")
-	private Integer canthijos;
+	@ManyToOne
+	@JoinColumn(name="emergenciaid")
+	private Emergencia emergenciaid;
 	
 	@ManyToOne
 	@JoinColumn(name="personaid")
-	private Persona personaafectado;
+	private Persona personaid;
 	
+	@Column(name="descripcion")
+	private String descripcion;
 	
 	public Afectado() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Afectado(Integer idafectado, String estadoafectado, Integer canthijos, Persona personaafectado) {
+	public Afectado(Integer idafectado, Emergencia emergenciaid, Persona personaid, String descripcion) {
 		super();
 		this.idafectado = idafectado;
-		this.estadoafectado = estadoafectado;
-		this.canthijos = canthijos;
-		this.personaafectado = personaafectado;
+		this.emergenciaid = emergenciaid;
+		this.personaid = personaid;
+		this.descripcion = descripcion;
 	}
-
+	
+	
 
 	public Integer getIdafectado() {
 		return idafectado;
 	}
 
-
 	public void setIdafectado(Integer idafectado) {
 		this.idafectado = idafectado;
 	}
 
-
-	public String getEstadoafectado() {
-		return estadoafectado;
+	public Emergencia getEmergenciaid() {
+		return emergenciaid;
 	}
 
-
-	public void setEstadoafectado(String estadoafectado) {
-		this.estadoafectado = estadoafectado;
+	public void setEmergenciaid(Emergencia emergenciaid) {
+		this.emergenciaid = emergenciaid;
 	}
 
-
-	public Integer getCanthijos() {
-		return canthijos;
+	public Persona getPersonaid() {
+		return personaid;
 	}
 
-
-	public void setCanthijos(Integer canthijos) {
-		this.canthijos = canthijos;
+	public void setPersonaid(Persona personaid) {
+		this.personaid = personaid;
 	}
 
-
-	public Persona getPersonaafectado() {
-		return personaafectado;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-
-	public void setPersonaafectado(Persona personaafectado) {
-		this.personaafectado = personaafectado;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -88,7 +80,6 @@ public class Afectado implements Serializable {
 		result = prime * result + ((idafectado == null) ? 0 : idafectado.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -107,13 +98,12 @@ public class Afectado implements Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Afectado [idafectado=" + idafectado + ", estadoafectado=" + estadoafectado + ", canthijos=" + canthijos
-				+ ", personaafectado=" + personaafectado + "]";
+		return "Afectado [idafectado=" + idafectado + ", emergenciaid=" + emergenciaid + ", personaid=" + personaid
+				+ ", descripcion=" + descripcion + "]";
 	}
-	
+
 	
 	
 }

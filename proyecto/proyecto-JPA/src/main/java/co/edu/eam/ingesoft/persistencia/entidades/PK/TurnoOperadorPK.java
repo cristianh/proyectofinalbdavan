@@ -6,21 +6,20 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class DiagnosticopacientePK implements Serializable {
-
+public class TurnoOperadorPK implements Serializable{
 	
 	@Column(name="id_paciente")
 	private Integer idpaciente;
 	
 	@Column(name="id_urgenciaambulancia")
-	private Integer idurgenciaambulanaic;
+	private Integer idurgenciaambulancia;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((idpaciente == null) ? 0 : idpaciente.hashCode());
-		result = prime * result + ((idurgenciaambulanaic == null) ? 0 : idurgenciaambulanaic.hashCode());
+		result = prime * result + ((idurgenciaambulancia == null) ? 0 : idurgenciaambulancia.hashCode());
 		return result;
 	}
 
@@ -32,21 +31,20 @@ public class DiagnosticopacientePK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DiagnosticopacientePK other = (DiagnosticopacientePK) obj;
+		TurnoOperadorPK other = (TurnoOperadorPK) obj;
 		if (idpaciente == null) {
 			if (other.idpaciente != null)
 				return false;
 		} else if (!idpaciente.equals(other.idpaciente))
 			return false;
-		if (idurgenciaambulanaic == null) {
-			if (other.idurgenciaambulanaic != null)
+		if (idurgenciaambulancia == null) {
+			if (other.idurgenciaambulancia != null)
 				return false;
-		} else if (!idurgenciaambulanaic.equals(other.idurgenciaambulanaic))
+		} else if (!idurgenciaambulancia.equals(other.idurgenciaambulancia))
 			return false;
 		return true;
 	}
+	
+	
 
-	
-	
-	
 }

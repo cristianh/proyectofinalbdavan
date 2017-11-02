@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,32 +17,43 @@ import co.edu.eam.ingesoft.persistencia.entidades.PK.OperadorPersonalPK;
 
 @Entity
 @Table(name="t_operador")
-public class Operador implements Serializable {
+public class OperadorPersonal implements Serializable {
 
 	@EmbeddedId
 	private OperadorPersonalPK idpk;
 	
-	@Column(name="codigooprador",length=50,nullable=false)
-	private String codigooperador;
+	@ManyToOne
+	@JoinColumn(name="personaId",insertable=false,updatable=false)
+	private Persona personaop;
+	
+	@ManyToOne
+	@JoinColumn(name="operadorId",insertable=false,updatable=false)
+	private Persona operadorpe;
+	
 	
 	/*@OneToMany(mappedBy="operadorurgencia",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<Urgenciaevento> urgenciaevento;*/
+	private List<UrgenciaEvento> urgenciaevento;*/
 	
-	public Operador() {
+	public OperadorPersonal() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Operador(OperadorPersonalPK idpk, String codigooperador) {
+
+	public OperadorPersonal(OperadorPersonalPK idpk, Persona personaop, Persona operadorpe) {
 		super();
 		this.idpk = idpk;
-		this.codigooperador = codigooperador;
+		this.personaop = personaop;
+		this.operadorpe = operadorpe;
 	}
+
 	
-	
+
+
 	public OperadorPersonalPK getIdpk() {
 		return idpk;
 	}
+
 
 
 	public void setIdpk(OperadorPersonalPK idpk) {
@@ -48,18 +61,32 @@ public class Operador implements Serializable {
 	}
 
 
-	public String getCodigooperador() {
-		return codigooperador;
+
+	public Persona getPersonaop() {
+		return personaop;
 	}
 
 
-	public void setCodigooperador(String codigooperador) {
-		this.codigooperador = codigooperador;
+
+	public void setPersonaop(Persona personaop) {
+		this.personaop = personaop;
 	}
-	
-	
 
 
+
+	public Persona getOperadorpe() {
+		return operadorpe;
+	}
+
+
+
+	public void setOperadorpe(Persona operadorpe) {
+		this.operadorpe = operadorpe;
+	}
+
+
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,7 +104,7 @@ public class Operador implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Operador other = (Operador) obj;
+		OperadorPersonal other = (OperadorPersonal) obj;
 		if (idpk == null) {
 			if (other.idpk != null)
 				return false;

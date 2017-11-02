@@ -8,12 +8,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import co.edu.avanzada.negocio.benas.remote.ITipoFuncionario;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoFuncionario;
 
 @LocalBean
 @Stateless
-@Remote(ITipoFuncionario)
+@Remote(ITipoFuncionario.class)
 public class TipoFuncionarioEJB {
 
 	@PersistenceContext

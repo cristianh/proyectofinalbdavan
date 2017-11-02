@@ -11,14 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name="T_Especialidadp")
+@Table(name="t_especialidad")
 public class Especialidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="CodigoEspecialidad",unique=true,nullable=false,length=70)
+	
 	private String codigo;
 	@Column(name="NombreEspecialidad",nullable=false,length=100)
+	
 	private String nombre;
+	
 	@ManyToOne
 	@JoinColumn(name="CodigoTipoEspecialidad",nullable=false)
 	private TipoEspecialidad tipoEspecialidad;
