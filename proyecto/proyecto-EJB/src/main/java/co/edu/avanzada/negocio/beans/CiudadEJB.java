@@ -55,9 +55,18 @@ public class CiudadEJB implements ICiudad {
 		return resultadoTransaccion;
 	}
 
-	public List<Ciudad> BuscarListaCiudad(String codigoeps) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Ciudad> BuscarListaCiudad(String codigociudad) {
+		javax.persistence.Query consulta;
+		List<Ciudad> resultado = null;
+		try {
+			consulta = em.createNamedQuery("Ciudad.buscarlistarciudades");
+			consulta.setParameter("iddepartamento", codigociudad);
+			resultado=consulta.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage().toString());
+		}
+		return resultado;
 	}
 
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -71,6 +73,22 @@ public class Persona implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
+	/**
+	 * @param idpersona
+	 * @param numeroDocumento
+	 * @param nombre
+	 * @param apellido
+	 * @param telefono
+	 * @param fechanacimiento
+	 * @param email
+	 * @param generopersona
+	 * @param estadocivilpersona
+	 * @param tipodocumentopersona
+	 * @param epspersona
+	 * @param ciudadpersona
+	 */
 	public Persona(String idpersona, String numeroDocumento, String nombre, String apellido, Integer telefono,
 			Date fechanacimiento, String email, Genero generopersona, Estadocivil estadocivilpersona,
 			Tipodocumento tipodocumentopersona, Eps epspersona, Ciudad ciudadpersona) {
@@ -88,6 +106,12 @@ public class Persona implements Serializable {
 		this.epspersona = epspersona;
 		this.ciudadpersona = ciudadpersona;
 	}
+
+
+
+
+
+
 
 	public String getIdpersona() {
 		return idpersona;

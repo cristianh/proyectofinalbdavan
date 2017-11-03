@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_genero")
-@NamedQueries({ @NamedQuery(name = "Genero.listargenero", query = "Select e from Eps e") })
+@NamedQueries({ @NamedQuery(name = "Genero.listargenero", query = "Select g from Genero g") })
 public class Genero implements Serializable {
 
 	/**
@@ -24,7 +24,7 @@ public class Genero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idgenero;
+	private String idgenero;
 	
 	@Column(name="sexo")
 	private String sexo;
@@ -36,17 +36,17 @@ public class Genero implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Genero(Integer idgenero, String sexo) {
+	public Genero(String idgenero, String sexo) {
 		super();
 		this.idgenero = idgenero;
 		this.sexo = sexo;
 	}
 
-	public Integer getIdgenero() {
+	public String getIdgenero() {
 		return idgenero;
 	}
 
-	public void setIdgenero(Integer idgenero) {
+	public void setIdgenero(String idgenero) {
 		this.idgenero = idgenero;
 	}
 

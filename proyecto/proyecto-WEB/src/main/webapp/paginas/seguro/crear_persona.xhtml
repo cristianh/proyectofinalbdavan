@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+
+		<h:form id="formulariocrearpersona">
+		<p:messages id="messages" autoUpdate="true" closable="true" />
+			<p:panel header="Persona">
+				<h:panelGrid columns="4" id="paneltabla"
+					style="margin: 0 auto;padding:12px">
+
+
+					<p:outputLabel for="tfidpersona"
+						value="#{msj['persona.idpersona']}" />
+					<p:inputText id="tfidpersona" value="#{conPersona.idpersona}"
+						required="true" style="margin-right:35px" requiredMessage="Id persona: Este campo es requerido"/>
+
+
+
+					<p:outputLabel for="tfnombrepersona"
+						value="#{msj['persona.nombrepersona']}" />
+					<p:inputText id="tfnombrepersona"
+						value="#{conPersona.nombrepersona}" required="true" requiredMessage="Nombre: Este campo es requerido" />
+
+
+
+					<p:outputLabel for="tfapellidopersona"
+						value="#{msj['persona.apellidopersona']}" />
+					<p:inputText id="tfapellidopersona"
+						value="#{conPersona.apellidopersona}" required="true" requiredMessage="Apellido: Este campo es requerido" />
+
+
+
+					<p:outputLabel for="tfdocumentoopersona"
+						value="#{msj['persona.numerodocumentopersona']}" />
+					<p:inputText id="tfdocumentoopersona"
+						value="#{conPersona.numerodocumentopersona}" required="true" requiredMessage="Numero documento: Este campo es requerido" />
+
+
+					<p:outputLabel for="tfemailpersona"
+						value="#{msj['persona.emailpersona']}" />
+					<p:inputText id="tfemailpersona" value="#{conPersona.emailpersona}"
+						required="true"  requiredMessage="Email: Este campo es requerido" />
+
+
+					<p:outputLabel for="fechanacimientopersona"
+						value="#{msj['persona.fechanacimientopersona']}" />
+					<p:calendar id="fechanacimientopersona"
+						value="#{conPersona.fechanacimientopersona}" showOn="button" />
+
+
+					<p:outputLabel for="tftelefonopersona"
+						value="#{msj['persona.telefonopersona']}" />
+					<p:inputText id="tftelefonopersona"
+						value="#{conPersona.telefonopersona}" required="true"  requiredMessage="Telefono: Este campo es requerido"/>
+					<p:outputLabel for="comboGenero"
+						value="#{msj['persona.generopersona']}" />
+
+					<p:selectOneMenu id="comboGenero"
+						value="#{conPersona.tipogeneroseleccionado}"
+						converter="generoConverter">
+
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+						<f:selectItems value="#{conPersona.listargenero}" var="genero"
+							itemLabel="#{genero.sexo}" itemValue="#{genero}" />
+
+						<f:ajax event="change" execute="@this"
+							listener="#{conPersona.Generoseleccionado}" />
+
+					</p:selectOneMenu>
+
+
+
+
+
+					<p:outputLabel for="departamentopersona" id="departamentopersona"
+						value="#{msj['persona.departamentopersona']}" />
+
+					<p:selectOneMenu id="combodepartamento"
+						value="#{conPersona.departamentoseleccionado}"
+						converter="departamentoConverter">
+
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+						<f:selectItems value="#{conPersona.listardepartamento}"
+							var="departamento" itemLabel="#{departamento.nombredepartemento}"
+							itemValue="#{departamento}" />
+
+						<f:ajax event="change" execute="@this" render="comboCiudad"
+							listener="#{conPersona.Departamentoseleccionado}" />
+
+					</p:selectOneMenu>
+					
+
+					<p:outputLabel for="ciudadpersona" id="ciudadpersona"
+						value="#{msj['persona.ciudadpersona']}" />
+
+					<p:selectOneMenu id="comboCiudad"
+						value="#{conPersona.ciudadselesscionada}"
+						converter="ciudadConverter">
+
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+						<f:selectItems value="#{conPersona.listarciudades}" var="ciudad"
+							itemLabel="#{ciudad.nombreciudad}" itemValue="#{ciudad}" />
+
+						<f:ajax event="change" execute="@this"
+							listener="#{conPersona.Ciudadseleccionada}" />
+
+					</p:selectOneMenu>
+					
+
+					<p:outputLabel for="epspersona" id="epspersona"
+						value="#{msj['persona.epspersona']}" />
+
+					<p:selectOneMenu id="comboeps"
+						value="#{conPersona.epsseleccionada}" converter="epsConverter">
+
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+						<f:selectItems value="#{conPersona.listareps}" var="eps"
+							itemLabel="#{eps.nombre}" itemValue="#{eps}" />
+
+						<f:ajax event="change" execute="@this"
+							listener="#{conPersona.Epsseleccionada}" />
+
+					</p:selectOneMenu>
+					
+
+
+					<p:outputLabel for="estadocivilpersona" id="estadocivilpersona"
+						value="#{msj['persona.estadocivilpersona']}" />
+
+					<p:selectOneMenu id="comboestadocivil"
+						value="#{conPersona.estadocivilseleccionado}"
+						converter="estadocivilConverter">
+
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+						<f:selectItems value="#{conPersona.listarestadocivil}"
+							var="estadocivil" itemLabel="#{estadocivil.nombreestadocivil}"
+							itemValue="#{estadocivil}" />
+
+						<f:ajax event="change" execute="@this"
+							listener="#{conPersona.Estadocivilseleccionado}" />
+
+					</p:selectOneMenu>
+
+					
+
+					<p:outputLabel for="tipodocumentopersona" id="tipodocumentopersona"
+						value="#{msj['persona.tipodocumentopersona']}" />
+
+					<p:selectOneMenu id="combotipodocumento"
+						value="#{conPersona.tipodocumentoseleccionado}"
+						converter="tipodocumentoConverter">
+
+						<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+						<f:selectItems value="#{conPersona.listartipodocumento}"
+							var="tipodocumento" itemLabel="#{tipodocumento.nombredocumento}"
+							itemValue="#{tipodocumento}" />
+
+						<f:ajax event="change" execute="@this"
+							listener="#{conPersona.Tipodocumentoseleccionado}" />
+
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+				
+				<p:fieldset>
+					<h:panelGrid columns="2" id="panelbotones" style="margin: 0 auto;">
+						<p:commandButton id="botonregistrar"
+							value="#{msj['persona.btnregistrar']}"
+							action="#{conPersona.crearpersona}"
+							styleClass="ui-priority-primary" 
+							ajax="true" update=" formulariocrearpersona messages"
+							process="@this formulariocrearpersona" />
+
+						<p:commandButton id="botoneliminar"
+							value="#{msj['persona.btneliminar']}"
+							actionListener="#{conPersona.eliminarpersona}"
+							styleClass="ui-priority-primary" />
+					</h:panelGrid>
+				</p:fieldset>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 public class Departamento implements Serializable {
 
 	@Id
-	private Integer id_departamento;
+	private String id_departamento;
 	
 	@Column(name="nombre",length=50,nullable=false)
 	private String nombredepartemento;
@@ -29,7 +31,7 @@ public class Departamento implements Serializable {
 	@Column(name="descripcion")
 	private String descriptiondepartamento;
 	
-	@OneToMany(mappedBy = "departamento",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "departamento",fetch=FetchType.EAGER,cascade = CascadeType.MERGE)
 	private List<Ciudad> Ciudades;
 	
 	
@@ -44,7 +46,7 @@ public class Departamento implements Serializable {
 	 * @param nombredepartemento
 	 * @param descriptiondepartamento
 	 */
-	public Departamento(Integer id_departamento, String nombredepartemento, String descriptiondepartamento) {
+	public Departamento(String id_departamento, String nombredepartemento, String descriptiondepartamento) {
 		super();
 		this.id_departamento = id_departamento;
 		this.nombredepartemento = nombredepartemento;
@@ -52,12 +54,20 @@ public class Departamento implements Serializable {
 	}
 
 
-	public Integer getId_departamento() {
+
+
+
+
+
+
+
+
+	public String getId_departamento() {
 		return id_departamento;
 	}
 
 
-	public void setId_departamento(Integer id_departamento) {
+	public void setId_departamento(String id_departamento) {
 		this.id_departamento = id_departamento;
 	}
 
@@ -93,6 +103,9 @@ public class Departamento implements Serializable {
 	}
 
 
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,6 +131,18 @@ public class Departamento implements Serializable {
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Departamento [id_departamento=" + id_departamento + ", nombredepartemento=" + nombredepartemento
+				+ ", descriptiondepartamento=" + descriptiondepartamento + ", Ciudades=" + Ciudades + "]";
+	}
+
+
+	
+	
+	
 
 
 	

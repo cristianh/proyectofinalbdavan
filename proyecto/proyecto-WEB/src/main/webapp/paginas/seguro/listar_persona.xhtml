@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+
+		<h:form id="form">
+			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
+				<p:dataTable var="persona" value="#{conPersona.listarpersonas}"
+					rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+					<p:column headerText="Id persona">
+						<h:outputText value="#{persona.idpersona}" />
+					</p:column>
+
+					<p:column headerText="Nombre">
+						<h:outputText value="#{persona.nombre}" />
+					</p:column>
+
+					<p:column headerText="Apellido">
+						<h:outputText value="#{persona.apellido}" />
+					</p:column>
+
+					<p:column headerText="Numero documento">
+						<h:outputText value="#{persona.numeroDocumento}" />
+					</p:column>
+					<p:column headerText="Email">
+						<h:outputText value="#{persona.email}" />
+					</p:column>
+					<p:column headerText="Fecha nacimiento">
+						<h:outputText value="#{persona.fechanacimiento}" />
+					</p:column>
+					<p:column headerText="Telefono">
+						<h:outputText value="#{persona.telefono}" />
+					</p:column>
+					<p:column headerText="Ciudad">
+						<h:outputText value="#{persona.ciudadpersona.nombreciudad}" />
+					</p:column>
+					<p:column headerText="Genero">
+						<h:outputText value="#{persona.generopersona.sexo}" />
+					</p:column>
+					<p:column headerText="Eps">
+						<h:outputText value="#{persona.epspersona.nombre}" />
+					</p:column>
+					<p:column headerText="Estadocivil">
+						<h:outputText
+							value="#{persona.estadocivilpersona.nombreestadocivil}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -6,15 +6,20 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+
 import co.edu.avanzada.negocio.beans.CiudadEJB;
 import co.edu.avanzada.negocio.beans.DepartamentoEJB;
 import co.edu.avanzada.negocio.beans.EpsEJB;
 import co.edu.avanzada.negocio.beans.EstadocivilEJB;
+import co.edu.avanzada.negocio.beans.GeneroEJB;
 import co.edu.avanzada.negocio.beans.PersonaEJB;
 import co.edu.avanzada.negocio.beans.TipodocumentoEJB;
 import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
@@ -36,21 +41,24 @@ public class Controladorpersona implements Serializable {
 
 	@EJB
 	private PersonaEJB personaejb;
-	
+
 	@EJB
 	private CiudadEJB ciudadejb;
-	
+
 	@EJB
 	private DepartamentoEJB departamentoejb;
-	
+
 	@EJB
 	private EstadocivilEJB estadocivilejb;
-	
+
 	@EJB
 	private TipodocumentoEJB tipodocumentoejb;
-	
+
 	@EJB
 	private EpsEJB epsejb;
+
+	@EJB
+	private GeneroEJB generojb;
 
 	// List
 	private List<Persona> listarpersonas;
@@ -59,25 +67,27 @@ public class Controladorpersona implements Serializable {
 	private List<Estadocivil> listarestadocivil;
 	private List<Tipodocumento> listartipodocumento;
 	private List<Eps> listareps;
+	private List<Genero> listargenero;
 
-	
 	private Ciudad ciudadselesscionada;
 	private Eps epsseleccionada;
 	private Departamento departamentoseleccionado;
 	private Estadocivil estadocivilseleccionado;
 	private Tipodocumento tipodocumentoseleccionado;
-
+	private Genero tipogeneroseleccionado;
 
 	@Size(min = 1, max = 4, message = "la longitud debe se entre 1 y 4 caracteres")
 	@Pattern(regexp = "[0-9]*", message = "Formato invalido, no se permiten letras")
 	private String idpersona;
-	
+
 	@Size(min = 1, max = 50, message = "la longitud debe se entre 1 y 100 caracteres")
 	@Pattern(regexp = "[a-zA-z]*", message = "Formato invalido, no se permiten letras")
 	private String nombrepersona;
 	private String apellidopersona;
 	private String numerodocumentopersona;
+	@Email
 	private String emailpersona;
+	
 	private Date fechanacimientopersona;
 	private Integer telefonopersona;
 	private Ciudad cidadpersona;
@@ -89,64 +99,46 @@ public class Controladorpersona implements Serializable {
 
 	@PostConstruct
 	public void initializar() {
+		// listarciudades= ciudadejb.Listarciudad();
 		listarpersonas = personaejb.ListarPersonas();
-		listarciudades= ciudadejb.Listarciudad();
-		listareps=epsejb.ListarEps();
-		listardepartamento=departamentoejb.Listardepartamento();
-		listarestadocivil=estadocivilejb.ListarEstadocivil();
-		listartipodocumento=tipodocumentoejb.Listartipodocumento();
-		idpersona = "Juan";
+		listareps = epsejb.ListarEps();
+		listardepartamento = departamentoejb.Listardepartamento();
+		listarestadocivil = estadocivilejb.ListarEstadocivil();
+		listartipodocumento = tipodocumentoejb.Listartipodocumento();
+		listargenero=generojb.Listargenero();
 	}
-	
-	
-	
 
 	public Tipodocumento getTipodocumentoseleccionado() {
 		return tipodocumentoseleccionado;
 	}
 
-
-
-
 	public void setTipodocumentoseleccionado(Tipodocumento tipodocumentoseleccionado) {
 		this.tipodocumentoseleccionado = tipodocumentoseleccionado;
 	}
-
-
-
 
 	public Estadocivil getEstadocivilseleccionado() {
 		return estadocivilseleccionado;
 	}
 
-
-
 	public void setEstadocivilseleccionado(Estadocivil estadocivilseleccionado) {
 		this.estadocivilseleccionado = estadocivilseleccionado;
 	}
 
-
-
 	public Eps getEpsseleccionada() {
 		return epsseleccionada;
 	}
- 
-	
 
 	public Departamento getDepartamentoseleccionado() {
 		return departamentoseleccionado;
 	}
 
-
 	public void setDepartamentoseleccionado(Departamento departamentoseleccionado) {
 		this.departamentoseleccionado = departamentoseleccionado;
 	}
 
-
 	public void setEpsseleccionada(Eps epsseleccionada) {
 		this.epsseleccionada = epsseleccionada;
 	}
-
 
 	public PersonaEJB getPersonaejb() {
 		return personaejb;
@@ -272,7 +264,44 @@ public class Controladorpersona implements Serializable {
 		return serialVersionUID;
 	}
 
-	public void crearPersona() {
+	public List<Genero> getListargenero() {
+		return listargenero;
+	}
+
+	public void setListargenero(List<Genero> listargenero) {
+		this.listargenero = listargenero;
+	}
+
+	public Genero getTipogeneroseleccionado() {
+		return tipogeneroseleccionado;
+	}
+
+	public void setTipogeneroseleccionado(Genero tipogeneroseleccionado) {
+		this.tipogeneroseleccionado = tipogeneroseleccionado;
+	}
+
+	public void crearpersona() {
+		try {
+			Persona persona = new Persona();
+			persona.setIdpersona(idpersona);
+			persona.setNombre(nombrepersona);
+			persona.setApellido(apellidopersona);
+			persona.setNumeroDocumento(numerodocumentopersona);
+			persona.setEmail(emailpersona);
+			persona.setFechanacimiento(fechanacimientopersona);
+			persona.setTelefono(telefonopersona);
+			persona.setCiudadpersona(cidadpersona);
+			persona.setGeneropersona(generopersona);
+			persona.setEpspersona(epspersona);
+			persona.setEstadocivilpersona(estadocivilpersona);
+			persona.setTipodocumentopersona(tipodocumentopersona);
+			personaejb.crearPersona(persona);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto!", "La persona a sido registrada"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage().toString());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", e.getMessage().toString()+"."));
+		}
 
 	}
 
@@ -367,9 +396,33 @@ public class Controladorpersona implements Serializable {
 	public void setListareps(List<Eps> listareps) {
 		this.listareps = listareps;
 	}
-	
-	
-	
-	
-	
+
+	public void Epsseleccionada() {
+		epspersona = epsejb.buscarEps(epsseleccionada.getIdeps());
+	}
+
+	public void Departamentoseleccionado() {
+		listarciudades = ciudadejb.BuscarListaCiudad(String.valueOf(departamentoseleccionado.getId_departamento()));
+		return;
+	}
+
+	public void Ciudadseleccionada() {
+		cidadpersona = ciudadejb.buscarCiudad(String.valueOf(ciudadselesscionada.getIdciudad()));
+		System.out.println(cidadpersona);
+
+	}
+
+	public void Estadocivilseleccionado() {
+		estadocivilpersona = estadocivilejb.buscarEstadocivil(estadocivilseleccionado.getIdestadocivil());
+		System.out.println(estadocivilpersona);
+	}
+
+	public void Tipodocumentoseleccionado() {
+		tipodocumentopersona = tipodocumentoejb.buscarTipodocumento(tipodocumentoseleccionado.getIdtipodocumento());
+	}
+
+	public void Generoseleccionado() {
+		generopersona = generojb.buscarGenero(String.valueOf(tipogeneroseleccionado.getIdgenero()));
+	}
+
 }

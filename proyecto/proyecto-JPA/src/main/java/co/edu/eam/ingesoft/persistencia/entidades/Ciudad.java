@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,11 +21,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="t_ciudad")
 @NamedQueries({ @NamedQuery(name = "Ciudad.listarciudades", query = "SELECT c FROM Ciudad c"),
-	@NamedQuery(name = "Ciudad.buscarlistarciudades", query = "SELECT c FROM Ciudad c where c.idciudad=:id") })
+	@NamedQuery(name = "Ciudad.buscarlistarciudades", query = "Select c from Ciudad c where c.departamento.id_departamento=:iddepartamento") })
 public class Ciudad implements Serializable {
 
 	@Id
-	private Integer idciudad;
+	private String idciudad;
 	
 	@Column(name="nombre",length=20,nullable=false)
 	private String nombreciudad;
@@ -42,7 +44,14 @@ public class Ciudad implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Ciudad(Integer idciudad, String nombreciudad, String descripcionciudad, Departamento departamento) {
+	
+	/**
+	 * @param idciudad
+	 * @param nombreciudad
+	 * @param descripcionciudad
+	 * @param departamento
+	 */
+	public Ciudad(String idciudad, String nombreciudad, String descripcionciudad, Departamento departamento) {
 		super();
 		this.idciudad = idciudad;
 		this.nombreciudad = nombreciudad;
@@ -50,11 +59,17 @@ public class Ciudad implements Serializable {
 		this.departamento = departamento;
 	}
 
-	public Integer getIdciudad() {
+
+
+
+
+
+
+	public String getIdciudad() {
 		return idciudad;
 	}
 
-	public void setIdciudad(Integer idciudad) {
+	public void setIdciudad(String idciudad) {
 		this.idciudad = idciudad;
 	}
 
@@ -82,6 +97,14 @@ public class Ciudad implements Serializable {
 		this.departamento = departamento;
 	}
 
+	public List<Persona> getPersona() {
+		return persona;
+	}
+
+	public void setPersona(List<Persona> persona) {
+		this.persona = persona;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -107,6 +130,10 @@ public class Ciudad implements Serializable {
 		return true;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Ciudad [idciudad=" + idciudad + ", nombreciudad=" + nombreciudad + ", descripcionciudad="
+				+ descripcionciudad + "]";
+	}	
 
 }

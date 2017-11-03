@@ -40,18 +40,19 @@ public class Main {
 		controladordepartemento=new controladorDepartamento();
 	    
 		// Departamento
-		Departamento departemento = new Departamento(1, "Quindio", "Ciudad milagro");
+		Departamento departemento = new Departamento("1","Quindio", "Ciudad milagro");
 
 		// Ciudad
 		Ciudad ciudadpersona1 = new Ciudad();
-		ciudadpersona1.setIdciudad(1);
+		ciudadpersona1.setIdciudad("1");
 		ciudadpersona1.setDepartamento(departemento);
 		ciudadpersona1.setDescripcionciudad("Ferias");
 		ciudadpersona1.setNombreciudad("Armenia");
+		ciudadpersona1.setDepartamento(departemento);
 
 		/* Genero */
 		Genero genero1 = new Genero();
-		genero1.setIdgenero(1);
+		genero1.setIdgenero("1");
 		genero1.setSexo("M");
 
 		// Eps
@@ -66,13 +67,13 @@ public class Main {
 		
 		//tipo documento
 		Tipodocumento tipodocumentopersona= new Tipodocumento();
-		tipodocumentopersona.setId(1);
+		tipodocumentopersona.setIdtipodocumento("1");
 		tipodocumentopersona.setNombredocumento("cedula");
 		
 
 		// Persona
 		Persona persona1 = new Persona();
-		persona1.setIdpersona("3");
+		persona1.setIdpersona("1");
 		persona1.setNombre("Cristian");
 		persona1.setApellido("Hernandez");
 		persona1.setNumeroDocumento("1094909543");
@@ -86,15 +87,14 @@ public class Main {
 		persona1.setEstadocivilpersona(estadocivil1);
 		persona1.setTipodocumentopersona(tipodocumentopersona);
 
-		//controladorpersona.crearPersona(persona1);
 		
-		/*controladordepartemento.crearDepartamento(departemento);
+		controladordepartemento.crearDepartamento(departemento);
 		controladorciudad.crearCiudad(ciudadpersona1);
 		controladoresp.crearEps(epas);
 		controladorgenero.crearGenero(genero1);
 		controladorestadovicil.crearEstadocivil(estadocivil1);
 		controladortipodocumento.creaTipodocumento(tipodocumentopersona);
-		controladorpersona.crearPersona(persona1);*/
+		controladorpersona.crearPersona(persona1);
 	
 		
 		
