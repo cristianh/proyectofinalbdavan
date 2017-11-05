@@ -19,8 +19,10 @@ public class TipoEspecialidad implements Serializable {
 	private Integer codigo;
 	@Column(name="NombreTipoEspecialidad",nullable=false,length=100)
 	private String nombre;
+	
 	@OneToMany(mappedBy="tipoEspecialidad")
 	private List<Especialidad> especialidades;
+	
 	public TipoEspecialidad(Integer codigo, String nombre) {
 		super();
 		this.codigo = codigo;
