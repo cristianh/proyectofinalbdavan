@@ -5,10 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="t_albergue")
+@NamedQueries({ @NamedQuery(name = "Albergue.ListarAlbergue", query = "SELECT a FROM Albergue a"),
+	@NamedQuery(name = "Albergue.BuscarListaAlbergue", query = "SELECT a FROM Albergue a where a.idalbergue=:id") })
+
 public class Albergue implements Serializable {
 
 	@Id

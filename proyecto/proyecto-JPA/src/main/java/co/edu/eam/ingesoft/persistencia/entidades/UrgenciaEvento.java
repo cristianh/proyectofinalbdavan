@@ -30,6 +30,10 @@ public class UrgenciaEvento implements Serializable {
 	@JoinColumn(name = "tipoeventourgencia", nullable = false)
 	private TipoEvento tipoevento;
 
+	@ManyToOne
+	@JoinColumn(name="urgencia", nullable=false)
+	private Urgencia urgencia;
+	
 	@Column(name = "descripciourgenciaevento", length = 100)
 	private String descripcionurgenciaevento;
 

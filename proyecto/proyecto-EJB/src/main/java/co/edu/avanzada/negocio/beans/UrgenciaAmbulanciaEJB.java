@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import co.edu.avanzada.negocio.benas.remote.IUrgencia;
 import co.edu.avanzada.negocio.benas.remote.IUrgenciaAmbulancia;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
+import co.edu.eam.ingesoft.persistencia.entidades.Persona;
 import co.edu.eam.ingesoft.persistencia.entidades.UrgenciaAmbulancia;
 
 @LocalBean
@@ -72,4 +73,9 @@ public void crearUrgenciaAmbulancia(UrgenciaAmbulancia urgenciaAmbulancia){
 		}
 		return resultado;
 	}
+	
+	public List<UrgenciaAmbulancia> BuscarListaUrgenciaAmbulancia (Integer idUrgenciaAmbulancia) {
+		return null;
+	}
+
 }

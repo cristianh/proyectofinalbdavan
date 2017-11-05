@@ -5,12 +5,15 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.persistence.Embeddable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import co.edu.avanzada.negocio.benas.remote.IAfectadoAlbergue;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.AfectadoAlbergue;
+import co.edu.eam.ingesoft.persistencia.entidades.Albergue;
+import co.edu.eam.ingesoft.persistencia.entidades.Alimento;
 
 @LocalBean
 @Stateless
@@ -22,7 +25,7 @@ public class AfectadoAlbergueEJB {
 	
 
 public void crearAfectadoAlbergue(AfectadoAlbergue afectadoAlbergue){
-		AfectadoAlbergue busquedaAfectadoAlbergue = buscarAfectadoAlbergue(afectadoAlbergue.getIdafectadoalbergue());
+		AfectadoAlbergue busquedaAfectadoAlbergue = buscarAfectadoAlbergue(afectadoAlbergue.getAfectadoAlberguePK().hashCode());
 		if(busquedaAfectadoAlbergue == null){
 			entity.persist(afectadoAlbergue);
 			System.out.println("AfectadoAlbergue registrada");
@@ -70,5 +73,31 @@ public void crearAfectadoAlbergue(AfectadoAlbergue afectadoAlbergue){
 		}
 		return resultado;
 	}
+	
+	public List<Alimento> listarAlimento(){
+		List<Alimento> resultado = null;
+		
+		try{
+			resultado = entity.createQuery("Alimento.ListarAliemntos").getResultList();
+			System.out.println(resultado);
+		} catch (Exception ex){
+			System.out.println(ex.getMessage().toString());
+		}
+		return resultado;
+	}
+	
+
+	public List<Albergue> listarAlbergue(){
+		List<Albergue> resultado = null;
+		
+		try{
+			resultado = entity.createQuery("Albergue.ListarAlbergue").getResultList();
+			System.out.println(resultado);
+		} catch (Exception ex){
+			System.out.println(ex.getMessage().toString());
+		}
+		return resultado;
+	}
+
 	
 }

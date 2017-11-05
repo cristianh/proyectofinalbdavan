@@ -77,7 +77,7 @@ public class AlimentoEJB implements Serializable{
 	public List<Alimento> ListarAlimento() {
 		List<Alimento> resultado = null;
 		try {
-			resultado =  entity.createNamedQuery("Alimento.listaralimentos").getResultList();
+			resultado =  entity.createNamedQuery("Alimento.ListarAlimento").getResultList();
 			System.out.println(resultado);
 		} catch (Exception e) {
 			// TODO: handle exception

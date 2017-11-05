@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import co.edu.avanzada.negocio.benas.remote.IAfectado;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.Afectado;
+import co.edu.eam.ingesoft.persistencia.entidades.Albergue;
 
 @LocalBean
 @Stateless
@@ -62,7 +63,6 @@ public void crearAfectado(Afectado afectado){
 	
 	public List<Afectado> listarAfectado(){
 		List<Afectado> resultado = null;
-		
 		try{
 			resultado = entity.createQuery("Afectado.listarAfectado").getResultList();
 			System.out.println(resultado);
@@ -72,4 +72,8 @@ public void crearAfectado(Afectado afectado){
 		return resultado;
 	}
 
+	public List<Albergue> buscarListaAfectado (Integer idAfectado)	{
+		return null;
+	}
+	
 }

@@ -8,93 +8,79 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import co.edu.eam.ingesoft.persistencia.entidades.PK.OperadorPersonalPK;
 
 @Entity
 @Table(name="t_operador")
 public class OperadorPersonal implements Serializable {
 
-	@EmbeddedId
-	private OperadorPersonalPK idpk;
+	@Id
+	private Integer idoperador;
+	
+	@Column(name="codigo", length=50)
+	private String codigo;
 	
 	@ManyToOne
-	@JoinColumn(name="personaId",insertable=false,updatable=false)
-	private Persona personaop;
-	
-	@ManyToOne
-	@JoinColumn(name="operadorId",insertable=false,updatable=false)
-	private Persona operadorpe;
-	
-	
-	/*@OneToMany(mappedBy="operadorurgencia",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<UrgenciaEvento> urgenciaevento;*/
-	
+	@JoinColumn(name="opFuncionario", nullable=false)
+	private Funcionario funcionario;
+
+	/**
+	 * 
+	 */
 	public OperadorPersonal() {
-		// TODO Auto-generated constructor stub
+		
 	}
-	
-	
 
-	public OperadorPersonal(OperadorPersonalPK idpk, Persona personaop, Persona operadorpe) {
+	/**
+	 * @param idoperador
+	 * @param codigo
+	 * @param funcionario
+	 */
+	public OperadorPersonal(Integer idoperador, String codigo, Funcionario funcionario) {
 		super();
-		this.idpk = idpk;
-		this.personaop = personaop;
-		this.operadorpe = operadorpe;
+		this.idoperador = idoperador;
+		this.codigo = codigo;
+		this.funcionario = funcionario;
 	}
 
-	
-
-
-	public OperadorPersonalPK getIdpk() {
-		return idpk;
+	public Integer getIdoperador() {
+		return idoperador;
 	}
 
-
-
-	public void setIdpk(OperadorPersonalPK idpk) {
-		this.idpk = idpk;
+	public void setIdoperador(Integer idoperador) {
+		this.idoperador = idoperador;
 	}
 
-
-
-	public Persona getPersonaop() {
-		return personaop;
+	public String getCodigo() {
+		return codigo;
 	}
 
-
-
-	public void setPersonaop(Persona personaop) {
-		this.personaop = personaop;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-
-
-	public Persona getOperadorpe() {
-		return operadorpe;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-
-
-	public void setOperadorpe(Persona operadorpe) {
-		this.operadorpe = operadorpe;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
-
-
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idpk == null) ? 0 : idpk.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
+		result = prime * result + ((idoperador == null) ? 0 : idoperador.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -105,18 +91,31 @@ public class OperadorPersonal implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OperadorPersonal other = (OperadorPersonal) obj;
-		if (idpk == null) {
-			if (other.idpk != null)
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!idpk.equals(other.idpk))
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (funcionario == null) {
+			if (other.funcionario != null)
+				return false;
+		} else if (!funcionario.equals(other.funcionario))
+			return false;
+		if (idoperador == null) {
+			if (other.idoperador != null)
+				return false;
+		} else if (!idoperador.equals(other.idoperador))
 			return false;
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "OperadorPersonal [idoperador=" + idoperador + ", codigo=" + codigo + ", funcionario=" + funcionario
+				+ "]";
 	}
+	
+	
+	
+	
 }

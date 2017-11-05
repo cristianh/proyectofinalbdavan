@@ -72,6 +72,16 @@ public class AlbergueEJB implements Serializable {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param idAlbergue
+	 * @return
+	 */
+	public List<Albergue> BuscarListaAlbergue(Integer idAlbergue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/***
 	 * 
 	 * @return
@@ -87,14 +97,6 @@ public class AlbergueEJB implements Serializable {
 		return result;
 	}
 	
-	/**
-	 * 
-	 * @param idAlbergue
-	 * @return
-	 */
-	public List<Albergue> BuscarListaAlbergue(Integer idAlbergue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }
 	

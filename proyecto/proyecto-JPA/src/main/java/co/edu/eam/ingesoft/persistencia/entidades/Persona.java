@@ -109,10 +109,6 @@ public class Persona implements Serializable {
 
 
 
-
-
-
-
 	public String getIdpersona() {
 		return idpersona;
 	}

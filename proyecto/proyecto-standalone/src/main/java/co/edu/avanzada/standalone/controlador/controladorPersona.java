@@ -6,7 +6,6 @@ import javax.naming.NamingException;
 
 import co.edu.avanzada.negocio.benas.remote.IPersonaremote;
 import co.edu.avanzada.standalone.util.ServiceLocator;
-import co.edu.eam.ingesoft.pa.persistencia.entidades.TipoCuenta;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
 
 public class controladorPersona {

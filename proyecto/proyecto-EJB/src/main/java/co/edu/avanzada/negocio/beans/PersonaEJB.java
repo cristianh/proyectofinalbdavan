@@ -21,9 +21,7 @@ public class PersonaEJB implements IPersonaremote {
 	private EntityManager em;
 
 	public void crearPersona(Persona persona) {
-		// TODO Auto-generated method stub
-
-		// TODO Auto-generated method stub
+		
 		Persona buscpersona = buscarPersona(persona.getIdpersona());
 		// no existe, se puede crear...
 		if (buscpersona == null) {

@@ -71,5 +71,8 @@ public void crearUrgencia(Urgencia urgencia){
 		}
 		return resultado;
 	}
-	
+
+	public List<Urgencia> BuscarListaUrgencias(Integer idUrgencia){
+		return null;
+	}
 }

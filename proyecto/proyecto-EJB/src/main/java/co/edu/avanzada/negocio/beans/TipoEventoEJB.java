@@ -72,5 +72,8 @@ public void crearTipoEvento(TipoEvento tipoEvento){
 		return resultado;
 	}
 	
-	
+	public List<TipoEvento> BuscarListaTipoEvento(Integer idTipoEvento) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -7,10 +7,8 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import co.edu.avanzada.negocio.benas.remote.IUrgenciaEvento;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
-import co.edu.eam.ingesoft.persistencia.entidades.UrgenciaAmbulancia;
 import co.edu.eam.ingesoft.persistencia.entidades.UrgenciaEvento;
 
 @LocalBean
@@ -22,11 +20,11 @@ public class UrgenciaEventoEJB {
 	EntityManager entity;
 	
 
-public void crearUrgenciaAmbulancia(UrgenciaEvento urgenciaEvento){
-		UrgenciaAmbulancia busquedaUrgenciaAmbulancia = buscarUrgenciaAmbulancia(urgenciaEvento.getIdurgenciaevento());
-		if(busquedaUrgenciaAmbulancia == null){
+public void crearUrgenciaEvento(UrgenciaEvento urgenciaEvento){
+		UrgenciaEvento busquedaUrgenciaEvento = buscarUrgenciaEvento(urgenciaEvento.getIdurgenciaevento());
+		if(busquedaUrgenciaEvento == null){
 			entity.persist(urgenciaEvento);
-			System.out.println("UrgenciaAmbulancia registrada");
+			System.out.println("UrgenciaEvento registrada");
 		}else {
 			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");
 		}
@@ -35,36 +33,36 @@ public void crearUrgenciaAmbulancia(UrgenciaEvento urgenciaEvento){
 	
 	/**
 	 * 
-	 * @param idUrgenciaAmbulancia
+	 * @param idUrgenciaEvento
 	 * @return
 	 */
-	public UrgenciaAmbulancia buscarUrgenciaAmbulancia(Integer idUrgenciaAmbulancia){
-		return entity.find(UrgenciaAmbulancia.class, idUrgenciaAmbulancia);
+	public UrgenciaEvento buscarUrgenciaEvento(Integer idUrgenciaEvento){
+		return entity.find(UrgenciaEvento.class, idUrgenciaEvento);
 	}
 
 	/**
 	 * 
 	 * @param urgenciaEvento
 	 */
-	public void editarUrgenciaAmbulancia(UrgenciaAmbulancia urgenciaEvento){
+	public void editarUrgenciaEvento(UrgenciaEvento urgenciaEvento){
 		entity.merge(urgenciaEvento);
 	}
 	
-	public void eliminarUrgenciaAmbulancia(Integer idUrgenciaAmbulancia){
-		UrgenciaAmbulancia busquedaUrgenciaAmbulancia = buscarUrgenciaAmbulancia(idUrgenciaAmbulancia);
-		if(busquedaUrgenciaAmbulancia != null){
-			entity.remove(idUrgenciaAmbulancia);
+	public void eliminarUrgenciaEvento(Integer idUrgenciaEvento){
+		UrgenciaEvento busquedaUrgenciaEvento = buscarUrgenciaEvento(idUrgenciaEvento);
+		if(busquedaUrgenciaEvento != null){
+			entity.remove(idUrgenciaEvento);
 		}else{
 			throw new ExcepcionNegocio("Error al borrar la urgenciaEvento");
 		}
 	}
 	
 	
-	public List<UrgenciaAmbulancia> listarUrgenciaAmbulancia(){
-		List<UrgenciaAmbulancia> resultado = null;
+	public List<UrgenciaEvento> listarUrgenciaEvento(){
+		List<UrgenciaEvento> resultado = null;
 		
 		try{
-			resultado = entity.createQuery("UrgenciaAmbulancia.listarUrgenciaAmbulancia").getResultList();
+			resultado = entity.createQuery("UrgenciaEvento.listarUrgenciaEvento").getResultList();
 			System.out.println(resultado);
 		} catch (Exception ex){
 			System.out.println(ex.getMessage().toString());
@@ -72,4 +70,8 @@ public void crearUrgenciaAmbulancia(UrgenciaEvento urgenciaEvento){
 		return resultado;
 	}
 	
+	
+	public List<UrgenciaEvento> BuscarListaUrgenciaEvento(Integer idUrgenciaEvento){
+	return null;	
+	}
 }
