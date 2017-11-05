@@ -87,7 +87,6 @@ public class Controladorpersona implements Serializable {
 	private String numerodocumentopersona;
 	@Email
 	private String emailpersona;
-	
 	private Date fechanacimientopersona;
 	private Integer telefonopersona;
 	private Ciudad cidadpersona;

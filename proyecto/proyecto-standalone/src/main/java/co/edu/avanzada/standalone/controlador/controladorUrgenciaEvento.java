@@ -1,5 +1,7 @@
 package co.edu.avanzada.standalone.controlador;
 
+import java.util.List;
+
 import javax.naming.NamingException;
 
 import co.edu.avanzada.negocio.benas.remote.IUrgenciaEvento;
@@ -22,5 +24,9 @@ private IUrgenciaEvento iurgenciaEvento;
 	
 	public UrgenciaEvento buscarUrgenciaEvento (Integer idUrgenciaEvento) {
 		return iurgenciaEvento.buscarUrgenciaEvento(idUrgenciaEvento);
+	}
+	
+	public List<UrgenciaEvento> listarUrgenciaEvento (){
+		return iurgenciaEvento.listarUrgenciaEvento();
 	}
 }
