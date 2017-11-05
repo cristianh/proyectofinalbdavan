@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+*{
+font-size:16px;
+}
+</style>
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="173" resizable="false"
+			closable="true" collapsible="true">
+			<h:graphicImage value="/resources/imagenes/descarga.jpg" width="100%"
+				height="150px"></h:graphicImage>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="171" resizable="true"
+			closable="true" collapsible="true">
+			<h:graphicImage value="/resources/imagenes/imagenfooter.png" width="100%"
+				height="150px"></h:graphicImage>
+			
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+
+			<ui:insert name="cuerpo" />
+
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>

@@ -3,35 +3,49 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="t_especialidad")
+@NamedQueries({ @NamedQuery(name = "Especialidad.listarespecialidades", query = "SELECT e FROM Especialidad e"),
+	@NamedQuery(name = "Especialidad.listarespecialidadesporestado", query = "SELECT e FROM Especialidad e where e.estadoespecialidad=:estado") })
 public class Especialidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="CodigoEspecialidad",unique=true,nullable=false,length=70)
-	
 	private String codigo;
-	@Column(name="NombreEspecialidad",nullable=false,length=100)
 	
+	@Column(name="NombreEspecialidad",nullable=false,length=100)
 	private String nombre;
 	
-	@ManyToOne
-	@JoinColumn(name="CodigoTipoEspecialidad",nullable=false)
-	private TipoEspecialidad tipoEspecialidad;
+	@Column(name="estadoespecialidad",nullable=false,length=20)
+	private String estadoespecialidad;
 	
-	public Especialidad(String codigo, String nombre, TipoEspecialidad tipoEspecialidad) {
+	@ManyToOne
+	@JoinColumn(name="tipoespecialidad")
+	private TipoEspecialidad tipoEspecialidad;
+
+	/**
+	 * @param codigo
+	 * @param nombre
+	 * @param estadoespecialidad
+	 */
+	public Especialidad(String codigo, String nombre, String estadoespecialidad) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.tipoEspecialidad = tipoEspecialidad;
+		this.estadoespecialidad = estadoespecialidad;
 	}
+
 
 
 	public Especialidad() {
@@ -59,15 +73,7 @@ public class Especialidad implements Serializable {
 	}
 	
 	
-	public TipoEspecialidad getTipoEspecialidad() {
-		return tipoEspecialidad;
-	}
-
-
-	public void setTipoEspecialidad(TipoEspecialidad tipoEspecialidad) {
-		this.tipoEspecialidad = tipoEspecialidad;
-	}
-
+	
 
 	@Override
 	public int hashCode() {
@@ -94,10 +100,16 @@ public class Especialidad implements Serializable {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "Especialidad [codigo=" + codigo + ", nombre=" + nombre + ", tipoEspecialidad=" + tipoEspecialidad + "]";
+		return "Especialidad [codigo=" + codigo + ", nombre=" + nombre + ", estadoespecialidad=" + estadoespecialidad
+				+ "]";
 	}
+
+ 
+	
+	
 	
 	
 }
