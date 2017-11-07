@@ -17,9 +17,7 @@ public class UrgenciaEvento implements Serializable {
 	private Urgencia idurgencia;
 
 	@ManyToOne
-	@JoinColumns({
-			@JoinColumn(name = "ippersonal", referencedColumnName = "id_peronal"),
-			@JoinColumn(name = "idoperador", referencedColumnName = "id_operador") })
+	@JoinColumn(name="ipoperador",nullable=false)
 	private OperadorPersonal operador;
 
 	@ManyToOne

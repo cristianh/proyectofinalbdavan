@@ -14,24 +14,26 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="t_especialidad")
+@Table(name = "t_especialidad")
 @NamedQueries({ @NamedQuery(name = "Especialidad.listarespecialidades", query = "SELECT e FROM Especialidad e"),
-	@NamedQuery(name = "Especialidad.listarespecialidadesporestado", query = "SELECT e FROM Especialidad e where e.estadoespecialidad=:estado") })
+		@NamedQuery(name = "Especialidad.listarespecialidadesporestado", query = "SELECT e FROM Especialidad e where e.estadoespecialidad=:estado") })
+
 public class Especialidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name="CodigoEspecialidad",unique=true,nullable=false,length=70)
+	@Column(name = "CodigoEspecialidad", unique = true, nullable = false, length = 70)
 	private String codigo;
-	
-	@Column(name="NombreEspecialidad",nullable=false,length=100)
+
+	@Column(name = "NombreEspecialidad", nullable = false, length = 100)
 	private String nombre;
-	
-	@Column(name="estadoespecialidad",nullable=false,length=20)
+
+	@Column(name = "estadoespecialidad", nullable = false, length = 20)
 	private String estadoespecialidad;
-	
+
 	@ManyToOne
-	@JoinColumn(name="tipoespecialidad")
+	@JoinColumn(name = "tipoespecialidad")
 	private TipoEspecialidad tipoEspecialidad;
 
 	/**
@@ -46,34 +48,44 @@ public class Especialidad implements Serializable {
 		this.estadoespecialidad = estadoespecialidad;
 	}
 
-
-
 	public Especialidad() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
-
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
 	
-	
+
+	public String getEstadoespecialidad() {
+		return estadoespecialidad;
+	}
+
+	public void setEstadoespecialidad(String estadoespecialidad) {
+		this.estadoespecialidad = estadoespecialidad;
+	}
+
+	public TipoEspecialidad getTipoEspecialidad() {
+		return tipoEspecialidad;
+	}
+
+	public void setTipoEspecialidad(TipoEspecialidad tipoEspecialidad) {
+		this.tipoEspecialidad = tipoEspecialidad;
+	}
 
 	@Override
 	public int hashCode() {
@@ -82,6 +94,7 @@ public class Especialidad implements Serializable {
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -99,17 +112,10 @@ public class Especialidad implements Serializable {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Especialidad [codigo=" + codigo + ", nombre=" + nombre + ", estadoespecialidad=" + estadoespecialidad
 				+ "]";
 	}
 
- 
-	
-	
-	
-	
 }

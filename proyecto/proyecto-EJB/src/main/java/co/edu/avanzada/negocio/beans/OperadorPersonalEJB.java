@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import co.edu.avanzada.negocio.benas.remote.IOperadorPersonal;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.OperadorPersonal;
 
@@ -21,7 +22,7 @@ public class OperadorPersonalEJB {
 	
 public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
 		
-		OperadorPersonal buscoperadorPersonal = buscarOperadorPersonal(operadorPersonal.getIdoperador());
+		OperadorPersonal buscoperadorPersonal = buscarOperadorPersonal(operadorPersonal.getIdpersonal());
 		// no existe, se puede crear...
 		if (buscoperadorPersonal == null) {
 			em.persist(operadorPersonal);

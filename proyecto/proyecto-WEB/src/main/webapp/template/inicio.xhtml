@@ -234,7 +234,8 @@
 		</p:layoutUnit>
 		<p:layoutUnit position="south" size="100" resizable="true"
 			closable="true" collapsible="true">
-			<h:outputText value="South unit content." />
+			<h:graphicImage value="/resources/imagenes/imagenfooter.png" width="100%"
+				height="150px"></h:graphicImage>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" size="250" header="MENU"
@@ -242,6 +243,17 @@
 			<h:form>
 				<p:panelMenu>
 					<p:separator />
+					<p:submenu label="Especialidad">
+						<p:menuitem value="Crear" outcome="crear_especialidad.xhtml"
+							icon="ui-icon-home" />
+						<p:menuitem value="Listar" outcome="listar_especialidad.xhtml"
+							icon="ui-icon-document" />
+						<p:menuitem value="Download"
+							url="http://www.primefaces.org/downloads"
+							icon="ui-icon-arrowthick-1-s" />
+						<p:menuitem value="Support"
+							url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+					</p:submenu>
 					<p:submenu label="Medicos">
 						<p:menuitem value="Crear" outcome="crear_persona.xhtml"
 							icon="ui-icon-home" />

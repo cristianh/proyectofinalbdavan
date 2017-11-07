@@ -17,7 +17,7 @@ private ITipoEvento itipoUrgencia;
 		itipoUrgencia = (ITipoEvento) ServiceLocator.buscarEJB("TipoEventoEJB", ITipoEvento.class.getCanonicalName());
 	}
 	
-	public void creaTipoUrgencia(TipoEvento tipoEvento) {
+	public void creaTipoEvento(TipoEvento tipoEvento) {
 		itipoUrgencia.crearTipoEvento(tipoEvento);
 	}
 	

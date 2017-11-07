@@ -10,6 +10,11 @@ import javax.persistence.*;
 @Table(name="t_funcionario")
 public class Funcionario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private Integer idfuncionario;
 	

@@ -7,16 +7,21 @@ import javax.naming.NamingException;
 import co.edu.avanzada.standalone.controlador.controladorCiudad;
 import co.edu.avanzada.standalone.controlador.controladorDepartamento;
 import co.edu.avanzada.standalone.controlador.controladorEps;
+import co.edu.avanzada.standalone.controlador.controladorEspecialidad;
 import co.edu.avanzada.standalone.controlador.controladorEstadocivil;
 import co.edu.avanzada.standalone.controlador.controladorGenero;
 import co.edu.avanzada.standalone.controlador.controladorPersona;
+import co.edu.avanzada.standalone.controlador.controladorTipoEvento;
 import co.edu.avanzada.standalone.controlador.controladorTipodocumento;
+import co.edu.avanzada.standalone.controlador.controladorUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 import co.edu.eam.ingesoft.persistencia.entidades.Departamento;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
+import co.edu.eam.ingesoft.persistencia.entidades.Especialidad;
 import co.edu.eam.ingesoft.persistencia.entidades.Estadocivil;
 import co.edu.eam.ingesoft.persistencia.entidades.Genero;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
+import co.edu.eam.ingesoft.persistencia.entidades.TipoEvento;
 import co.edu.eam.ingesoft.persistencia.entidades.Tipodocumento;
 
 public class Main {
@@ -28,19 +33,31 @@ public class Main {
 	private static controladorCiudad controladorciudad;
 	private static controladorDepartamento controladordepartemento;
 	private static controladorTipodocumento controladortipodocumento;
+	private static controladorTipoEvento controladortipoevento;
+	private static controladorEspecialidad controladorespecialidad;
 
 	public static void main(String[] args) throws NamingException {
 		// TODO Auto-generated method stub
-		controladortipodocumento= new controladorTipodocumento();
+		controladortipodocumento = new controladorTipodocumento();
 		controladorpersona = new controladorPersona();
 		controladorgenero = new controladorGenero();
-	    controladoresp = new controladorEps();
+		controladoresp = new controladorEps();
 		controladorestadovicil = new controladorEstadocivil();
-		controladorciudad=new controladorCiudad();
-		controladordepartemento=new controladorDepartamento();
-	    
+		controladorciudad = new controladorCiudad();
+		controladordepartemento = new controladorDepartamento();
+		controladortipoevento = new controladorTipoEvento();
+		controladorespecialidad = new controladorEspecialidad();
+
+		// Urgencias
+
+		TipoEvento tipoenvento = new TipoEvento(1, "Accidente de transito");
+		controladortipoevento.creaTipoEvento(tipoenvento);
+
+		Especialidad especialidad = new Especialidad("1", "Urología", "Activo");
+		controladorespecialidad.crearEspecialidad(especialidad);
+
 		// Departamento
-		Departamento departemento = new Departamento("1","Quindio", "Ciudad milagro");
+		Departamento departemento = new Departamento("1", "Quindio", "Ciudad milagro");
 
 		// Ciudad
 		Ciudad ciudadpersona1 = new Ciudad();
@@ -64,12 +81,11 @@ public class Main {
 		Estadocivil estadocivil1 = new Estadocivil();
 		estadocivil1.setIdestadocivil("2");
 		estadocivil1.setNombreestadocivil("soltero");
-		
-		//tipo documento
-		Tipodocumento tipodocumentopersona= new Tipodocumento();
+
+		// tipo documento
+		Tipodocumento tipodocumentopersona = new Tipodocumento();
 		tipodocumentopersona.setIdtipodocumento("1");
 		tipodocumentopersona.setNombredocumento("cedula");
-		
 
 		// Persona
 		Persona persona1 = new Persona();
@@ -87,7 +103,6 @@ public class Main {
 		persona1.setEstadocivilpersona(estadocivil1);
 		persona1.setTipodocumentopersona(tipodocumentopersona);
 
-		
 		controladordepartemento.crearDepartamento(departemento);
 		controladorciudad.crearCiudad(ciudadpersona1);
 		controladoresp.crearEps(epas);
@@ -95,9 +110,6 @@ public class Main {
 		controladorestadovicil.crearEstadocivil(estadocivil1);
 		controladortipodocumento.creaTipodocumento(tipodocumentopersona);
 		controladorpersona.crearPersona(persona1);
-	
-		
-		
 
 	}
 

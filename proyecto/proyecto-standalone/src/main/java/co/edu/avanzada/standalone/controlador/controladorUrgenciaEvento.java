@@ -19,7 +19,7 @@ private IUrgenciaEvento iurgenciaEvento;
 	}
 	
 	public void creaTipodocumento(UrgenciaEvento urgenciaEvento) {
-		iurgenciaEvento.crearUrgenciaEvento(urgenciaEvento);;
+		iurgenciaEvento.crearUrgenciaEvento(urgenciaEvento);
 	}
 	
 	public UrgenciaEvento buscarUrgenciaEvento (Integer idUrgenciaEvento) {

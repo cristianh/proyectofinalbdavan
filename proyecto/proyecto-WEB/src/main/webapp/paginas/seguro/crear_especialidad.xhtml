@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+	<ui:define name="cuerpo">
+		<h:form id="formularioespecialidad">
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+			<p:panel header="Especialidad">
+				<p:fieldset>
+					<h:panelGrid columns="3" id="panelbuscar" style="margin: 0 auto;">
+						<p:outputLabel for="lblbuscar" id="lblbuscar" value="Buscar:" />
+						<p:inputText id="tfbuscar"
+							value="#{conEspecialidad.codigoespecialidadbuscar}">
+						</p:inputText>
+						<p:commandButton id="btnBuscar" action="#{conEspecialidad.buscar}"
+							value="Buscar" update="formularioespecialidad paneltabla">
+						</p:commandButton>
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator />
+				<p:fieldset>
+					<h:panelGrid columns="1" id="paneltabla" style="margin: 0 auto;">
+
+						<p:outputLabel for="lblcodigo" id="lblcodigo" value="Codigo:" />
+						<p:inputText id="tfcodigo"
+							value="#{conEspecialidad.codigoespecialidad}" />
+						<p:outputLabel for="nombre" id="nombre" value="Nombre:" />
+						<p:inputText id="tfnombre"
+							value="#{conEspecialidad.nombreespecialidad}" />
+						<p:outputLabel id="lblestado" value="Estado:" />
+						<p:selectOneRadio id="console"
+							value="#{conEspecialidad.estadoespecialidad}" layout="grid"
+							columns="2" required="true"
+							requiredMessage="Estado:se requiere un estado.">
+							<f:selectItem itemLabel="Activa" itemValue="Activa" />
+							<f:selectItem itemLabel="Inactiva" itemValue="Inactiva" />
+						</p:selectOneRadio>
+
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator />
+				<p:fieldset>
+					<h:panelGrid columns="4" id="panelbotones" style="margin: 0 auto;">
+						<p:commandButton id="botonregistrar" value="Registrar"
+							action="#{conEspecialidad.crear}"
+							styleClass="ui-priority-primary" ajax="true"
+							update=":formularioespecialidad messages"
+							process="@this formularioespecialidad" style="margin-right:12px">
+						</p:commandButton>
+
+						<p:commandButton id="botoneditar" value="Editar"
+							update=":formularioespecialidad messages"
+							action="#{conEspecialidad.editar}" style="margin-right:12px">
+						</p:commandButton>
+					</h:panelGrid>
+				</p:fieldset>
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

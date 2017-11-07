@@ -1,26 +1,21 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
+import javax.persistence.*;
 
 @Entity
-@Table(name="t_operador")
+@Table(name="t_operadorF")
 public class OperadorPersonal implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	private Integer idoperador;
+	private Integer idpersonal;
 	
 	@Column(name="codigo", length=50)
 	private String codigo;
@@ -36,24 +31,28 @@ public class OperadorPersonal implements Serializable {
 		
 	}
 
+	
+	
 	/**
-	 * @param idoperador
+	 * @param idpersonal
 	 * @param codigo
 	 * @param funcionario
 	 */
-	public OperadorPersonal(Integer idoperador, String codigo, Funcionario funcionario) {
+	public OperadorPersonal(Integer idpersonal, String codigo, Funcionario funcionario) {
 		super();
-		this.idoperador = idoperador;
+		this.idpersonal = idpersonal;
 		this.codigo = codigo;
 		this.funcionario = funcionario;
 	}
 
-	public Integer getIdoperador() {
-		return idoperador;
+
+
+	public Integer getIdpersonal() {
+		return idpersonal;
 	}
 
-	public void setIdoperador(Integer idoperador) {
-		this.idoperador = idoperador;
+	public void setIdpersonal(Integer idpersonal) {
+		this.idpersonal = idpersonal;
 	}
 
 	public String getCodigo() {
@@ -72,15 +71,21 @@ public class OperadorPersonal implements Serializable {
 		this.funcionario = funcionario;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
-		result = prime * result + ((idoperador == null) ? 0 : idoperador.hashCode());
+		result = prime * result + ((idpersonal == null) ? 0 : idpersonal.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -91,29 +96,24 @@ public class OperadorPersonal implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OperadorPersonal other = (OperadorPersonal) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (idpersonal == null) {
+			if (other.idpersonal != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (funcionario == null) {
-			if (other.funcionario != null)
-				return false;
-		} else if (!funcionario.equals(other.funcionario))
-			return false;
-		if (idoperador == null) {
-			if (other.idoperador != null)
-				return false;
-		} else if (!idoperador.equals(other.idoperador))
+		} else if (!idpersonal.equals(other.idpersonal))
 			return false;
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "OperadorPersonal [idoperador=" + idoperador + ", codigo=" + codigo + ", funcionario=" + funcionario
+		return "OperadorPersonal [idpersonal=" + idpersonal + ", codigo=" + codigo + ", funcionario=" + funcionario
 				+ "]";
 	}
+
+	
+	
 	
 	
 	

@@ -13,14 +13,16 @@ import co.edu.eam.ingesoft.persistencia.entidades.TipoEspecialidad;
 @LocalBean
 @Stateless
 
-public class TipoEspecialidadEJB{
+public class TipoEspecialidadEJB {
 	@PersistenceContext
 	private EntityManager manager;
+
 	public List<TipoEspecialidad> llenar_TipoEspecialidad() {
 		List<TipoEspecialidad> resultList = manager.createQuery("select te from TipoEspecialidad te").getResultList();
-		System.out.println("resultList"+resultList);
+		System.out.println("resultList" + resultList);
 		return resultList;
 	}
+
 	public TipoEspecialidad consultarPorLlave(int codigo) {
 
 		return manager.find(TipoEspecialidad.class, codigo);

@@ -2,15 +2,7 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="t_tipoUrgencia")
@@ -20,12 +12,16 @@ public class TipoUrgencia {
 	@Id
 	private Integer idTipoUrgencia;
 	
+	
+
+	@ManyToOne
+	@JoinColumn(name = "idurgencia", nullable = false)
+	private Urgencia urgenciaevento;
+
 	@Column(name="nombre")
 	private String nombre;
 	
-	@OneToMany(mappedBy="tipourgencia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Urgencia> urgencia;
-
+	
 	/**
 	 * 
 	 */
@@ -33,17 +29,34 @@ public class TipoUrgencia {
 		
 	}
 
+	
+
 	/**
 	 * @param idTipoUrgencia
+	 * @param urgenciaevento
 	 * @param nombre
-	 * @param urgencia
 	 */
-	public TipoUrgencia(Integer idTipoUrgencia, String nombre, List<Urgencia> urgencia) {
+	public TipoUrgencia(Integer idTipoUrgencia, Urgencia urgenciaevento, String nombre) {
 		super();
 		this.idTipoUrgencia = idTipoUrgencia;
+		this.urgenciaevento = urgenciaevento;
 		this.nombre = nombre;
-		this.urgencia = urgencia;
 	}
+
+	
+
+
+	public Urgencia getUrgenciaevento() {
+		return urgenciaevento;
+	}
+
+
+
+	public void setUrgenciaevento(Urgencia urgenciaevento) {
+		this.urgenciaevento = urgenciaevento;
+	}
+
+
 
 	public Integer getIdTipoUrgencia() {
 		return idTipoUrgencia;
@@ -61,13 +74,7 @@ public class TipoUrgencia {
 		this.nombre = nombre;
 	}
 
-	public List<Urgencia> getUrgencia() {
-		return urgencia;
-	}
 
-	public void setUrgencia(List<Urgencia> urgencia) {
-		this.urgencia = urgencia;
-	}
 
 	@Override
 	public int hashCode() {
@@ -75,9 +82,11 @@ public class TipoUrgencia {
 		int result = 1;
 		result = prime * result + ((idTipoUrgencia == null) ? 0 : idTipoUrgencia.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((urgencia == null) ? 0 : urgencia.hashCode());
+		result = prime * result + ((urgenciaevento == null) ? 0 : urgenciaevento.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -98,19 +107,21 @@ public class TipoUrgencia {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (urgencia == null) {
-			if (other.urgencia != null)
+		if (urgenciaevento == null) {
+			if (other.urgenciaevento != null)
 				return false;
-		} else if (!urgencia.equals(other.urgencia))
+		} else if (!urgenciaevento.equals(other.urgenciaevento))
 			return false;
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "TipoUrgencia [idTipoUrgencia=" + idTipoUrgencia + ", nombre=" + nombre + ", urgencia=" + urgencia + "]";
+		return "TipoUrgencia [idTipoUrgencia=" + idTipoUrgencia + ", urgenciaevento=" + urgenciaevento + ", nombre="
+				+ nombre + "]";
 	}
-	
-	
-	
+
+
 }

@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+
+		<h:form id="formlistarespecialidad">
+			<style type="text/css">
+			.myTable {
+				text-align: center;
+				}
+			</style>
+			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
+				<p:dataTable var="especialidad" styleClass="myTable"
+					value="#{conEspecialidad.listarespecialidad}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+					<p:column headerText="Id especialidad">
+						<h:outputText value="#{especialidad.codigo}" />
+					</p:column>
+
+					<p:column headerText="Nombre especialidad">
+						<h:outputText value="#{especialidad.nombre}" />
+					</p:column>
+
+					<p:column headerText="Estado especialidad">
+						<h:outputText value="#{especialidad.estadoespecialidad}" />
+					</p:column>
+					<p:column headerText="Accion">
+						<p:growl id="message" showDetail="true" />
+						<p:commandButton value="Eliminar"
+							actionListener="#{conEspecialidad.eliminar(especialidad)}"
+							process="@this formlistarespecialidad"
+							update="formlistarespecialidad message">
+							<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
+								message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton
+					value="#{msj['listarEspecialidad.eliminar.aceptar']}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton
+					value="#{msj['listarEspecialidad.eliminar.cancelar']}"
+					type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

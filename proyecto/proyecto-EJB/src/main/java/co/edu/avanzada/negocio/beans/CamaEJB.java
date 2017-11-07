@@ -30,7 +30,7 @@ public class CamaEJB implements Serializable {
 		Cama busquedaCama = buscarCama(cama.getIdcama());
 		if (busquedaCama == null) {
 			entity.persist(cama);
-			System.out.println("xama registrada con exito");
+			System.out.println("cama registrada con exito");
 		} else {
 			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");
 		}
