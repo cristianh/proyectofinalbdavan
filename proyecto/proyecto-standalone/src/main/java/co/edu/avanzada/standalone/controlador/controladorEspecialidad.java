@@ -22,15 +22,15 @@ public class controladorEspecialidad {
 		iespecialidad.crearEspecialidad(especialidad);
 	}
 
-	public Especialidad buscarestadocivil(String codigoestadocivil) {
-		return iespecialidad.buscarEspecialidad(codigoestadocivil);
+	public Especialidad buscarEspecialidad(String codigoespecialidad) {
+		return iespecialidad.buscarEspecialidad(codigoespecialidad);
 	}
 	
 	public void eliminarEspecialidad(String codigoespecialidad) {
 			iespecialidad.eliminar(codigoespecialidad);
 	}
 	
-	public List<Especialidad> listarpersonas(){
+	public List<Especialidad> listarEspecialidad(){
 		return iespecialidad.ListarEspecialidad();
 	}
 }

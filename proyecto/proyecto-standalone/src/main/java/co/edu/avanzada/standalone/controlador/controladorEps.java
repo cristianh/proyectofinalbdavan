@@ -24,4 +24,5 @@ public class controladorEps {
 	public Eps buscarEps(String codigoeps) {
 		return ieps.buscarEps(codigoeps);
 	}
+	
 }

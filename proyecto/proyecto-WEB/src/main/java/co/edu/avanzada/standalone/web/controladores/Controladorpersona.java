@@ -107,177 +107,409 @@ public class Controladorpersona implements Serializable {
 		listargenero=generojb.Listargenero();
 	}
 
-	public Tipodocumento getTipodocumentoseleccionado() {
-		return tipodocumentoseleccionado;
-	}
-
-	public void setTipodocumentoseleccionado(Tipodocumento tipodocumentoseleccionado) {
-		this.tipodocumentoseleccionado = tipodocumentoseleccionado;
-	}
-
-	public Estadocivil getEstadocivilseleccionado() {
-		return estadocivilseleccionado;
-	}
-
-	public void setEstadocivilseleccionado(Estadocivil estadocivilseleccionado) {
-		this.estadocivilseleccionado = estadocivilseleccionado;
-	}
-
-	public Eps getEpsseleccionada() {
-		return epsseleccionada;
-	}
-
-	public Departamento getDepartamentoseleccionado() {
-		return departamentoseleccionado;
-	}
-
-	public void setDepartamentoseleccionado(Departamento departamentoseleccionado) {
-		this.departamentoseleccionado = departamentoseleccionado;
-	}
-
-	public void setEpsseleccionada(Eps epsseleccionada) {
-		this.epsseleccionada = epsseleccionada;
-	}
+	
 
 	public PersonaEJB getPersonaejb() {
 		return personaejb;
 	}
 
+
+
 	public void setPersonaejb(PersonaEJB personaejb) {
 		this.personaejb = personaejb;
 	}
 
-	public String getIdpersona() {
-		return idpersona;
+
+
+	public CiudadEJB getCiudadejb() {
+		return ciudadejb;
 	}
 
-	public void setIdpersona(String idpersona) {
-		this.idpersona = idpersona;
+
+
+	public void setCiudadejb(CiudadEJB ciudadejb) {
+		this.ciudadejb = ciudadejb;
 	}
 
-	public String getNombrepersona() {
-		return nombrepersona;
+
+
+	public DepartamentoEJB getDepartamentoejb() {
+		return departamentoejb;
 	}
 
-	public void setNombrepersona(String nombrepersona) {
-		this.nombrepersona = nombrepersona;
+
+
+	public void setDepartamentoejb(DepartamentoEJB departamentoejb) {
+		this.departamentoejb = departamentoejb;
 	}
+
+
+
+	public EstadocivilEJB getEstadocivilejb() {
+		return estadocivilejb;
+	}
+
+
+
+	public void setEstadocivilejb(EstadocivilEJB estadocivilejb) {
+		this.estadocivilejb = estadocivilejb;
+	}
+
+
+
+	public TipodocumentoEJB getTipodocumentoejb() {
+		return tipodocumentoejb;
+	}
+
+
+
+	public void setTipodocumentoejb(TipodocumentoEJB tipodocumentoejb) {
+		this.tipodocumentoejb = tipodocumentoejb;
+	}
+
+
+
+	public EpsEJB getEpsejb() {
+		return epsejb;
+	}
+
+
+
+	public void setEpsejb(EpsEJB epsejb) {
+		this.epsejb = epsejb;
+	}
+
+
+
+	public GeneroEJB getGenerojb() {
+		return generojb;
+	}
+
+
+
+	public void setGenerojb(GeneroEJB generojb) {
+		this.generojb = generojb;
+	}
+
+
 
 	public List<Persona> getListarpersonas() {
 		return listarpersonas;
 	}
 
+
+
 	public void setListarpersonas(List<Persona> listarpersonas) {
 		this.listarpersonas = listarpersonas;
 	}
 
-	public String getApellidopersona() {
-		return apellidopersona;
+
+
+	public List<Ciudad> getListarciudades() {
+		return listarciudades;
 	}
 
-	public void setApellidopersona(String apellidopersona) {
-		this.apellidopersona = apellidopersona;
+
+
+	public void setListarciudades(List<Ciudad> listarciudades) {
+		this.listarciudades = listarciudades;
 	}
 
-	public String getNumerodocumentopersona() {
-		return numerodocumentopersona;
+
+
+	public List<Departamento> getListardepartamento() {
+		return listardepartamento;
 	}
 
-	public void setNumerodocumentopersona(String numerodocumentopersona) {
-		this.numerodocumentopersona = numerodocumentopersona;
+
+
+	public void setListardepartamento(List<Departamento> listardepartamento) {
+		this.listardepartamento = listardepartamento;
 	}
 
-	public String getEmailpersona() {
-		return emailpersona;
+
+
+	public List<Estadocivil> getListarestadocivil() {
+		return listarestadocivil;
 	}
 
-	public void setEmailpersona(String emailpersona) {
-		this.emailpersona = emailpersona;
+
+
+	public void setListarestadocivil(List<Estadocivil> listarestadocivil) {
+		this.listarestadocivil = listarestadocivil;
 	}
 
-	public Date getFechanacimientopersona() {
-		return fechanacimientopersona;
+
+
+	public List<Tipodocumento> getListartipodocumento() {
+		return listartipodocumento;
 	}
 
-	public void setFechanacimientopersona(Date fechanacimientopersona) {
-		this.fechanacimientopersona = fechanacimientopersona;
+
+
+	public void setListartipodocumento(List<Tipodocumento> listartipodocumento) {
+		this.listartipodocumento = listartipodocumento;
 	}
 
-	public Integer getTelefonopersona() {
-		return telefonopersona;
+
+
+	public List<Eps> getListareps() {
+		return listareps;
 	}
 
-	public void setTelefonopersona(Integer telefonopersona) {
-		this.telefonopersona = telefonopersona;
+
+
+	public void setListareps(List<Eps> listareps) {
+		this.listareps = listareps;
 	}
 
-	public Ciudad getCidadpersona() {
-		return cidadpersona;
-	}
 
-	public void setCidadpersona(Ciudad cidadpersona) {
-		this.cidadpersona = cidadpersona;
-	}
-
-	public Genero getGeneropersona() {
-		return generopersona;
-	}
-
-	public void setGeneropersona(Genero generopersona) {
-		this.generopersona = generopersona;
-	}
-
-	public Eps getEpspersona() {
-		return epspersona;
-	}
-
-	public void setEpspersona(Eps epspersona) {
-		this.epspersona = epspersona;
-	}
-
-	public Estadocivil getEstadocivilpersona() {
-		return estadocivilpersona;
-	}
-
-	public void setEstadocivilpersona(Estadocivil estadocivilpersona) {
-		this.estadocivilpersona = estadocivilpersona;
-	}
-
-	public Tipodocumento getTipodocumentopersona() {
-		return tipodocumentopersona;
-	}
-
-	public void setTipodocumentopersona(Tipodocumento tipodocumentopersona) {
-		this.tipodocumentopersona = tipodocumentopersona;
-	}
-
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	public List<Genero> getListargenero() {
 		return listargenero;
 	}
 
+
+
 	public void setListargenero(List<Genero> listargenero) {
 		this.listargenero = listargenero;
 	}
+
+
+
+	public Ciudad getCiudadselesscionada() {
+		return ciudadselesscionada;
+	}
+
+
+
+	public void setCiudadselesscionada(Ciudad ciudadselesscionada) {
+		this.ciudadselesscionada = ciudadselesscionada;
+	}
+
+
+
+	public Eps getEpsseleccionada() {
+		return epsseleccionada;
+	}
+
+
+
+	public void setEpsseleccionada(Eps epsseleccionada) {
+		this.epsseleccionada = epsseleccionada;
+	}
+
+
+
+	public Departamento getDepartamentoseleccionado() {
+		return departamentoseleccionado;
+	}
+
+
+
+	public void setDepartamentoseleccionado(Departamento departamentoseleccionado) {
+		this.departamentoseleccionado = departamentoseleccionado;
+	}
+
+
+
+	public Estadocivil getEstadocivilseleccionado() {
+		return estadocivilseleccionado;
+	}
+
+
+
+	public void setEstadocivilseleccionado(Estadocivil estadocivilseleccionado) {
+		this.estadocivilseleccionado = estadocivilseleccionado;
+	}
+
+
+
+	public Tipodocumento getTipodocumentoseleccionado() {
+		return tipodocumentoseleccionado;
+	}
+
+
+
+	public void setTipodocumentoseleccionado(Tipodocumento tipodocumentoseleccionado) {
+		this.tipodocumentoseleccionado = tipodocumentoseleccionado;
+	}
+
+
 
 	public Genero getTipogeneroseleccionado() {
 		return tipogeneroseleccionado;
 	}
 
+
+
 	public void setTipogeneroseleccionado(Genero tipogeneroseleccionado) {
 		this.tipogeneroseleccionado = tipogeneroseleccionado;
 	}
+
+
+
+	public String getIdpersona() {
+		return idpersona;
+	}
+
+
+
+	public void setIdpersona(String idpersona) {
+		this.idpersona = idpersona;
+	}
+
+
+
+	public String getNombrepersona() {
+		return nombrepersona;
+	}
+
+
+
+	public void setNombrepersona(String nombrepersona) {
+		this.nombrepersona = nombrepersona;
+	}
+
+
+
+	public String getApellidopersona() {
+		return apellidopersona;
+	}
+
+
+
+	public void setApellidopersona(String apellidopersona) {
+		this.apellidopersona = apellidopersona;
+	}
+
+
+
+	public String getNumerodocumentopersona() {
+		return numerodocumentopersona;
+	}
+
+
+
+	public void setNumerodocumentopersona(String numerodocumentopersona) {
+		this.numerodocumentopersona = numerodocumentopersona;
+	}
+
+
+
+	public String getEmailpersona() {
+		return emailpersona;
+	}
+
+
+
+	public void setEmailpersona(String emailpersona) {
+		this.emailpersona = emailpersona;
+	}
+
+
+
+	public Date getFechanacimientopersona() {
+		return fechanacimientopersona;
+	}
+
+
+
+	public void setFechanacimientopersona(Date fechanacimientopersona) {
+		this.fechanacimientopersona = fechanacimientopersona;
+	}
+
+
+
+	public Integer getTelefonopersona() {
+		return telefonopersona;
+	}
+
+
+
+	public void setTelefonopersona(Integer telefonopersona) {
+		this.telefonopersona = telefonopersona;
+	}
+
+
+
+	public Ciudad getCidadpersona() {
+		return cidadpersona;
+	}
+
+
+
+	public void setCidadpersona(Ciudad cidadpersona) {
+		this.cidadpersona = cidadpersona;
+	}
+
+
+
+	public Genero getGeneropersona() {
+		return generopersona;
+	}
+
+
+
+	public void setGeneropersona(Genero generopersona) {
+		this.generopersona = generopersona;
+	}
+
+
+
+	public Eps getEpspersona() {
+		return epspersona;
+	}
+
+
+
+	public void setEpspersona(Eps epspersona) {
+		this.epspersona = epspersona;
+	}
+
+
+
+	public Estadocivil getEstadocivilpersona() {
+		return estadocivilpersona;
+	}
+
+
+
+	public void setEstadocivilpersona(Estadocivil estadocivilpersona) {
+		this.estadocivilpersona = estadocivilpersona;
+	}
+
+
+
+	public Tipodocumento getTipodocumentopersona() {
+		return tipodocumentopersona;
+	}
+
+
+
+	public void setTipodocumentopersona(Tipodocumento tipodocumentopersona) {
+		this.tipodocumentopersona = tipodocumentopersona;
+	}
+
+
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 
 	public void crearpersona() {
 		try {
@@ -308,120 +540,5 @@ public class Controladorpersona implements Serializable {
 
 	}
 
-	public Ciudad getCiudadselesscionada() {
-		return ciudadselesscionada;
-	}
-
-	public void setCiudadselesscionada(Ciudad ciudadselesscionada) {
-		this.ciudadselesscionada = ciudadselesscionada;
-	}
-
-	public CiudadEJB getCiudadejb() {
-		return ciudadejb;
-	}
-
-	public void setCiudadejb(CiudadEJB ciudadejb) {
-		this.ciudadejb = ciudadejb;
-	}
-
-	public List<Ciudad> getListarciudades() {
-		return listarciudades;
-	}
-
-	public void setListarciudades(List<Ciudad> listarciudades) {
-		this.listarciudades = listarciudades;
-	}
-
-	public DepartamentoEJB getDepartamentoejb() {
-		return departamentoejb;
-	}
-
-	public void setDepartamentoejb(DepartamentoEJB departamentoejb) {
-		this.departamentoejb = departamentoejb;
-	}
-
-	public EstadocivilEJB getEstadocivilejb() {
-		return estadocivilejb;
-	}
-
-	public void setEstadocivilejb(EstadocivilEJB estadocivilejb) {
-		this.estadocivilejb = estadocivilejb;
-	}
-
-	public TipodocumentoEJB getTipodocumentoejb() {
-		return tipodocumentoejb;
-	}
-
-	public void setTipodocumentoejb(TipodocumentoEJB tipodocumentoejb) {
-		this.tipodocumentoejb = tipodocumentoejb;
-	}
-
-	public EpsEJB getEpsejb() {
-		return epsejb;
-	}
-
-	public void setEpsejb(EpsEJB epsejb) {
-		this.epsejb = epsejb;
-	}
-
-	public List<Departamento> getListardepartamento() {
-		return listardepartamento;
-	}
-
-	public void setListardepartamento(List<Departamento> listardepartamento) {
-		this.listardepartamento = listardepartamento;
-	}
-
-	public List<Estadocivil> getListarestadocivil() {
-		return listarestadocivil;
-	}
-
-	public void setListarestadocivil(List<Estadocivil> listarestadocivil) {
-		this.listarestadocivil = listarestadocivil;
-	}
-
-	public List<Tipodocumento> getListartipodocumento() {
-		return listartipodocumento;
-	}
-
-	public void setListartipodocumento(List<Tipodocumento> listartipodocumento) {
-		this.listartipodocumento = listartipodocumento;
-	}
-
-	public List<Eps> getListareps() {
-		return listareps;
-	}
-
-	public void setListareps(List<Eps> listareps) {
-		this.listareps = listareps;
-	}
-
-	public void Epsseleccionada() {
-		epspersona = epsejb.buscarEps(epsseleccionada.getIdeps());
-	}
-
-	public void Departamentoseleccionado() {
-		listarciudades = ciudadejb.BuscarListaCiudad(String.valueOf(departamentoseleccionado.getId_departamento()));
-		return;
-	}
-
-	public void Ciudadseleccionada() {
-		cidadpersona = ciudadejb.buscarCiudad(String.valueOf(ciudadselesscionada.getIdciudad()));
-		System.out.println(cidadpersona);
-
-	}
-
-	public void Estadocivilseleccionado() {
-		estadocivilpersona = estadocivilejb.buscarEstadocivil(estadocivilseleccionado.getIdestadocivil());
-		System.out.println(estadocivilpersona);
-	}
-
-	public void Tipodocumentoseleccionado() {
-		tipodocumentopersona = tipodocumentoejb.buscarTipodocumento(tipodocumentoseleccionado.getIdtipodocumento());
-	}
-
-	public void Generoseleccionado() {
-		generopersona = generojb.buscarGenero(String.valueOf(tipogeneroseleccionado.getIdgenero()));
-	}
-
+	
 }

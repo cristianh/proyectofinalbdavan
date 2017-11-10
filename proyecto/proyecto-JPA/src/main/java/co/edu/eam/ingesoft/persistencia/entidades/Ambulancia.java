@@ -6,16 +6,28 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="t_ambulancia")
+@NamedQueries({ @NamedQuery(name = "Ambulancia.listarambulancia", query = "SELECT ambu FROM Ambulancia ambu"),
+	@NamedQuery(name = "Ambulancia.listarbuscarambulancia", query = "SELECT ambu FROM Ambulancia ambu where ambu.idambulancia=:estado") })
+
 public class Ambulancia implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	private Integer idambulancia;
+	private String idambulancia;
 	
 	@Column(name="codigoambulancia",nullable=false,length=50)
 	private String codigoambulancia;
@@ -26,14 +38,13 @@ public class Ambulancia implements Serializable {
 	@Column(name="placaambulancia",length=50)
 	private String placaambulancia;
 	
-	@Column(name="estadodisponible",length=1)
-	private char estadodisponibleambulacia;
+	@ManyToOne
+	@JoinColumn(name="Disponibilidad")
+	private Disponibilidad disponibilidadAmbu;
 	
-	@Column(name="estadodactivo",length=1)
-	private char estadoactivoambulancia;
-	
-	@Column(name="cantidad",length=1)
-	private Integer cantidad;
+	@ManyToOne
+	@JoinColumn(name="TipoAmbulancia")
+	private TipoAmbulancia tipoAmbulancia;
 	
 	@OneToMany(mappedBy="ambulanciaid")
 	private List<AmbulanciaUrgencia> ambulanciaurgencia;
@@ -41,34 +52,34 @@ public class Ambulancia implements Serializable {
 	public Ambulancia() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
-	 * 
 	 * @param idambulancia
 	 * @param codigoambulancia
 	 * @param marcaambulancia
 	 * @param placaambulancia
-	 * @param estadodisponibleambulacia
-	 * @param estadoactivoambulancia
-	 * @param cantidad
+	 * @param disponibilidadAmbu
+	 * @param tipoAmbulancia
+	 * @param ambulanciaurgencia
 	 */
-	public Ambulancia(Integer idambulancia, String codigoambulancia, String marcaambulancia, String placaambulancia,
-			char estadodisponibleambulacia, char estadoactivoambulancia, Integer cantidad) {
+	public Ambulancia(String idambulancia, String codigoambulancia, String marcaambulancia, String placaambulancia,
+			Disponibilidad disponibilidadAmbu, TipoAmbulancia tipoAmbulancia,
+			List<AmbulanciaUrgencia> ambulanciaurgencia) {
 		super();
 		this.idambulancia = idambulancia;
 		this.codigoambulancia = codigoambulancia;
 		this.marcaambulancia = marcaambulancia;
 		this.placaambulancia = placaambulancia;
-		this.estadodisponibleambulacia = estadodisponibleambulacia;
-		this.estadoactivoambulancia = estadoactivoambulancia;
-		this.cantidad = cantidad;
+		this.disponibilidadAmbu = disponibilidadAmbu;
+		this.tipoAmbulancia = tipoAmbulancia;
+		this.ambulanciaurgencia = ambulanciaurgencia;
 	}
 
-	public Integer getIdambulancia() {
+	public String getIdambulancia() {
 		return idambulancia;
 	}
 
-	public void setIdambulancia(Integer idambulancia) {
+	public void setIdambulancia(String idambulancia) {
 		this.idambulancia = idambulancia;
 	}
 
@@ -96,35 +107,45 @@ public class Ambulancia implements Serializable {
 		this.placaambulancia = placaambulancia;
 	}
 
-	public char getEstadodisponibleambulacia() {
-		return estadodisponibleambulacia;
+	public Disponibilidad getDisponibilidadAmbu() {
+		return disponibilidadAmbu;
 	}
 
-	public void setEstadodisponibleambulacia(char estadodisponibleambulacia) {
-		this.estadodisponibleambulacia = estadodisponibleambulacia;
+	public void setDisponibilidadAmbu(Disponibilidad disponibilidadAmbu) {
+		this.disponibilidadAmbu = disponibilidadAmbu;
 	}
 
-	public char getEstadoactivoambulancia() {
-		return estadoactivoambulancia;
+	public TipoAmbulancia getTipoAmbulancia() {
+		return tipoAmbulancia;
 	}
 
-	public void setEstadoactivoambulancia(char estadoactivoambulancia) {
-		this.estadoactivoambulancia = estadoactivoambulancia;
+	public void setTipoAmbulancia(TipoAmbulancia tipoAmbulancia) {
+		this.tipoAmbulancia = tipoAmbulancia;
 	}
 
-	public Integer getCantidad() {
-		return cantidad;
+	public List<AmbulanciaUrgencia> getAmbulanciaurgencia() {
+		return ambulanciaurgencia;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setAmbulanciaurgencia(List<AmbulanciaUrgencia> ambulanciaurgencia) {
+		this.ambulanciaurgencia = ambulanciaurgencia;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((ambulanciaurgencia == null) ? 0 : ambulanciaurgencia.hashCode());
+		result = prime * result + ((codigoambulancia == null) ? 0 : codigoambulancia.hashCode());
+		result = prime * result + ((disponibilidadAmbu == null) ? 0 : disponibilidadAmbu.hashCode());
 		result = prime * result + ((idambulancia == null) ? 0 : idambulancia.hashCode());
+		result = prime * result + ((marcaambulancia == null) ? 0 : marcaambulancia.hashCode());
+		result = prime * result + ((placaambulancia == null) ? 0 : placaambulancia.hashCode());
+		result = prime * result + ((tipoAmbulancia == null) ? 0 : tipoAmbulancia.hashCode());
 		return result;
 	}
 
@@ -137,10 +158,40 @@ public class Ambulancia implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Ambulancia other = (Ambulancia) obj;
+		if (ambulanciaurgencia == null) {
+			if (other.ambulanciaurgencia != null)
+				return false;
+		} else if (!ambulanciaurgencia.equals(other.ambulanciaurgencia))
+			return false;
+		if (codigoambulancia == null) {
+			if (other.codigoambulancia != null)
+				return false;
+		} else if (!codigoambulancia.equals(other.codigoambulancia))
+			return false;
+		if (disponibilidadAmbu == null) {
+			if (other.disponibilidadAmbu != null)
+				return false;
+		} else if (!disponibilidadAmbu.equals(other.disponibilidadAmbu))
+			return false;
 		if (idambulancia == null) {
 			if (other.idambulancia != null)
 				return false;
 		} else if (!idambulancia.equals(other.idambulancia))
+			return false;
+		if (marcaambulancia == null) {
+			if (other.marcaambulancia != null)
+				return false;
+		} else if (!marcaambulancia.equals(other.marcaambulancia))
+			return false;
+		if (placaambulancia == null) {
+			if (other.placaambulancia != null)
+				return false;
+		} else if (!placaambulancia.equals(other.placaambulancia))
+			return false;
+		if (tipoAmbulancia == null) {
+			if (other.tipoAmbulancia != null)
+				return false;
+		} else if (!tipoAmbulancia.equals(other.tipoAmbulancia))
 			return false;
 		return true;
 	}
@@ -149,10 +200,9 @@ public class Ambulancia implements Serializable {
 	public String toString() {
 		return "Ambulancia [idambulancia=" + idambulancia + ", codigoambulancia=" + codigoambulancia
 				+ ", marcaambulancia=" + marcaambulancia + ", placaambulancia=" + placaambulancia
-				+ ", estadodisponibleambulacia=" + estadodisponibleambulacia + ", estadoactivoambulancia="
-				+ estadoactivoambulancia + ", cantidad=" + cantidad + "]";
+				+ ", disponibilidadAmbu=" + disponibilidadAmbu + ", tipoAmbulancia=" + tipoAmbulancia
+				+ ", ambulanciaurgencia=" + ambulanciaurgencia + "]";
 	}
-	
 	
 	
 	
