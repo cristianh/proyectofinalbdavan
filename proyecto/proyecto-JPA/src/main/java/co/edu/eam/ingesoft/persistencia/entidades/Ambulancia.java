@@ -29,7 +29,7 @@ public class Ambulancia implements Serializable {
 	@Id
 	private String idambulancia;
 	
-	@Column(name="codigoambulancia",nullable=false,length=50)
+	@Column(name="codigoambulancia", nullable=false,length=50)
 	private String codigoambulancia;
 	
 	@Column(name="marcaambulancia",length=50)

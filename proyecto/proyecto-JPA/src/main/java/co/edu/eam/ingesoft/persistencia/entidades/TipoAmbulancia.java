@@ -12,8 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TipoAmbulancia")
-@NamedQueries({ @NamedQuery(name = "TipoAmbulancia.listartipoAmbulancia", query = "SELECT e FROM TipoAmbulancia e"),
-	@NamedQuery(name = "TipoAmbulancia.listarbuscartipoAmbulancia", query = "SELECT e FROM TipoAmbulancia e where e.idTipoAmbulancia=:codigo") })
+@NamedQueries({ @NamedQuery(name = "TipoAmbulancia.listartipoAmbulancia", query = "SELECT tip FROM TipoAmbulancia tip"),
+	@NamedQuery(name = "TipoAmbulancia.listarbuscartipoAmbulancia", query = "SELECT tip FROM TipoAmbulancia tip where tip.idTipoAmbulancia=:codigo") })
 
 public class TipoAmbulancia implements Serializable {
 

@@ -57,7 +57,7 @@ public class TipoAmbulanciaEJB implements ITipoAmbulancia{
 	public List<TipoAmbulancia> ListarTipoAmbulancia() {
 		List<TipoAmbulancia> resultadoTransaccion = null;
 		try {
-			resultadoTransaccion = manager.createNamedQuery("listartipoAmbulancia").getResultList();
+			resultadoTransaccion = manager.createNamedQuery("TipoAmbulancia.listartipoAmbulancia").getResultList();
 			System.out.println(resultadoTransaccion);
 		} catch (Exception e) {
 			// TODO: handle exception

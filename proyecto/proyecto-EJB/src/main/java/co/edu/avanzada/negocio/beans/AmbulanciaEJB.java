@@ -18,10 +18,6 @@ import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
 @Remote(IAmbulancia.class)
 public class AmbulanciaEJB implements IAmbulancia {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext
 	EntityManager entity;
@@ -36,9 +32,8 @@ public class AmbulanciaEJB implements IAmbulancia {
 			entity.persist(ambulancia);
 			System.out.println("Ambulancia registrada");
 		}else {
-			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");
+			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");	
 		}
-		
 	}
 	
 	/**

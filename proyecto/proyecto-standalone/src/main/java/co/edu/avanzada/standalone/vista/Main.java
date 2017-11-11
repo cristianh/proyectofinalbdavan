@@ -51,14 +51,20 @@ public class Main {
 	public static void main(String[] args) throws NamingException {
 		// TODO Auto-generated method stub
 
+		/*
+		TipoAmbulancia ambul = new TipoAmbulancia("1", "basica");
+				controladorTipoAmbu.crearTipoAmbulancia(ambul);
+		
+		Disponibilidad dispo = new Disponibilidad("1", "disponible");
+		controladorDispoAmbu.crearDisponibilidad(dispo);
 		
 		// Urgencias
 
-	//	TipoEvento tipoenvento = new TipoEvento(1, "Accidente de transito");
-	//	controladortipoevento.creaTipoEvento(tipoenvento);
-
-	//	Especialidad especialidad = new Especialidad("1", "Urología", "Activo");
-	//	controladorespecialidad.crearEspecialidad(especialidad);
+		TipoEvento tipoenvento = new TipoEvento(1, "Accidente de transito");
+		controladortipoevento.creaTipoEvento(tipoenvento);
+		
+	    Especialidad especialidad = new Especialidad("1", "Urología", "Activo");
+		controladorespecialidad.crearEspecialidad(especialidad);
 
 		// Departamento
 		Departamento departemento = new Departamento("1", "Quindio", "Ciudad milagro");
@@ -71,7 +77,7 @@ public class Main {
 		ciudadpersona1.setNombreciudad("Armenia");
 		ciudadpersona1.setDepartamento(departemento);
 
-		/* Genero */
+		 Genero 
 		Genero genero1 = new Genero();
 		genero1.setIdgenero("1");
 		genero1.setSexo("M");
@@ -123,7 +129,7 @@ public class Main {
 		controladorciudad = new controladorCiudad();
 		controladordepartemento = new controladorDepartamento();
 		controladortipoevento = new controladorTipoEvento();
-		controladorespecialidad = new controladorEspecialidad();
+		controladorespecialidad = new controladorEspecialidad();*/
 		
 		//DARKLAT
 		
@@ -136,28 +142,26 @@ public class Main {
 		
 			//Disponibilidad
 			Disponibilidad dispoAmbu = new Disponibilidad();
-			dispoAmbu.setIdDisponibilidad("5");
+			dispoAmbu.setIdDisponibilidad("4");
 			dispoAmbu.setNombre("Ocupada "); 
 			
 		
 			//TipoAmbulancia
 			TipoAmbulancia tipoAmbu = new TipoAmbulancia();
-			tipoAmbu.setIdTipoAmbulancia("8");
+			tipoAmbu.setIdTipoAmbulancia("7");
 			tipoAmbu.setNonmbreTipoAmbulancia("medicalizada");
 		
 			
 		
 			// Ambulancia
 			Ambulancia amb = new Ambulancia();
-			amb.setIdambulancia("2");
+			amb.setIdambulancia("5");
 			amb.setCodigoambulancia("cod2");
 			amb.setMarcaambulancia("mazda");
 			amb.setPlacaambulancia("NFR71D");
 			amb.setDisponibilidadAmbu(dispoAmbu);
 			amb.setTipoAmbulancia(tipoAmbu);
-			amb.setAmbulanciaurgencia(null); 
-			
-			
+	
 			controladorTipoAmbu.crearTipoAmbulancia(tipoAmbu);
 			controladorDispoAmbu.crearDisponibilidad(dispoAmbu);
 			controladorambulancia.crearAmbulancia(amb);

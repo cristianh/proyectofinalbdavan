@@ -16,7 +16,7 @@
 			<p:messages id="messages" autoUpdate="true" closable="true" />
 				<p:panel header="Ambulancia">
 			
-			<p:fieldset>
+			
 					<h:panelGrid columns="4" id="paneltabla"
 						style="margin: 0 auto; padding:12px">
 				
@@ -84,14 +84,13 @@
 								listener="#{controladorAmbulancia.tipoAmbulanciaSeleccion}" />
 						</p:selectOneMenu>
 					</h:panelGrid>
-					</p:fieldset>
-					<p:separator/>
+					
 					<p:fieldset>
 						<h:panelGrid columns="2" id="panelbotones" style="margin: 0 auto;">
 							<p:commandButton id="botonregistrar"
 								value="#{msj['ambulancia.btn.registrar']}"
-								action="#{controladorAmbulancia.crearAmbulancia()}"
-								styleClass="ui-priority-primary" ajax="true"
+								action="#{controladorAmbulancia.crearAmbulancia}"
+								styleClass="ui-priority-primary"
 								update=" formulariocrearAmbulancia messages"
 								process="@this formulariocrearAmbulancia" >
 								</p:commandButton>

@@ -46,14 +46,14 @@ public class ControladorAmbulancia implements Serializable {
 	private List<TipoAmbulancia> listarTipoAmbulancia;
 
 	@Size(min = 1, max = 5, message = "este campo acepta maximo 5 caracteres")
-	@Pattern(regexp = "[a-zA-Z]*", message = "Formato invalido, no se permiten letras")
+//	@Pattern(regexp = "[a-zA-Z]*", message = "Formato invalido, no se permiten letras")
 	private String idAmbulancia;
 
 	@Size(min = 1, max = 8, message = "este campo acepta maximo 8 caracteres")
 	private String codigoAmbulancia;
 
 	@Size(min = 1, max = 50, message = "la longitud debe se entre 1 y 50 caracteres")
-	@Pattern(regexp = "[a-zA-z]*", message = "Formato invalido, no se permiten letras")
+//	@Pattern(regexp = "[a-zA-z]*", message = "Formato invalido, no se permiten letras")
 	private String marcaAmbulancia;
 
 	@Size(min = 1, max = 7, message = "la longitud debe se entre 1 y 7 caracteres")
@@ -188,37 +188,25 @@ public class ControladorAmbulancia implements Serializable {
 	public void crearAmbulancia() {
 		try {
 			Ambulancia ambulancia = new Ambulancia();
+			
 			ambulancia.setIdambulancia(idAmbulancia);
 			ambulancia.setCodigoambulancia(codigoAmbulancia);
 			ambulancia.setMarcaambulancia(marcaAmbulancia);
+			ambulancia.setPlacaambulancia(placa);
 			ambulancia.setDisponibilidadAmbu(disponibilidadAmbulancia);
 			ambulancia.setTipoAmbulancia(tipoAmbulancia);
-			ambulancia.setPlacaambulancia(marcaAmbulancia);
+			
 
 			ambulanciaEjb.crearAmbulancia(ambulancia);
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "La Ambulancia a sido registrada"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "La Ambulancia a sido registrada"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage().toString());
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Favor verifique los datos", e.getMessage().toString() + "."));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se ha podido crear", e.getMessage().toString() + "."));
 		}
 	}
 
-	public void buscarAmbulancia() {
 
-		try{
-			if(getIdAmbulancia().isEmpty()){
-				
-			}
-		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Error! no se encuentra la ambulancia con los parametros de busqueda", "."));
-		}
-	}
-
-	public void limpiarCampos() {
-
-	}
+	
 
 }
