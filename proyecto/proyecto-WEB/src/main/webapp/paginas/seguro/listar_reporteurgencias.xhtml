@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+		<h:form id="form">
+			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
+				<p:dataTable var="reporteurgencia"
+					value="#{conreporteciudadano.listarreporteurgencias}" rows="3"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="3,6,9" style="margin: 0 auto;">
+					<p:column headerText="Id urgencia">
+						<h:outputText value="#{reporteurgencia.idreporteurgencia}" />
+					</p:column>
+
+					<p:column headerText="Nombre">
+						<h:outputText value="#{reporteurgencia.nombre}" />
+					</p:column>
+
+					<p:column headerText="Apellido">
+						<h:outputText value="#{reporteurgencia.apellido}" />
+					</p:column>
+
+					<p:column headerText="Cedula">
+						<h:outputText value="#{reporteurgencia.cedula}" />
+					</p:column>
+					<p:column headerText="Telefono">
+						<h:outputText value="#{reporteurgencia.telefono}" />
+					</p:column>
+					<p:column headerText="Direccion">
+						<h:outputText value="#{reporteurgencia.direccion}" />
+					</p:column>
+					<p:column headerText="Estado">
+						<h:outputText value="#{reporteurgencia.estado}" />
+					</p:column>
+					<p:column headerText="Fecha y hora">
+						<h:outputText value="#{reporteurgencia.fechayhora}" />
+					</p:column>
+					<p:column headerText="N° de personas afectadas">
+						<h:outputText value="#{reporteurgencia.numeroafectados}" />
+					</p:column>
+					<p:column headerText="Tipo urgencia">
+						<h:outputText value="#{reporteurgencia.tipourgencia.nombre}" />
+					</p:column>
+					<p:column headerText="Action">
+						<p:commandButton value="Atender"
+							actionListener="#{conreporteciudadano.atender}" />
+					</p:column>
+					<p:column headerText="Ver">
+						<p:commandButton value="Ver" update=":form:reporteurgenciadetalle"
+							oncomplete="PF('reportDialog').show()" icon="ui-icon-search"
+							title="Ver">
+							<f:setPropertyActionListener value="#{reporteurgencia}"
+								target="#{conreporteciudadano.reuseleccionado}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<p:dialog header="Urgendica Detalle" width="300" height="300" widgetVar="reportDialog" modal="false"
+				showEffect="fade" hideEffect="fade" resizable="false" draggable="true">
+				<p:outputPanel id="reporteurgenciadetalle">
+					<p:panelGrid columns="2"
+						rendered="#{not empty conreporteciudadano.reuseleccionado}" style="text-align:center;margin: 0px auto;">
+						<p:outputLabel value="Nombre:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.nombre}" />
+						<p:outputLabel value="Apellido:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.apellido}" />
+						<p:outputLabel value="Cedula:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.cedula}" />
+						<p:outputLabel value="Telefono:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.telefono}" />
+						<p:outputLabel value="Direccion:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.direccion}" />
+						<p:outputLabel value="Fecha y hora:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.fechayhora}" />
+						<p:outputLabel value="Numero de afectados:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.numeroafectados}" />
+						<p:outputLabel value="Estado:" />
+						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.estado}" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			</h:panelGrid>
+
+			
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

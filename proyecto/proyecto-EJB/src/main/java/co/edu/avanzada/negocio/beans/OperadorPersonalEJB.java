@@ -15,13 +15,13 @@ import co.edu.eam.ingesoft.persistencia.entidades.OperadorPersonal;
 @LocalBean
 @Stateless
 @Remote(IOperadorPersonal.class)
-public class OperadorPersonalEJB {
+public class OperadorPersonalEJB implements IOperadorPersonal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
-		
+
+	public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
+
 		OperadorPersonal buscoperadorPersonal = buscarOperadorPersonal(operadorPersonal.getIdpersonal());
 		// no existe, se puede crear...
 		if (buscoperadorPersonal == null) {
@@ -31,7 +31,7 @@ public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
 		}
 	}
 
-	public OperadorPersonal buscarOperadorPersonal(Integer idoperador) {
+	public OperadorPersonal buscarOperadorPersonal(String idoperador) {
 		return em.find(OperadorPersonal.class, idoperador);
 	}
 
@@ -40,7 +40,7 @@ public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
 
 	}
 
-	public void eliminar(Integer idoperador) {
+	public void eliminar(String idoperador) {
 		OperadorPersonal busqOperadorPersonal = buscarOperadorPersonal(idoperador);
 		if (busqOperadorPersonal != null) {
 			em.remove(idoperador);
@@ -50,7 +50,15 @@ public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
 
 	}
 
+
+
+	public List<OperadorPersonal> BuscarListaOperadorPersonals(Integer idoperadorPersonal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public List<OperadorPersonal> ListarOperadorPersonals() {
+		// TODO Auto-generated method stub
 		List<OperadorPersonal> resultadoTransaccion = null;
 		try {
 			resultadoTransaccion = em.createNamedQuery("OperadorPersonal.listaroperadorPersonal").getResultList();
@@ -62,10 +70,4 @@ public void crearOperadorPersonal(OperadorPersonal operadorPersonal) {
 		return resultadoTransaccion;
 	}
 
-	public List<OperadorPersonal> BuscarListaOperadorPersonals(String cedula) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
-

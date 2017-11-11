@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.naming.NamingException;
 
+<<<<<<< HEAD
+import co.edu.avanzada.standalone.controlador.*;
+=======
 import co.edu.avanzada.standalone.controlador.controladorAmbulancia;
 import co.edu.avanzada.standalone.controlador.controladorCiudad;
 import co.edu.avanzada.standalone.controlador.controladorDepartamento;
@@ -17,17 +20,29 @@ import co.edu.avanzada.standalone.controlador.controladorTipoAmbulancia;
 import co.edu.avanzada.standalone.controlador.controladorTipoEvento;
 import co.edu.avanzada.standalone.controlador.controladorTipodocumento;
 import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
+>>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
+import co.edu.eam.ingesoft.persistencia.entidades.ReporteUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Departamento;
 import co.edu.eam.ingesoft.persistencia.entidades.Disponibilidad;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
 import co.edu.eam.ingesoft.persistencia.entidades.Especialidad;
 import co.edu.eam.ingesoft.persistencia.entidades.Estadocivil;
+import co.edu.eam.ingesoft.persistencia.entidades.Funcionario;
 import co.edu.eam.ingesoft.persistencia.entidades.Genero;
+import co.edu.eam.ingesoft.persistencia.entidades.OperadorPersonal;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
+<<<<<<< HEAD
+import co.edu.eam.ingesoft.persistencia.entidades.Urgencia;
+=======
 import co.edu.eam.ingesoft.persistencia.entidades.TipoAmbulancia;
+>>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 import co.edu.eam.ingesoft.persistencia.entidades.TipoEvento;
+import co.edu.eam.ingesoft.persistencia.entidades.TipoFuncionario;
+import co.edu.eam.ingesoft.persistencia.entidades.TipoUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Tipodocumento;
+import co.edu.eam.ingesoft.persistencia.entidades.Urgencia;
+import co.edu.eam.ingesoft.persistencia.entidades.UrgenciaEvento;
 
 public class Main {
 
@@ -40,6 +55,35 @@ public class Main {
 	private static controladorTipodocumento controladortipodocumento;
 	private static controladorTipoEvento controladortipoevento;
 	private static controladorEspecialidad controladorespecialidad;
+<<<<<<< HEAD
+	private static controladorFuncionario controladorfuncionario;
+	private static controladorTipofuncionario controladortipofuncionario;
+	private static controladorOperador controladoroperador;
+	private static controladorTipoUrgencia controladortipourgencia;
+	private static controladorUrgencia controladorurgencia;
+	private static controladorReporteUrgencia controladorreportarurgencia;
+	
+	public static void main(String[] args) throws NamingException {
+		// TODO Auto-generated method stub
+		controladortipodocumento = new controladorTipodocumento();
+		controladorpersona = new controladorPersona();
+		controladorgenero = new controladorGenero();
+		controladoresp = new controladorEps();
+		controladorestadovicil = new controladorEstadocivil();
+		controladorciudad = new controladorCiudad();
+		controladordepartemento = new controladorDepartamento();
+		controladortipoevento = new controladorTipoEvento();
+		controladorespecialidad = new controladorEspecialidad();
+		controladorfuncionario= new controladorFuncionario();
+		controladortipofuncionario= new controladorTipofuncionario();
+		controladortipourgencia=new controladorTipoUrgencia();
+		controladorurgencia=new controladorUrgencia();
+		controladorreportarurgencia=new  controladorReporteUrgencia();
+		controladoroperador=new controladorOperador();
+		
+		
+		
+=======
 
 	//DARKLAST
 	
@@ -57,6 +101,7 @@ public class Main {
 		
 		Disponibilidad dispo = new Disponibilidad("1", "disponible");
 		controladorDispoAmbu.crearDisponibilidad(dispo);
+>>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 		
 		// Urgencias
 
@@ -120,6 +165,29 @@ public class Main {
 		controladorestadovicil.crearEstadocivil(estadocivil1);
 		controladortipodocumento.creaTipodocumento(tipodocumentopersona);
 		controladorpersona.crearPersona(persona1);
+		
+		TipoFuncionario tipofuncionario=new TipoFuncionario(1,"Auxiliar","Juan");
+		controladortipofuncionario.crearTipofuncionario(tipofuncionario);
+		
+		
+		Funcionario funcionario = new Funcionario("1","123",100.1,new Date(),'0',tipofuncionario,persona1);
+		controladorfuncionario.crearFuncionario(funcionario);
+		
+		TipoUrgencia tipourgencia=new TipoUrgencia("1", "Transito");
+		controladortipourgencia.creaTipourgencia(tipourgencia);
+		
+		//urgencia
+		/*ReporteUrgencia reporteurgencia=new ReporteUrgencia("Juan","Apellido","1094909543","45454","B/alal 343",2,tipourgencia);
+		reporteurgencia.setIdreporteurgencia("2");
+		controladorreportarurgencia.crearReporteUrgencia(reporteurgencia);*/
+		
+		OperadorPersonal operadorpersonal=new OperadorPersonal("1", "123121", funcionario);
+		controladoroperador.crearOperardorPersona(operadorpersonal);
+		
+		
+		/*Urgencia urgencia=new Urgencia("1",new Date(),"Activo",operadorpersonal,reporteurgencia);
+		controladorurgencia.crearUrgencia(urgencia);*/
+		
 
 		controladortipodocumento = new controladorTipodocumento();
 		controladorpersona = new controladorPersona();

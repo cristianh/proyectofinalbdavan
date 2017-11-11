@@ -1,7 +1,7 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class OperadorPersonal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idpersonal;
+	private String idpersonal;
 	
 	@Column(name="codigo", length=50)
 	private String codigo;
@@ -23,7 +23,10 @@ public class OperadorPersonal implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="opFuncionario", nullable=false)
 	private Funcionario funcionario;
+	
 
+	@OneToMany(mappedBy = "operadorpersonal", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Urgencia> reporteurgencia;
 	/**
 	 * 
 	 */
@@ -38,7 +41,7 @@ public class OperadorPersonal implements Serializable {
 	 * @param codigo
 	 * @param funcionario
 	 */
-	public OperadorPersonal(Integer idpersonal, String codigo, Funcionario funcionario) {
+	public OperadorPersonal(String idpersonal, String codigo, Funcionario funcionario) {
 		super();
 		this.idpersonal = idpersonal;
 		this.codigo = codigo;
@@ -47,11 +50,11 @@ public class OperadorPersonal implements Serializable {
 
 
 
-	public Integer getIdpersonal() {
+	public String getIdpersonal() {
 		return idpersonal;
 	}
 
-	public void setIdpersonal(Integer idpersonal) {
+	public void setIdpersonal(String idpersonal) {
 		this.idpersonal = idpersonal;
 	}
 
@@ -85,6 +88,7 @@ public class OperadorPersonal implements Serializable {
 		return result;
 	}
 
+	
 
 
 	@Override
@@ -112,10 +116,6 @@ public class OperadorPersonal implements Serializable {
 				+ "]";
 	}
 
-	
-	
-	
-	
 	
 	
 }

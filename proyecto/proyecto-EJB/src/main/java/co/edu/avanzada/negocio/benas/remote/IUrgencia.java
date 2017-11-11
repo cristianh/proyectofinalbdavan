@@ -8,13 +8,13 @@ public interface IUrgencia {
 	
 	public void crearUrgencia(Urgencia urgencia); 
 
-	public Urgencia buscarUrgencia(Integer idUrgencia);
+	public Urgencia buscarUrgencia(String codigoreporteurgencia);
 	
 	public void editarUrgencia (Urgencia urgencia);
 
-	public void eliminarUrgencia(Integer idUrgencia);
+	public void eliminarUrgencia(String codigoreporteurgencia);
 	
-	public List<Urgencia> ListarUrgencias();
+	public List<Urgencia> listarUrgencia();
 	
 	public List<Urgencia> BuscarListaUrgencias(Integer idUrgencia);
 }

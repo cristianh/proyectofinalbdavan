@@ -16,7 +16,7 @@ public class Funcionario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idfuncionario;
+	private String idfuncionario;
 	
 	@Column(name="codigofuncionario",nullable=false)
 	private String codigofuncionario;
@@ -34,6 +34,12 @@ public class Funcionario implements Serializable {
 	@JoinColumn(name="tipofuncionario",nullable=false)
 	private TipoFuncionario tipofuncionario;
 	
+	@OneToMany(mappedBy="funcionario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<OperadorPersonal> operadorpersonal;
+	
+	@OneToOne
+	@JoinColumn(name="persona",insertable=true,updatable=true,nullable=false)
+	private Persona persona;
 	
 	@OneToMany(mappedBy="idauxiliar",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<PersonalAmbulancia> personalauxiliar;
@@ -44,11 +50,56 @@ public class Funcionario implements Serializable {
 	@OneToMany(mappedBy="idmedico",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<PersonalAmbulancia> personalmedico;
 
-	public Integer getIdfuncionario() {
+	/**
+	 * @param idfuncionario
+	 * @param codigofuncionario
+	 * @param salariofuncionado
+	 * @param fechaingreso
+	 * @param estadofuncionario
+	 * @param tipofuncionario
+	 * @param persona
+	 */
+	public Funcionario(String idfuncionario, String codigofuncionario, Double salariofuncionado, Date fechaingreso,
+			char estadofuncionario, TipoFuncionario tipofuncionario, Persona persona) {
+		super();
+		this.idfuncionario = idfuncionario;
+		this.codigofuncionario = codigofuncionario;
+		this.salariofuncionado = salariofuncionado;
+		this.fechaingreso = fechaingreso;
+		this.estadofuncionario = estadofuncionario;
+		this.tipofuncionario = tipofuncionario;
+		this.persona = persona;
+	}
+	
+	
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+	public Funcionario() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String getIdfuncionario() {
 		return idfuncionario;
 	}
 
-	public void setIdfuncionario(Integer idfuncionario) {
+	public void setIdfuncionario(String idfuncionario) {
 		this.idfuncionario = idfuncionario;
 	}
 
