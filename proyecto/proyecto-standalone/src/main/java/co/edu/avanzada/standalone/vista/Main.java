@@ -4,10 +4,27 @@ import java.util.Date;
 
 import javax.naming.NamingException;
 
+<<<<<<< HEAD
 import co.edu.avanzada.standalone.controlador.*;
+=======
+import co.edu.avanzada.standalone.controlador.controladorAmbulancia;
+import co.edu.avanzada.standalone.controlador.controladorCiudad;
+import co.edu.avanzada.standalone.controlador.controladorDepartamento;
+import co.edu.avanzada.standalone.controlador.controladorDisponibilidadAmbu;
+import co.edu.avanzada.standalone.controlador.controladorEps;
+import co.edu.avanzada.standalone.controlador.controladorEspecialidad;
+import co.edu.avanzada.standalone.controlador.controladorEstadocivil;
+import co.edu.avanzada.standalone.controlador.controladorGenero;
+import co.edu.avanzada.standalone.controlador.controladorPersona;
+import co.edu.avanzada.standalone.controlador.controladorTipoAmbulancia;
+import co.edu.avanzada.standalone.controlador.controladorTipoEvento;
+import co.edu.avanzada.standalone.controlador.controladorTipodocumento;
+import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
+>>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 import co.edu.eam.ingesoft.persistencia.entidades.ReporteUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Departamento;
+import co.edu.eam.ingesoft.persistencia.entidades.Disponibilidad;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
 import co.edu.eam.ingesoft.persistencia.entidades.Especialidad;
 import co.edu.eam.ingesoft.persistencia.entidades.Estadocivil;
@@ -15,7 +32,11 @@ import co.edu.eam.ingesoft.persistencia.entidades.Funcionario;
 import co.edu.eam.ingesoft.persistencia.entidades.Genero;
 import co.edu.eam.ingesoft.persistencia.entidades.OperadorPersonal;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
+<<<<<<< HEAD
 import co.edu.eam.ingesoft.persistencia.entidades.Urgencia;
+=======
+import co.edu.eam.ingesoft.persistencia.entidades.TipoAmbulancia;
+>>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 import co.edu.eam.ingesoft.persistencia.entidades.TipoEvento;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoFuncionario;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoUrgencia;
@@ -34,6 +55,7 @@ public class Main {
 	private static controladorTipodocumento controladortipodocumento;
 	private static controladorTipoEvento controladortipoevento;
 	private static controladorEspecialidad controladorespecialidad;
+<<<<<<< HEAD
 	private static controladorFuncionario controladorfuncionario;
 	private static controladorTipofuncionario controladortipofuncionario;
 	private static controladorOperador controladoroperador;
@@ -61,13 +83,32 @@ public class Main {
 		
 		
 		
+=======
+
+	//DARKLAST
+	
+	private static controladorAmbulancia controladorambulancia;
+	private static controladorDisponibilidadAmbu controladorDispoAmbu;
+	private static controladorTipoAmbulancia controladorTipoAmbu;
+	 
+
+	public static void main(String[] args) throws NamingException {
+		// TODO Auto-generated method stub
+
+		/*
+		TipoAmbulancia ambul = new TipoAmbulancia("1", "basica");
+				controladorTipoAmbu.crearTipoAmbulancia(ambul);
+		
+		Disponibilidad dispo = new Disponibilidad("1", "disponible");
+		controladorDispoAmbu.crearDisponibilidad(dispo);
+>>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 		
 		// Urgencias
 
 		TipoEvento tipoenvento = new TipoEvento(1, "Accidente de transito");
 		controladortipoevento.creaTipoEvento(tipoenvento);
-
-		Especialidad especialidad = new Especialidad("1", "Urología", "Activo");
+		
+	    Especialidad especialidad = new Especialidad("1", "Urología", "Activo");
 		controladorespecialidad.crearEspecialidad(especialidad);
 
 		// Departamento
@@ -81,7 +122,7 @@ public class Main {
 		ciudadpersona1.setNombreciudad("Armenia");
 		ciudadpersona1.setDepartamento(departemento);
 
-		/* Genero */
+		 Genero 
 		Genero genero1 = new Genero();
 		genero1.setIdgenero("1");
 		genero1.setSexo("M");
@@ -148,6 +189,51 @@ public class Main {
 		controladorurgencia.crearUrgencia(urgencia);*/
 		
 
+		controladortipodocumento = new controladorTipodocumento();
+		controladorpersona = new controladorPersona();
+		controladorgenero = new controladorGenero();
+		controladoresp = new controladorEps();
+		controladorestadovicil = new controladorEstadocivil();
+		controladorciudad = new controladorCiudad();
+		controladordepartemento = new controladorDepartamento();
+		controladortipoevento = new controladorTipoEvento();
+		controladorespecialidad = new controladorEspecialidad();*/
+		
+		//DARKLAT
+		
+		controladorambulancia =  new  controladorAmbulancia();
+		controladorDispoAmbu = new controladorDisponibilidadAmbu();
+		controladorTipoAmbu = new controladorTipoAmbulancia();
+		
+		
+	
+		
+			//Disponibilidad
+			Disponibilidad dispoAmbu = new Disponibilidad();
+			dispoAmbu.setIdDisponibilidad("4");
+			dispoAmbu.setNombre("Ocupada "); 
+			
+		
+			//TipoAmbulancia
+			TipoAmbulancia tipoAmbu = new TipoAmbulancia();
+			tipoAmbu.setIdTipoAmbulancia("7");
+			tipoAmbu.setNonmbreTipoAmbulancia("medicalizada");
+		
+			
+		
+			// Ambulancia
+			Ambulancia amb = new Ambulancia();
+			amb.setIdambulancia("5");
+			amb.setCodigoambulancia("cod2");
+			amb.setMarcaambulancia("mazda");
+			amb.setPlacaambulancia("NFR71D");
+			amb.setDisponibilidadAmbu(dispoAmbu);
+			amb.setTipoAmbulancia(tipoAmbu);
+	
+			controladorTipoAmbu.crearTipoAmbulancia(tipoAmbu);
+			controladorDispoAmbu.crearDisponibilidad(dispoAmbu);
+			controladorambulancia.crearAmbulancia(amb);
+			
 	}
 
 }

@@ -16,12 +16,8 @@ import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
 @LocalBean
 @Stateless
 @Remote(IAmbulancia.class)
-public class AmbulanciaEJB implements Serializable {
+public class AmbulanciaEJB implements IAmbulancia {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext
 	EntityManager entity;
@@ -36,9 +32,8 @@ public class AmbulanciaEJB implements Serializable {
 			entity.persist(ambulancia);
 			System.out.println("Ambulancia registrada");
 		}else {
-			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");
+			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");	
 		}
-		
 	}
 	
 	/**
@@ -46,7 +41,7 @@ public class AmbulanciaEJB implements Serializable {
 	 * @param idAmbulancia
 	 * @return
 	 */
-	public Ambulancia buscarAmbulancia(Integer idAmbulancia){
+	public Ambulancia buscarAmbulancia(String idAmbulancia){
 		return entity.find(Ambulancia.class, idAmbulancia);
 	}
 
@@ -58,7 +53,7 @@ public class AmbulanciaEJB implements Serializable {
 		entity.merge(ambulancia);
 	}
 	
-	public void eliminarAmbulancia(Integer idAmbulancia){
+	public void eliminarAmbulancia(String idAmbulancia){
 		Ambulancia busquedaAmbulancia = buscarAmbulancia(idAmbulancia);
 		if(busquedaAmbulancia != null){
 			entity.remove(idAmbulancia);
@@ -72,12 +67,16 @@ public class AmbulanciaEJB implements Serializable {
 		List<Ambulancia> resultado = null;
 		
 		try{
-			resultado = entity.createQuery("Ambulancia.listarAmbulancia").getResultList();
+			resultado = entity.createQuery("Ambulancia.listarambulancia").getResultList();
 			System.out.println(resultado);
 		} catch (Exception ex){
 			System.out.println(ex.getMessage().toString());
 		}
 		return resultado;
+	}
+
+	public List<Ambulancia> BuscarListaAmbulancia(String idambulancia) {
+		return null;
 	}
 	
 }

@@ -1,15 +1,21 @@
 package co.edu.avanzada.negocio.benas.remote;
 
+import java.util.List;
+
 import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
 
 public interface IAmbulancia {
 
-	public Ambulancia crearAmbulancia(Ambulancia ambulancia);
+	public void crearAmbulancia(Ambulancia ambulancia);
 	
-	public void buscarAmbulancia(Integer idAmbulancia);
+	public Ambulancia buscarAmbulancia(String idambulancia);
 	
 	public void editarAmbulancia(Ambulancia ambulancia);
 	
-	public void eliminarAmbulancia(Integer idAmbulancia);
+	public void eliminarAmbulancia(String idambulancia);
+	
+	public List<Ambulancia> listarAmbulancia();
+
+	public List<Ambulancia> BuscarListaAmbulancia(String idambulancia);
 	
 }

@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+
+		<h:form id="formlistarambulancia">
+			<style type="text/css">
+			.myTable {
+				text-align: center;
+				}
+			</style>
+			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
+				<p:dataTable var="ambulancia" styleClass="myTable"
+					value="#{controladorAmbulancia.listarAmbulancia}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+					
+					
+					<p:column headerText="Id ambulancia">
+						<h:outputText value="#{ambulancia.idambulancia}" />
+					</p:column>
+
+					<p:column headerText="codigo ">
+						<h:outputText value="#{ambulancia.codigoambulancia}" />
+					</p:column>
+					
+					<p:column headerText="marca">
+						<h:outputText value="#{ambulancia.marcaambulancia}" />
+					</p:column>
+					
+					<p:column headerText="estado ">
+						<h:outputText value="#{ambulancia.disponibilidadAmbu.nombre}" />
+					</p:column>
+
+				<p:column headerText="tipo ">
+						<h:outputText value="#{ambulancia.tipoAmbulancia.nonmbreTipoAmbulancia}" />
+					</p:column>
+				
+				</p:dataTable>
+			</h:panelGrid>
+		
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
