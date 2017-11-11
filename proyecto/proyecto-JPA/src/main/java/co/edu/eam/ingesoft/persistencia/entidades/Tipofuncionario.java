@@ -26,6 +26,26 @@ public class TipoFuncionario implements Serializable {
 	@OneToMany(mappedBy="tipofuncionario")
 	private List<Funcionario> funcionario;
 
+	public TipoFuncionario() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	/**
+	 * @param idfuncionario
+	 * @param cargo
+	 * @param nombre
+	 */
+	public TipoFuncionario(Integer idfuncionario, String cargo, String nombre) {
+		super();
+		this.idfuncionario = idfuncionario;
+		this.cargo = cargo;
+		this.nombre = nombre;
+	}
+
+
+
 	public Integer getIdfuncionario() {
 		return idfuncionario;
 	}

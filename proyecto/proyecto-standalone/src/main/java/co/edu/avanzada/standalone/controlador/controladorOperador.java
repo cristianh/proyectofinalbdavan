@@ -14,14 +14,14 @@ public class controladorOperador {
 	
 	public controladorOperador() throws NamingException {
 		// TODO Auto-generated constructor stub
-		ioperadorPersona = (IOperadorPersonal) ServiceLocator.buscarEJB("OperardorPersonalEJB", IOperadorPersonal.class.getCanonicalName());
+		ioperadorPersona = (IOperadorPersonal) ServiceLocator.buscarEJB("OperadorPersonalEJB", IOperadorPersonal.class.getCanonicalName());
 	}
 
 	public void crearOperardorPersona(OperadorPersonal operardorPersonal) {
 		ioperadorPersona.crearOperadorPersonal(operardorPersonal);
 	}
 	
-	public OperadorPersonal buscarOperardorPersona(Integer idOperadorPersonal) {
+	public OperadorPersonal buscarOperardorPersona(String idOperadorPersonal) {
 		return ioperadorPersona.buscarOperadorPersonal(idOperadorPersonal);
 	}
 	

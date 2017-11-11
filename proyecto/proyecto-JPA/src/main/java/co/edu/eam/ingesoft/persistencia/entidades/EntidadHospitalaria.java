@@ -28,6 +28,10 @@ public class EntidadHospitalaria implements Serializable {
 	private List<UrgenciaAmbulancia> urgenciaambulancia;
 	
 	
+	@ManyToOne
+	@JoinColumn(name="especialidad")
+	private Especialidad especialidad;
+	
 	
 	public EntidadHospitalaria() {
 		// TODO Auto-generated constructor stub

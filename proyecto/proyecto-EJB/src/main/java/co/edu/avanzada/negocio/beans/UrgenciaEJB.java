@@ -15,64 +15,60 @@ import co.edu.eam.ingesoft.persistencia.entidades.Urgencia;
 @LocalBean
 @Stateless
 @Remote(IUrgencia.class)
+public class UrgenciaEJB implements IUrgencia{
 
-public class UrgenciaEJB {
-
+	
 	@PersistenceContext
-	EntityManager entity;
+	private EntityManager em;
 	
-
-public void crearUrgencia(Urgencia urgencia){
-		Urgencia busquedaUrgencia = buscarUrgencia(urgencia.getIdurgencia());
-		if(busquedaUrgencia == null){
-			entity.persist(urgencia);
-			System.out.println("Urgencia registrada");
-		}else {
-			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");
+	public void crearUrgencia(Urgencia urgencia) {
+		// TODO Auto-generated method stub
+		Urgencia buscurgencia = buscarUrgencia(urgencia.getIdurgencia());
+		// no existe, se puede crear...
+		if (buscurgencia == null) {
+			em.persist(urgencia);
+		} else {
+			throw new ExcepcionNegocio("Ya existe esta urgencia");
 		}
-		
-	}
-	
-	/**
-	 * 
-	 * @param idUrgencia
-	 * @return
-	 */
-	public Urgencia buscarUrgencia(Integer idUrgencia){
-		return entity.find(Urgencia.class, idUrgencia);
 	}
 
-	/**
-	 * 
-	 * @param urgencia
-	 */
-	public void editarUrgencia(Urgencia urgencia){
-		entity.merge(urgencia);
+	public Urgencia buscarUrgencia(String codigoreporteurgencia) {
+		// TODO Auto-generated method stub
+		return em.find(Urgencia.class, codigoreporteurgencia);
 	}
-	
-	public void eliminarUrgencia(Integer idUrgencia){
-		Urgencia busquedaUrgencia = buscarUrgencia(idUrgencia);
-		if(busquedaUrgencia != null){
-			entity.remove(idUrgencia);
-		}else{
+
+	public void editarUrgencia(Urgencia urgencia) {
+		// TODO Auto-generated method stub
+		em.merge(urgencia);
+
+	}
+
+	public void eliminarUrgencia(String codigoreporteurgencia) {
+		// TODO Auto-generated method stub
+		Urgencia busqUrgencia = buscarUrgencia(codigoreporteurgencia);
+		if (busqUrgencia != null) {
+			em.remove(codigoreporteurgencia);
+		} else {
 			throw new ExcepcionNegocio("Error al borrar la urgencia");
 		}
 	}
-	
-	
-	public List<Urgencia> listarUrgencia(){
-		List<Urgencia> resultado = null;
-		
-		try{
-			resultado = entity.createQuery("Urgencia.listarUrgencia").getResultList();
-			System.out.println(resultado);
-		} catch (Exception ex){
-			System.out.println(ex.getMessage().toString());
+
+	public List<Urgencia> listarUrgencia() {
+		// TODO Auto-generated method stub
+		List<Urgencia> resultadoTransaccion = null;
+		try {
+			resultadoTransaccion = em.createNamedQuery("ReporteUrgencia.listarreportesurgencia").getResultList();
+			System.out.println(resultadoTransaccion);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage().toString());
 		}
-		return resultado;
+		return resultadoTransaccion;
 	}
 
-	public List<Urgencia> BuscarListaUrgencias(Integer idUrgencia){
+	public List<Urgencia> BuscarListaUrgencias(Integer idUrgencia) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

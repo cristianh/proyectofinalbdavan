@@ -8,11 +8,11 @@ public interface IOperadorPersonal {
 
 	public void crearOperadorPersonal(OperadorPersonal operadorPersonal);
 	
-	public OperadorPersonal buscarOperadorPersonal(Integer idoperadorPersonal);
+	public OperadorPersonal buscarOperadorPersonal(String idoperadorPersonal);
 
 	public void editarOperadorPersonal(OperadorPersonal operadorPersonal);
 
-	public void eliminar(Integer idoperadorPersonal);
+	public void eliminar(String idoperadorPersonal);
 
 	public List<OperadorPersonal> ListarOperadorPersonals();
 

@@ -1,6 +1,7 @@
 package co.edu.avanzada.negocio.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Remote;
@@ -15,8 +16,7 @@ import co.edu.eam.ingesoft.persistencia.entidades.Funcionario;
 @LocalBean
 @Stateless
 @Remote(IFuncionario.class)
-
-public class FuncionarioEJB implements Serializable {
+public class FuncionarioEJB implements IFuncionario {
 
 	/**
 	 * 
@@ -26,31 +26,43 @@ public class FuncionarioEJB implements Serializable {
 	@PersistenceContext
 	EntityManager entity;
 
-	public void crearFuncionario(Funcionario funcionario) {
-		Funcionario busquedaFuncionario = buscarFuncionario(funcionario.getIdfuncionario());
-		if (busquedaFuncionario != null) {
-			entity.persist(funcionario);
-			System.out.println("funcionario registrado con exito");
-		}
-
-	}
-
-	public Funcionario buscarFuncionario(Integer idFuncionario) {
-		return entity.find(Funcionario.class, idFuncionario);
-	}
-
 	public void editarFuncionario(Funcionario funcionario) {
 		entity.merge(funcionario);
 	}
-	
-	public void eliminarFuncionario(Integer idFuncionario){
+
+	public void eliminarFuncionario(String idFuncionario) {
 		Funcionario busqFuncionario = buscarFuncionario(idFuncionario);
-	
-		if(busqFuncionario != null){
+
+		if (busqFuncionario != null) {
 			entity.remove(idFuncionario);
 			System.out.println("Funcionario eliminado con exito");
-		}else{
+		} else {
 			throw new ExcepcionNegocio("Error al borrar el funcionario");
 		}
 	}
+
+	public void crearFuncionario(Funcionario funcionario) {
+		// TODO Auto-generated method stub
+		Funcionario busquedaFuncionario = buscarFuncionario(String.valueOf(funcionario.getIdfuncionario()));
+		if (busquedaFuncionario == null) {
+			entity.persist(funcionario);
+		}
+		else
+		{
+			throw new ExcepcionNegocio("Ya existe este Cliente");
+		}
+		
+	}
+
+	public Funcionario buscarFuncionario(String idFuncionario) {
+		// TODO Auto-generated method stub
+		return entity.find(Funcionario.class, idFuncionario);
+	}
+
+
+	public List<Funcionario> listarFuncionario(String codigofuncionario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

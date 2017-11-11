@@ -4,30 +4,30 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import co.edu.avanzada.negocio.benas.remote.ITipoEvento;
+import co.edu.avanzada.negocio.benas.remote.ITipoUrgencia;
 import co.edu.avanzada.standalone.util.ServiceLocator;
-import co.edu.eam.ingesoft.persistencia.entidades.TipoEvento;
+import co.edu.eam.ingesoft.persistencia.entidades.TipoUrgencia;
 
 
 public class controladorTipoUrgencia {
 	
-	private ITipoEvento itipoevento;
+	private ITipoUrgencia itipourgencia;
 	
 	public controladorTipoUrgencia() throws NamingException {
 		// TODO Auto-generated constructor stub
-		itipoevento = (ITipoEvento) ServiceLocator.buscarEJB("TipoEventoEJB", ITipoEvento.class.getCanonicalName());
+		itipourgencia = (ITipoUrgencia) ServiceLocator.buscarEJB("TipoUrgenciaEJB", ITipoUrgencia.class.getCanonicalName());
 	}
 	
-	public void creaTipourgencia(TipoEvento tipoEvento) {
-		itipoevento.crearTipoEvento(tipoEvento);
+	public void creaTipourgencia(TipoUrgencia tipourgencia) {
+		itipourgencia.crearTipoUrgencia(tipourgencia);
 	}
 	
-	public TipoEvento buscarUrgenciaEvento (Integer idtipoevento) {
-		return itipoevento.buscarTipoEvento(idtipoevento);
+	public TipoUrgencia buscartipourgencia (String idtipourgencia) {
+		return itipourgencia.buscarTipoUrgencia(idtipourgencia);
 	}
 	
-	public List<TipoEvento> listarUrgenciaEvento (){
-		return itipoevento.listarTipoEvento();
+	public List<TipoUrgencia> listartipourgencia(){
+		return itipourgencia.listarTipoUrgencia();
 	}
 	
 }

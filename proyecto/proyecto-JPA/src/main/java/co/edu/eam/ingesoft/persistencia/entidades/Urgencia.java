@@ -1,70 +1,132 @@
 package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="t_urgencia")
+@NamedQueries({ @NamedQuery(name = "ReporteUrgencia.listarreportesurgencia", query = "SELECT u FROM Urgencia u"),
+	@NamedQuery(name = "ReporteUrgencia.buscarlistarreportesurgencia", query = "SELECT u FROM Urgencia u where u.idurgencia=:id") })
 public class Urgencia implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idurgencia;
+	private String idurgencia;
 	
-	@Column(name="descripcion",length=100)
-	private String descripcionUrgencia;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
 	
-	@Column(name="nombre",length=50)
-	private String nombreurgencia;
+	@Column(name="estado")
+	private String estado;
 	
-	@OneToMany(mappedBy="idurgencia",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<UrgenciaEvento> urgenciaevento;
-
-	@OneToMany(mappedBy="urgenciaevento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<TipoUrgencia> tipourgencia;
-
+	@ManyToOne
+	@JoinColumn(name="operadorfuncionario",nullable=false)
+	private OperadorPersonal operadorpersonal;
+	
+	@ManyToOne
+	@JoinColumn(name="reporteurgencia",nullable=false)
+	private ReporteUrgencia reporteurgencia;
+	
+	
+	
 	public Urgencia() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Urgencia(Integer idurgencia, String descripcionUrgencia, String nombreurgencia) {
+
+
+
+	/**
+	 * @param idreporteurgencia
+	 * @param fecha
+	 * @param estado
+	 * @param operadorpersonal
+	 * @param reporteurgencia
+	 */
+	public Urgencia(String idurgencia, Date fecha, String estado, OperadorPersonal operadorpersonal,
+			ReporteUrgencia reporteurgencia) {
 		super();
 		this.idurgencia = idurgencia;
-		this.descripcionUrgencia = descripcionUrgencia;
-		this.nombreurgencia = nombreurgencia;
+		this.fecha = fecha;
+		this.estado = estado;
+		this.operadorpersonal = operadorpersonal;
+		this.reporteurgencia = reporteurgencia;
 	}
 
-	public Integer getIdurgencia() {
+
+
+
+
+	public String getIdurgencia() {
 		return idurgencia;
 	}
 
-	public void setIdurgencia(Integer idurgencia) {
+
+
+	public void setIdurgencia(String idurgencia) {
 		this.idurgencia = idurgencia;
 	}
 
-	public String getDescripcionUrgencia() {
-		return descripcionUrgencia;
+
+
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setDescripcionUrgencia(String descripcionUrgencia) {
-		this.descripcionUrgencia = descripcionUrgencia;
+
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
-	public String getNombreurgencia() {
-		return nombreurgencia;
+
+
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setNombreurgencia(String nombreurgencia) {
-		this.nombreurgencia = nombreurgencia;
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
+
+
+
+	public OperadorPersonal getOperadorpersonal() {
+		return operadorpersonal;
+	}
+
+
+
+	public void setOperadorpersonal(OperadorPersonal operadorpersonal) {
+		this.operadorpersonal = operadorpersonal;
+	}
+
+
+
+	public ReporteUrgencia getReporteurgencia() {
+		return reporteurgencia;
+	}
+
+
+
+	public void setReporteurgencia(ReporteUrgencia reporteurgencia) {
+		this.reporteurgencia = reporteurgencia;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -73,6 +135,8 @@ public class Urgencia implements Serializable {
 		result = prime * result + ((idurgencia == null) ? 0 : idurgencia.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -91,12 +155,16 @@ public class Urgencia implements Serializable {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Urgencia [idurgencia=" + idurgencia + ", descripcionUrgencia=" + descripcionUrgencia
-				+ ", nombreurgencia=" + nombreurgencia + "]";
+		return "Urgencia [idurgencia=" + idurgencia + ", fecha=" + fecha + ", estado=" + estado + ", operadorpersonal="
+				+ operadorpersonal + ", reporteurgencia=" + reporteurgencia + "]";
 	}
-	
+
+
+
 	
 	
 	
