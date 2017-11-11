@@ -7,6 +7,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 
+
 import co.edu.avanzada.negocio.beans.TipoAmbulanciaEJB;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoAmbulancia;
 

@@ -8,6 +8,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import co.edu.avanzada.negocio.benas.remote.IAmbulancia;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
@@ -63,20 +64,23 @@ public class AmbulanciaEJB implements IAmbulancia {
 	}
 	
 	
-	public List<Ambulancia> listarAmbulancia(){
-		List<Ambulancia> resultado = null;
+	public List<Ambulancia>  BuscarListaAmbulancia(String placa) {
+		List<Ambulancia> ambulancia = null;
 		
 		try{
-			resultado = entity.createQuery("Ambulancia.listarambulancia").getResultList();
-			System.out.println(resultado);
+			Query resultado = entity.createQuery("SELECT ambu FROM Ambulancia ambu where placaambulancia=:estado");
+			resultado.setParameter("estado", placa);
+			ambulancia = resultado.getResultList();
+			return ambulancia;
 		} catch (Exception ex){
-			System.out.println(ex.getMessage().toString());
+			throw new ExcepcionNegocio("No se encuentra una ambulancia con estos parametros de busqueda");
 		}
-		return resultado;
+		
 	}
 
-	public List<Ambulancia> BuscarListaAmbulancia(String idambulancia) {
-		return null;
+	public List<Ambulancia> listarAmbulancia(){
+		List<Ambulancia> result = entity.createQuery("SELECT ambu FROM Ambulancia ambu").getResultList();
+		return result;
 	}
 	
 }

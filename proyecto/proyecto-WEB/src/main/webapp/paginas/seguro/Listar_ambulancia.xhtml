@@ -11,19 +11,26 @@
 
 	<ui:define name="cuerpo">
 
-		<h:form id="formlistarambulancia">
-			<style type="text/css">
-			.myTable {
-				text-align: center;
-				}
-			</style>
+	<h:form id="formlsitarAmbulancia">
+	
+		<p:fieldset>
+					<h:panelGrid columns="3" id="panelbuscar" style="margin: 0 auto;">
+						<p:outputLabel for="lblbuscar" id="lblbuscar" value="#{msj['ambulancia.placa']}" />
+						<p:inputText id="tfbuscar"
+							value="#{controladorAmbulancia.placa}">
+						</p:inputText>
+						<p:commandButton id="btnBuscar" action="#{controladorAmbulancia.buscar}"
+							value="BUSCAR" update="formlsitarAmbulancia tabla">
+						</p:commandButton>
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator/>
+				<p:fieldset>
 			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
-				<p:dataTable var="ambulancia" styleClass="myTable"
-					value="#{controladorAmbulancia.listarAmbulancia}" rows="10"
-					paginator="true"
+				<p:dataTable var="ambulancia" value="#{controladorAmbulancia.listarAmbulancia}"
+					rows="10" paginator="true"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
-					
 					
 					<p:column headerText="Id ambulancia">
 						<h:outputText value="#{ambulancia.idambulancia}" />
@@ -31,6 +38,10 @@
 
 					<p:column headerText="codigo ">
 						<h:outputText value="#{ambulancia.codigoambulancia}" />
+					</p:column>
+					
+					<p:column headerText="placa ">
+						<h:outputText value="#{ambulancia.placaambulancia}" />
 					</p:column>
 					
 					<p:column headerText="marca">
@@ -47,7 +58,7 @@
 				
 				</p:dataTable>
 			</h:panelGrid>
-		
+		</p:fieldset>
 		</h:form>
 
 	</ui:define>

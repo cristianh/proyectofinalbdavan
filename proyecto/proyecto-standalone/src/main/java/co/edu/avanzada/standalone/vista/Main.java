@@ -4,9 +4,7 @@ import java.util.Date;
 
 import javax.naming.NamingException;
 
-<<<<<<< HEAD
-import co.edu.avanzada.standalone.controlador.*;
-=======
+
 import co.edu.avanzada.standalone.controlador.controladorAmbulancia;
 import co.edu.avanzada.standalone.controlador.controladorCiudad;
 import co.edu.avanzada.standalone.controlador.controladorDepartamento;
@@ -14,13 +12,19 @@ import co.edu.avanzada.standalone.controlador.controladorDisponibilidadAmbu;
 import co.edu.avanzada.standalone.controlador.controladorEps;
 import co.edu.avanzada.standalone.controlador.controladorEspecialidad;
 import co.edu.avanzada.standalone.controlador.controladorEstadocivil;
+import co.edu.avanzada.standalone.controlador.controladorFuncionario;
 import co.edu.avanzada.standalone.controlador.controladorGenero;
+import co.edu.avanzada.standalone.controlador.controladorOperador;
 import co.edu.avanzada.standalone.controlador.controladorPersona;
+import co.edu.avanzada.standalone.controlador.controladorReporteUrgencia;
 import co.edu.avanzada.standalone.controlador.controladorTipoAmbulancia;
 import co.edu.avanzada.standalone.controlador.controladorTipoEvento;
+import co.edu.avanzada.standalone.controlador.controladorTipoUrgencia;
 import co.edu.avanzada.standalone.controlador.controladorTipodocumento;
+import co.edu.avanzada.standalone.controlador.controladorTipofuncionario;
+import co.edu.avanzada.standalone.controlador.controladorUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
->>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
+
 import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 import co.edu.eam.ingesoft.persistencia.entidades.ReporteUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Departamento;
@@ -32,11 +36,11 @@ import co.edu.eam.ingesoft.persistencia.entidades.Funcionario;
 import co.edu.eam.ingesoft.persistencia.entidades.Genero;
 import co.edu.eam.ingesoft.persistencia.entidades.OperadorPersonal;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
-<<<<<<< HEAD
+
 import co.edu.eam.ingesoft.persistencia.entidades.Urgencia;
-=======
+
 import co.edu.eam.ingesoft.persistencia.entidades.TipoAmbulancia;
->>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
+
 import co.edu.eam.ingesoft.persistencia.entidades.TipoEvento;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoFuncionario;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoUrgencia;
@@ -55,15 +59,23 @@ public class Main {
 	private static controladorTipodocumento controladortipodocumento;
 	private static controladorTipoEvento controladortipoevento;
 	private static controladorEspecialidad controladorespecialidad;
-<<<<<<< HEAD
 	private static controladorFuncionario controladorfuncionario;
 	private static controladorTipofuncionario controladortipofuncionario;
 	private static controladorOperador controladoroperador;
 	private static controladorTipoUrgencia controladortipourgencia;
 	private static controladorUrgencia controladorurgencia;
 	private static controladorReporteUrgencia controladorreportarurgencia;
+
+	
+	private static controladorAmbulancia controladorambulancia;
+	private static controladorDisponibilidadAmbu controladorDispoAmbu;
+	private static controladorTipoAmbulancia controladorTipoAmbu;
+	
 	
 	public static void main(String[] args) throws NamingException {
+		// TODO Auto-generated method stub
+		
+	
 		// TODO Auto-generated method stub
 		controladortipodocumento = new controladorTipodocumento();
 		controladorpersona = new controladorPersona();
@@ -81,18 +93,9 @@ public class Main {
 		controladorreportarurgencia=new  controladorReporteUrgencia();
 		controladoroperador=new controladorOperador();
 		
-		
-		
-=======
 
 	//DARKLAST
-	
-	private static controladorAmbulancia controladorambulancia;
-	private static controladorDisponibilidadAmbu controladorDispoAmbu;
-	private static controladorTipoAmbulancia controladorTipoAmbu;
-	 
 
-	public static void main(String[] args) throws NamingException {
 		// TODO Auto-generated method stub
 
 		/*
@@ -181,8 +184,9 @@ public class Main {
 		reporteurgencia.setIdreporteurgencia("2");
 		controladorreportarurgencia.crearReporteUrgencia(reporteurgencia);*/
 		
+		/*
 		OperadorPersonal operadorpersonal=new OperadorPersonal("1", "123121", funcionario);
-		controladoroperador.crearOperardorPersona(operadorpersonal);
+		controladoroperador.crearOperardorPersona(operadorpersonal);*/
 		
 		
 		/*Urgencia urgencia=new Urgencia("1",new Date(),"Activo",operadorpersonal,reporteurgencia);
@@ -197,7 +201,7 @@ public class Main {
 		controladorciudad = new controladorCiudad();
 		controladordepartemento = new controladorDepartamento();
 		controladortipoevento = new controladorTipoEvento();
-		controladorespecialidad = new controladorEspecialidad();*/
+		controladorespecialidad = new controladorEspecialidad();
 		
 		//DARKLAT
 		
@@ -222,17 +226,17 @@ public class Main {
 			
 		
 			// Ambulancia
-			Ambulancia amb = new Ambulancia();
-			amb.setIdambulancia("5");
-			amb.setCodigoambulancia("cod2");
-			amb.setMarcaambulancia("mazda");
-			amb.setPlacaambulancia("NFR71D");
-			amb.setDisponibilidadAmbu(dispoAmbu);
-			amb.setTipoAmbulancia(tipoAmbu);
+			//Ambulancia amb = new Ambulancia();
+			//amb.setIdambulancia("5");
+			//amb.setCodigoambulancia("cod2");
+			//amb.setMarcaambulancia("mazda");
+			//amb.setPlacaambulancia("NFR71D");
+			//	amb.setDisponibilidadAmbu(dispoAmbu);
+			//	amb.setTipoAmbulancia(tipoAmbu);
 	
 			controladorTipoAmbu.crearTipoAmbulancia(tipoAmbu);
 			controladorDispoAmbu.crearDisponibilidad(dispoAmbu);
-			controladorambulancia.crearAmbulancia(amb);
+		//	controladorambulancia.crearAmbulancia(amb);
 			
 	}
 
