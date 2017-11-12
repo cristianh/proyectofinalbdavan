@@ -8,7 +8,6 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 
 import co.edu.avanzada.negocio.beans.GeneroEJB;
-import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 import co.edu.eam.ingesoft.persistencia.entidades.Genero;
 
 @Named

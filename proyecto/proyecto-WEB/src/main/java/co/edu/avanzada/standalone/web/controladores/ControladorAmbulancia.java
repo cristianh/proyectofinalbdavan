@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.validation.constraints.Pattern;
@@ -66,6 +66,7 @@ public class ControladorAmbulancia implements Serializable {
 	public void initializar() {
 		listarDisponibilidad = disponibilidadEjb.ListarDisponibilidad();
 		listarTipoAmbulancia = tipoAmbulanciaEjb.ListarTipoAmbulancia();
+		listarAmbulancia = ambulanciaEjb.listarAmbulancia();
 		
 	}
 
@@ -205,7 +206,44 @@ public class ControladorAmbulancia implements Serializable {
 		}
 	}
 
+public void buscar(){
+System.out.println(getPlaca());
+	try {
+		if(getPlaca().isEmpty()){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Error!" + ' ' + "Debe ingresar un parametro de busqueda", ""));
+			
+		}else{
+			listarAmbulancia = ambulanciaEjb.BuscarListaAmbulancia(placa);
+			
+			
+			idAmbulancia = listarAmbulancia.get(0).getIdambulancia();
+			codigoAmbulancia = listarAmbulancia.get(0).getCodigoambulancia();
+			placa = listarAmbulancia.get(0).getPlacaambulancia();
+			marcaAmbulancia = listarAmbulancia.get(0).getMarcaambulancia();
+			disponibilidadAmbulancia = listarAmbulancia.get(0).getDisponibilidadAmbu();
+			tipoAmbulancia = listarAmbulancia.get(0).getTipoAmbulancia();
+			
+			setIdAmbulancia(idAmbulancia);
+			setCodigoAmbulancia(codigoAmbulancia);
+			setPlaca(placa);
+			setMarcaAmbulancia(marcaAmbulancia);
+			setDisponibilidadAmbulancia(disponibilidadAmbulancia);
+			System.out.println(disponibilidadAmbulancia);
+			setTipoAmbulancia(tipoAmbulancia);
+			
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+				"Error! no se encuentra la especialidad con los parametros de busqueda", ""));
+	}
+}
 
+public String cancelar() {
+	return "inicio?face-redirect?true";
+
+}
 	
 
 }

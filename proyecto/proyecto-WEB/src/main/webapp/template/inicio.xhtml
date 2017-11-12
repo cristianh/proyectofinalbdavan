@@ -213,7 +213,10 @@
 		<p:layoutUnit position="north" style="margin-bottom: 0px;
     height: 52px;" resizable="false" closable="true"
 			collapsible="true">
+<<<<<<< HEAD
 		
+=======
+>>>>>>> a0442eb409b6381d527fbe3d74a5fbb00a4fa293
 			<b:navBar brand="Darckcrusto" brandHref="#">
 				<!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
 				<b:navbarLinks pull="right">
@@ -224,7 +227,11 @@
 					<b:navLink value="Logout" href="#"></b:navLink>
 				</b:navbarLinks>
 			</b:navBar>
+<<<<<<< HEAD
 			<p:breadCrumb style="display:none">
+=======
+			<p:breadCrumb>
+>>>>>>> a0442eb409b6381d527fbe3d74a5fbb00a4fa293
 				<p:menuitem value="Medico" url="#" />
 				<p:menuitem value="Sports" url="#" />
 				<p:menuitem value="Basketball" url="#" />
@@ -247,20 +254,17 @@
 							icon="ui-icon-home" />
 						<p:menuitem value="Listar" outcome="listar_especialidad.xhtml"
 							icon="ui-icon-document" />
-					</p:submenu>
-					<p:submenu label="Medicos">
-						<p:menuitem value="Crear" outcome="crear_persona.xhtml"
-							icon="ui-icon-home" />
-						<p:menuitem value="Listar" outcome="listar_persona.xhtml"
-							icon="ui-icon-document" />
 						<p:menuitem value="Download"
 							url="http://www.primefaces.org/downloads"
 							icon="ui-icon-arrowthick-1-s" />
 						<p:menuitem value="Support"
 							url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
 					</p:submenu>
+
 					<p:submenu label="Personal">
-						<p:menuitem value="Crear" outcome="crear_personal.xhtml"
+					</p:submenu>
+					<p:submenu label="Medicos">
+						<p:menuitem value="Crear" outcome="crear_persona.xhtml"
 							icon="ui-icon-home" />
 						<p:menuitem value="Listar" outcome="listar_persona.xhtml"
 							icon="ui-icon-document" />
@@ -268,35 +272,38 @@
 					</p:submenu>
 
 					<p:submenu label="Ambulancias">
+
 						<p:menuitem value="Home" outcome="crear_ambulancia.xhtml"
 							icon="ui-icon-home" />
-						<p:menuitem value="Docs" outcome="Listar_ambulancia.xhtml"
+
+						<p:menuitem value="crear"  outcome="crear_ambulancia.xhtml"
+							icon="ui-icon-home" />
+						<p:menuitem value="listar"
+							 outcome="Listar_ambulancia.xhtml"
 							icon="ui-icon-document" />
 					</p:submenu>
 
 					<p:submenu label="Urgencias">
-						<p:menuitem value="listar" outcome="listar_reporteurgencias.xhtml"
+						<p:menuitem value="crear" url="http://www.primefaces.org"
 							icon="ui-icon-home" />
-						<p:menuitem value="Docs"
+						<p:menuitem value="listar"
 							url="http://www.primefaces.org/documentation"
 							icon="ui-icon-document" />
-						<p:menuitem value="Download"
-							url="http://www.primefaces.org/downloads"
-							icon="ui-icon-arrowthick-1-s" />
-						<p:menuitem value="Support"
-							url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
 					</p:submenu>
+					
 					<p:submenu label="Personas">
-						<p:menuitem value="Home" url="http://www.primefaces.org"
+						<p:menuitem value="crear" url="http://www.primefaces.org"
 							icon="ui-icon-home" />
-						<p:menuitem value="Docs"
+						<p:menuitem value="listar"
 							url="http://www.primefaces.org/documentation"
 							icon="ui-icon-document" />
-						<p:menuitem value="Download"
-							url="http://www.primefaces.org/downloads"
-							icon="ui-icon-arrowthick-1-s" />
-						<p:menuitem value="Support"
-							url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+					</p:submenu>	
+					<p:submenu label="Medicos">
+						<p:menuitem value="crear" url="http://www.primefaces.org"
+							icon="ui-icon-home" />
+						<p:menuitem value="listar"
+							url="http://www.primefaces.org/documentation"
+							icon="ui-icon-document" />
 					</p:submenu>
 				</p:panelMenu>
 			</h:form>
