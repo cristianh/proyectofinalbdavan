@@ -34,8 +34,8 @@
 					<p:column headerText="Estado especialidad">
 						<h:outputText value="#{especialidad.estadoespecialidad}" />
 					</p:column>
-					<p:column headerText="Accion">
-						<p:growl id="message" showDetail="true" />
+					<p:column headerText="Elminar">
+						<p:growl id="message" showDetail="true" sticky="true"/>
 						<p:commandButton value="Eliminar"
 							actionListener="#{conEspecialidad.eliminar(especialidad)}"
 							process="@this formlistarespecialidad"

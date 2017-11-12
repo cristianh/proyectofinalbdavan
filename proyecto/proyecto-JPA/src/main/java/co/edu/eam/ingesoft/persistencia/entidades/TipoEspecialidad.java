@@ -20,8 +20,6 @@ public class TipoEspecialidad implements Serializable {
 	@Column(name="NombreTipoEspecialidad",nullable=false,length=100)
 	private String nombre;
 	
-	@OneToMany(mappedBy="tipoEspecialidad")
-	private List<Especialidad> especialidades;
 	
 	public TipoEspecialidad(Integer codigo, String nombre) {
 		super();
@@ -45,12 +43,7 @@ public class TipoEspecialidad implements Serializable {
 		this.nombre = nombre;
 	}
 	
-	public List<Especialidad> getEspecialidades() {
-		return especialidades;
-	}
-	public void setEspecialidades(List<Especialidad> especialidades) {
-		this.especialidades = especialidades;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

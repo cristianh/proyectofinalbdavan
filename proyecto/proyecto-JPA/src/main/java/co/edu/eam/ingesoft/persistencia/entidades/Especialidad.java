@@ -32,9 +32,7 @@ public class Especialidad implements Serializable {
 	@Column(name = "estadoespecialidad", nullable = false, length = 20)
 	private String estadoespecialidad;
 
-	@ManyToOne
-	@JoinColumn(name = "tipoespecialidad")
-	private TipoEspecialidad tipoEspecialidad;
+	
 
 	/**
 	 * @param codigo
@@ -79,13 +77,6 @@ public class Especialidad implements Serializable {
 		this.estadoespecialidad = estadoespecialidad;
 	}
 
-	public TipoEspecialidad getTipoEspecialidad() {
-		return tipoEspecialidad;
-	}
-
-	public void setTipoEspecialidad(TipoEspecialidad tipoEspecialidad) {
-		this.tipoEspecialidad = tipoEspecialidad;
-	}
 
 	@Override
 	public int hashCode() {
