@@ -17,13 +17,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="t_ambulancia")
 @NamedQueries({ @NamedQuery(name = "Ambulancia.listarambulancia", query = "SELECT ambu FROM Ambulancia ambu"),
-	@NamedQuery(name = "Ambulancia.listarbuscarambulancia", query = "SELECT ambu FROM Ambulancia ambu where ambu.placaambulancia=:estado") })
+	@NamedQuery(name = "Ambulancia.listarbuscarambulancia", query = "SELECT ambu FROM Ambulancia ambu where ambu.placaambulancia=:estado ")})
 
 public class Ambulancia implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -8,7 +8,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import java.util.List;
@@ -46,14 +45,16 @@ public class ControladorAmbulancia implements Serializable {
 	private List<TipoAmbulancia> listarTipoAmbulancia;
 
 	@Size(min = 1, max = 5, message = "este campo acepta maximo 5 caracteres")
-//	@Pattern(regexp = "[a-zA-Z]*", message = "Formato invalido, no se permiten letras")
+	// @Pattern(regexp = "[a-zA-Z]*", message = "Formato invalido, no se
+	// permiten letras")
 	private String idAmbulancia;
 
 	@Size(min = 1, max = 8, message = "este campo acepta maximo 8 caracteres")
 	private String codigoAmbulancia;
 
 	@Size(min = 1, max = 50, message = "la longitud debe se entre 1 y 50 caracteres")
-//	@Pattern(regexp = "[a-zA-z]*", message = "Formato invalido, no se permiten letras")
+	// @Pattern(regexp = "[a-zA-z]*", message = "Formato invalido, no se
+	// permiten letras")
 	private String marcaAmbulancia;
 
 	@Size(min = 1, max = 7, message = "la longitud debe se entre 1 y 7 caracteres")
@@ -61,13 +62,14 @@ public class ControladorAmbulancia implements Serializable {
 
 	private Disponibilidad disponibilidadAmbulancia;
 	private TipoAmbulancia tipoAmbulancia;
+	private Ambulancia ambulancia;
 
 	@PostConstruct
 	public void initializar() {
 		listarDisponibilidad = disponibilidadEjb.ListarDisponibilidad();
 		listarTipoAmbulancia = tipoAmbulanciaEjb.ListarTipoAmbulancia();
 		listarAmbulancia = ambulanciaEjb.listarAmbulancia();
-		
+
 	}
 
 	public AmbulanciaEJB getAmbulanciaEjb() {
@@ -186,65 +188,141 @@ public class ControladorAmbulancia implements Serializable {
 		return serialVersionUID;
 	}
 
+	
+	
+	public Ambulancia getAmbulancia() {
+		return ambulancia;
+	}
+
+	public void setAmbulancia(Ambulancia ambulancia) {
+		this.ambulancia = ambulancia;
+	}
+
 	public void crearAmbulancia() {
 		try {
 			Ambulancia ambulancia = new Ambulancia();
-			
+
 			ambulancia.setIdambulancia(idAmbulancia);
 			ambulancia.setCodigoambulancia(codigoAmbulancia);
 			ambulancia.setMarcaambulancia(marcaAmbulancia);
 			ambulancia.setPlacaambulancia(placa);
 			ambulancia.setDisponibilidadAmbu(disponibilidadAmbulancia);
 			ambulancia.setTipoAmbulancia(tipoAmbulancia);
-			
 
 			ambulanciaEjb.crearAmbulancia(ambulancia);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "La Ambulancia a sido registrada"));
+			limpiar();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "La Ambulancia a sido registrada"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage().toString());
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se ha podido crear", e.getMessage().toString() + "."));
-		}
-	}
-
-public void buscar(){
-System.out.println(getPlaca());
-	try {
-		if(getPlaca().isEmpty()){
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Error!" + ' ' + "Debe ingresar un parametro de busqueda", ""));
-			
-		}else{
-			listarAmbulancia = ambulanciaEjb.BuscarListaAmbulancia(placa);
-			
-			
-			idAmbulancia = listarAmbulancia.get(0).getIdambulancia();
-			codigoAmbulancia = listarAmbulancia.get(0).getCodigoambulancia();
-			placa = listarAmbulancia.get(0).getPlacaambulancia();
-			marcaAmbulancia = listarAmbulancia.get(0).getMarcaambulancia();
-			disponibilidadAmbulancia = listarAmbulancia.get(0).getDisponibilidadAmbu();
-			tipoAmbulancia = listarAmbulancia.get(0).getTipoAmbulancia();
-			
-			setIdAmbulancia(idAmbulancia);
-			setCodigoAmbulancia(codigoAmbulancia);
-			setPlaca(placa);
-			setMarcaAmbulancia(marcaAmbulancia);
-			setDisponibilidadAmbulancia(disponibilidadAmbulancia);
-			System.out.println(disponibilidadAmbulancia);
-			setTipoAmbulancia(tipoAmbulancia);
-			
+					"No se ha podido crear", e.getMessage().toString() + "."));
 		}
-	} catch (Exception e) {
-		// TODO: handle exception
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				"Error! no se encuentra la especialidad con los parametros de busqueda", ""));
 	}
-}
 
-public String cancelar() {
-	return "inicio?face-redirect?true";
+	public void buscarPorPlaca() {
+		System.out.println(getPlaca());
+		try {
+			if (getPlaca().isEmpty()) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Error!" + ' ' + "Debe ingresar un parametro de busqueda", ""));
 
-}
-	
+			} else {
+				listarAmbulancia = ambulanciaEjb.BuscarListaAmbulancia(placa);
+
+				idAmbulancia = listarAmbulancia.get(0).getIdambulancia();
+				codigoAmbulancia = listarAmbulancia.get(0).getCodigoambulancia();
+				placa = listarAmbulancia.get(0).getPlacaambulancia();
+				marcaAmbulancia = listarAmbulancia.get(0).getMarcaambulancia();
+				disponibilidadAmbulancia = listarAmbulancia.get(0).getDisponibilidadAmbu();
+				tipoAmbulancia = listarAmbulancia.get(0).getTipoAmbulancia();
+
+				setIdAmbulancia(idAmbulancia);
+				setCodigoAmbulancia(codigoAmbulancia);
+				setPlaca(placa);
+				setMarcaAmbulancia(marcaAmbulancia);
+				setDisponibilidadAmbulancia(disponibilidadAmbulancia);
+				System.out.println(disponibilidadAmbulancia);
+				setTipoAmbulancia(tipoAmbulancia);
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Error! no se encuentra la especialidad con los parametros de busqueda", ""));
+		}
+	}
+
+	public void buscar() {
+
+		try {
+			if (getIdAmbulancia().isEmpty()) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Error!" + ' ' + "Debe ingresar un parametro de busqueda", ""));
+
+			} else {
+				listarAmbulancia = ambulanciaEjb.BuscarListaAmbulancia(idAmbulancia);
+
+				idAmbulancia = listarAmbulancia.get(0).getIdambulancia();
+				codigoAmbulancia = listarAmbulancia.get(0).getCodigoambulancia();
+				placa = listarAmbulancia.get(0).getPlacaambulancia();
+				marcaAmbulancia = listarAmbulancia.get(0).getMarcaambulancia();
+				disponibilidadAmbulancia = listarAmbulancia.get(0).getDisponibilidadAmbu();
+				tipoAmbulancia = listarAmbulancia.get(0).getTipoAmbulancia();
+
+				setIdAmbulancia(idAmbulancia);
+				setCodigoAmbulancia(codigoAmbulancia);
+				setPlaca(placa);
+				setMarcaAmbulancia(marcaAmbulancia);
+				setDisponibilidadAmbulancia(disponibilidadAmbulancia);
+				System.out.println(disponibilidadAmbulancia);
+				setTipoAmbulancia(tipoAmbulancia);
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Error! no se encuentra la especialidad con los parametros de busqueda", ""));
+		}
+	}
+
+	public void eliminar(Ambulancia ambulania) {
+		ambulanciaEjb.eliminarAmbulancia(ambulancia.getIdambulancia());
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "info", "la ambulancia ha sido eliminada"));
+		listarAmbulancia = ambulanciaEjb.listarAmbulancia();
+		setListarAmbulancia(listarAmbulancia);
+		return;
+	}
+
+	public void editar() {
+		try {
+			Ambulancia ambulancia = ambulanciaEjb.buscarAmbulancia(idAmbulancia);
+			ambulancia.setCodigoambulancia(codigoAmbulancia);
+			ambulancia.setMarcaambulancia(marcaAmbulancia);
+			ambulancia.setPlacaambulancia(placa);
+			ambulancia.setDisponibilidadAmbu(disponibilidadAmbulancia);
+			ambulancia.setTipoAmbulancia(tipoAmbulancia);
+
+			ambulanciaEjb.editarAmbulancia(ambulancia);
+			limpiar();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto! La ambulancia a sido editado", ""));
+		} catch (Exception e) {
+			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Error!" + ' ' + e.getMessage().toString() + ".", ""));
+		}
+	}
+
+	public void limpiar() {
+		listarAmbulancia = null;
+		idAmbulancia = null;
+		codigoAmbulancia = null;
+		marcaAmbulancia = null;
+		placa = null;
+		disponibilidadAmbulancia = null;
+		tipoAmbulancia = null;
+	}
 
 }

@@ -13,17 +13,17 @@
 
 		<h:form id="formlistarespecialidad">
 			<style type="text/css">
-			.myTable {
-				text-align: center;
-				}
-			</style>
+.myTable {
+	text-align: center;
+}
+</style>
 			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
 				<p:dataTable var="especialidad" styleClass="myTable"
 					value="#{conEspecialidad.listarespecialidad}" rows="10"
 					paginator="true"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
-					
+
 					<p:column headerText="Id especialidad">
 						<h:outputText value="#{especialidad.codigo}" />
 					</p:column>
@@ -35,8 +35,8 @@
 					<p:column headerText="Estado especialidad">
 						<h:outputText value="#{especialidad.estadoespecialidad}" />
 					</p:column>
-					
-					
+
+
 					<p:column headerText="Accion">
 						<p:growl id="message" showDetail="true" />
 						<p:commandButton value="Eliminar"

@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+
+
+		<h:form id="buscar">
+
+			<p:fieldset>
+				<h:panelGrid columns="2" id="panelbuscar" style="margin: 0 auto;">
+
+					<p:outputLabel for="tfbuscarNom" id="lblbuscar"
+						value="#{msj['personal.nombrepersonal']}" />
+					<p:inputText id="tfbuscarNom" value="#{controladorPersonal.nombre}">
+					</p:inputText>
+
+					<p:outputLabel for="tfbuscarced" id="lblbuscaced"
+						value="#{msj['personal.numerodocumentopersonal']}" />
+					<p:inputText id="tfbuscarced" value="#{controladorPersonal.cedula}">
+					</p:inputText>
+
+
+					<p:commandButton id="btnBuscar"
+						action="#{controladorPersonal.buscarPersonal(personal)}" value="BUSCAR"
+						update="formlsitarPersonal panelbuscar">
+					</p:commandButton>
+				</h:panelGrid>
+			</p:fieldset>
+
+		</h:form>
+
+		<h:form id="formlsitarPersonal">
+
+
+			<p:fieldset>
+				<h:panelGrid columns="3" id="panelbuscar" style="margin: 0 auto;">
+					<p:dataTable var="personal"
+						value="#{controladorPersonal.listarpersonal}" rows="12"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+
+						<p:column headerText="#{msj['personal.idpersonal']}">
+							<h:outputText value="#{personal.idPersonal}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.nombrepersonal']}">
+							<h:outputText value="#{personal.nombre}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.apellidopersonal']}">
+							<h:outputText value="#{personal.apellido}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.numerodocumentopersonal']}">
+							<h:outputText value="#{personal.numeroDocumento}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.fechanacimientopersonal']}">
+							<h:outputText value="#{personal.fechanacimiento}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.telefonopersonal']}">
+							<h:outputText value="#{personal.telefono}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.emailpersonal']}">
+							<h:outputText value="#{personal.email}" />
+						</p:column>
+
+
+						<p:column headerText="{msj['personal.cargo']}">
+							<h:outputText value="#{personal.cargoPersonal.nombre}" />
+						</p:column>
+
+
+						<p:column headerText="#{msj['personal.direccion']}">
+							<h:outputText value="#{personal.direccion}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.fechaingresopersonal']}">
+							<h:outputText value="#{personal.fechaIngreso}" />
+						</p:column>
+
+						<p:column headerText="#{msj['personal.salario']}">
+							<h:outputText value="#{personal.salario}" />
+						</p:column>
+
+
+						<p:column headerText="#{msj['personal.estado']}">
+							<h:outputText
+								value="#{personal.estadoPersonal.nombreEstadoPersonal}" />
+						</p:column>
+
+
+
+					</p:dataTable>
+				</h:panelGrid>
+			</p:fieldset>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
