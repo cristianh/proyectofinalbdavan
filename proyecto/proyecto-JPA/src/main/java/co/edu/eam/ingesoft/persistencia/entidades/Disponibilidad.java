@@ -16,8 +16,8 @@ import javax.persistence.Table;
 
 
 public class Disponibilidad implements Serializable {
+	
 	@Id
-	@Column(name="idDisponibilidad", unique = true, nullable = false, length = 5)
 	private String idDisponibilidad;
 	
 	@Column(name="nombre")

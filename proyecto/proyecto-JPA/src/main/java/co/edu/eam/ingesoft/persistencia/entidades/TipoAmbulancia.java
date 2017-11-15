@@ -18,7 +18,6 @@ import javax.persistence.Table;
 public class TipoAmbulancia implements Serializable {
 
 	@Id
-	@Column(name="idTipoAmbulancia", unique = true, nullable = false, length = 5)
 	private String idTipoAmbulancia;
 	
 	@Column(name="nombreTipoAmbulancia", nullable = false, length = 50)

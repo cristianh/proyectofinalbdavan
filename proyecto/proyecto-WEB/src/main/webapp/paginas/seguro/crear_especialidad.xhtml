@@ -9,8 +9,8 @@
 <ui:composition template="/template/inicio.xhtml">
 	<ui:define name="cuerpo">
 		<h:form id="formularioespecialidad">
-			<p:messages id="messages" autoUpdate="true" closable="true" />
 			<p:panel header="Especialidad">
+				<p:messages id="messages" autoUpdate="true" closable="true" />
 				<p:fieldset>
 					<h:panelGrid columns="3" id="panelbuscar" style="margin: 0 auto;">
 						<p:outputLabel for="lblbuscar" id="lblbuscar" value="Buscar:" />
@@ -18,7 +18,8 @@
 							value="#{conEspecialidad.codigoespecialidadbuscar}">
 						</p:inputText>
 						<p:commandButton id="btnBuscar" action="#{conEspecialidad.buscar}"
-							value="Buscar" update="formularioespecialidad paneltabla">
+							value="Buscar"
+							update="formularioespecialidad paneltabla messages">
 						</p:commandButton>
 					</h:panelGrid>
 				</p:fieldset>
@@ -29,9 +30,9 @@
 						<p:outputLabel for="lblcodigo" id="lblcodigo" value="Codigo:" />
 						<p:inputText id="tfcodigo"
 							value="#{conEspecialidad.codigoespecialidad}" />
-							
+
 						<p:outputLabel for="nombre" id="nombre" value="Nombre:" />
-						
+
 						<p:inputText id="tfnombre"
 							value="#{conEspecialidad.nombreespecialidad}" />
 						<p:outputLabel id="lblestado" value="Estado:" />
@@ -62,7 +63,6 @@
 					</h:panelGrid>
 				</p:fieldset>
 			</p:panel>
-
 		</h:form>
 	</ui:define>
 

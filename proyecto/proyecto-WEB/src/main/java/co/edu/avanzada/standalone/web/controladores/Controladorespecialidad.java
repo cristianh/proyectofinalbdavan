@@ -103,14 +103,21 @@ public class Controladorespecialidad implements Serializable {
 
 	public void crear() {
 		try {
-			Especialidad especialidad = new Especialidad();
-			especialidad.setCodigo(codigoespecialidad);
-			especialidad.setNombre(nombreespecialidad);
-			especialidad.setEstadoespecialidad(estadoespecialidad);
-			especialidadEJB.crearEspecialidad(especialidad);
-			limpiar();
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto! La especialidad a sido registrada", ""));
+			if(estadoespecialidad.isEmpty() || nombreespecialidad.isEmpty() || codigoespecialidad.isEmpty() ){
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "Por favor debe ingresar la informacion", ""));
+			}else
+			{
+				Especialidad especialidad = new Especialidad();
+				especialidad.setCodigo(codigoespecialidad);
+				especialidad.setNombre(nombreespecialidad);
+				especialidad.setEstadoespecialidad(estadoespecialidad);
+				especialidadEJB.crearEspecialidad(especialidad);
+				limpiar();
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto! La especialidad a sido registrada", ""));
+			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -151,13 +158,21 @@ public class Controladorespecialidad implements Serializable {
 
 	public void editar() {
 		try {
-			Especialidad especialidad = especialidadEJB.buscarEspecialidad(codigoespecialidad);
-			especialidad.setEstadoespecialidad(estadoespecialidad);
-			especialidad.setNombre(nombreespecialidad);
-			especialidadEJB.editarEspecialidad(especialidad);
-			limpiar();
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto! La especialidad a sido editado", ""));
+			if(estadoespecialidad.isEmpty() || nombreespecialidad.isEmpty() || codigoespecialidad.isEmpty() ){
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "Por favor debe ingresar la informacion", ""));
+			}
+			else
+			{
+				Especialidad especialidad = especialidadEJB.buscarEspecialidad(codigoespecialidad);
+				especialidad.setEstadoespecialidad(estadoespecialidad);
+				especialidad.setNombre(nombreespecialidad);
+				especialidadEJB.editarEspecialidad(especialidad);
+				limpiar();
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto! La especialidad a sido editado", ""));
+			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,

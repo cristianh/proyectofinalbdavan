@@ -37,8 +37,8 @@ public class ControladorAmbulancia implements Serializable {
 	@EJB
 	private TipoAmbulanciaEJB tipoAmbulanciaEjb;
 
-	private Disponibilidad disponibilidadSeleccion;
-	private TipoAmbulancia tipoAmbulanciaSeleccion;
+	private Disponibilidad dispoSeleccion;
+	private TipoAmbulancia tiposeleccion;
 
 	private List<Ambulancia> listarAmbulancia;
 	private List<Disponibilidad> listarDisponibilidad;
@@ -96,20 +96,22 @@ public class ControladorAmbulancia implements Serializable {
 		this.tipoAmbulanciaEjb = tipoAmbulanciaEjb;
 	}
 
-	public Disponibilidad getDisponibilidadSeleccion() {
-		return disponibilidadSeleccion;
+	
+
+	public Disponibilidad getDispoSeleccion() {
+		return dispoSeleccion;
 	}
 
-	public void setDisponibilidadSeleccion(Disponibilidad disponibilidadSeleccion) {
-		this.disponibilidadSeleccion = disponibilidadSeleccion;
+	public void setDispoSeleccion(Disponibilidad dispoSeleccion) {
+		this.dispoSeleccion = dispoSeleccion;
 	}
 
-	public TipoAmbulancia getTipoAmbulanciaSeleccion() {
-		return tipoAmbulanciaSeleccion;
+	public TipoAmbulancia getTiposeleccion() {
+		return tiposeleccion;
 	}
 
-	public void setTipoAmbulanciaSeleccion(TipoAmbulancia tipoAmbulanciaSeleccion) {
-		this.tipoAmbulanciaSeleccion = tipoAmbulanciaSeleccion;
+	public void setTiposeleccion(TipoAmbulancia tiposeleccion) {
+		this.tiposeleccion = tiposeleccion;
 	}
 
 	public List<Ambulancia> getListarAmbulancia() {
@@ -200,15 +202,22 @@ public class ControladorAmbulancia implements Serializable {
 
 	public void crearAmbulancia() {
 		try {
+<<<<<<< HEAD
 			Ambulancia ambulancia = new Ambulancia();
 
+=======
+			Ambulancia ambulancia = new Ambulancia();		
+>>>>>>> 6518433e75fd65e22ec3306edd30429292025299
 			ambulancia.setIdambulancia(idAmbulancia);
 			ambulancia.setCodigoambulancia(codigoAmbulancia);
 			ambulancia.setMarcaambulancia(marcaAmbulancia);
 			ambulancia.setPlacaambulancia(placa);
 			ambulancia.setDisponibilidadAmbu(disponibilidadAmbulancia);
 			ambulancia.setTipoAmbulancia(tipoAmbulancia);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6518433e75fd65e22ec3306edd30429292025299
 			ambulanciaEjb.crearAmbulancia(ambulancia);
 			limpiar();
 			FacesContext.getCurrentInstance().addMessage(null,

@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+		<p:messages globalOnly="true" id="messages" autoUpdate="true"
+			closable="true" />
+		<h:form id="formulariocentromedico">
+			<p:panel header="Centro medico">
+				<p:fieldset>
+
+					<h:panelGrid columns="8" id="paneltabla" style="margin:0 auto">
+						<p:outputLabel for="tfNombre"
+							value="#{msj['concentromedico.nombrecentromedico']}" />
+						<p:inputText id="tfNombre"
+							value="#{concentromedico.codigoCentromedico}"
+							style="margin-right:35px;margin-left:10px" />
+
+						<p:outputLabel for="tfCodigo"
+							value="#{msj['concentromedico.codigocentromedico']}" />
+						<p:inputText id="tfCodigo"
+							value="#{concentromedico.codigoCentromedico}"
+							style="margin-right:35px;margin-left:10px" />
+
+						<p:outputLabel for="combogradocomplejidad"
+							value="#{msj['concentromedico.complejidadcentromedico']}" />
+						<p:selectOneMenu id="combogradocomplejidad"
+							value="#{concentromedico.complejidadcentromedico}"
+							style="margin-right:35px;margin-left:10px">
+
+							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+							<f:selectItems value="#{concentromedico.listarnivelCentromedico}"
+								var="nivelhospitar" itemLabel="#{nivelhospitar.nombre}"
+								itemValue="#{nivelhospitar}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="combotipocentromedico"
+							value="#{msj['concentromedico.tipocentro']}" />
+						<p:selectOneMenu id="combotipocentromedico"
+							value="#{concentromedico.tipocentromedico}"
+							style="margin-right:35px;margin-left:10px">
+
+							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+							<f:selectItems value="#{concentromedico.listarTipocentroMedico}"
+								var="tipocentromedico" itemLabel="#{tipocentromedico.nombre}"
+								itemValue="#{tipocentromedico}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator />
+				<p:fieldset>
+					<h:panelGrid columns="2" id="panelbotones" style="margin:0 auto">
+						<p:commandButton id="botonCrearcentro"
+							value="#{msj['concentromedico.btnCrearCentro']}"
+							actionListener="#{concentromedico.crearcentromedico}"
+							styleClass="ui-priority-primary" />
+						<p:commandButton id="botonEditarcentro"
+							value="#{msj['concentromedico.btnEditar']}"
+							actionListener="#{concentromedico.editarmedico}"
+							styleClass="ui-priority-primary" />
+					</h:panelGrid>
+				</p:fieldset>
+			</p:panel>
+		</h:form>
+
+		<h:form id="formulariocamas">
+			<p:panel header="Camas">
+				<p:fieldset>
+					<h:panelGrid columns="7" id="panelopcionescama"
+						style="margin:0 auto">
+
+						<p:outputLabel for="tftipocama"
+							value="#{msj['concentromedico.tipocama']}" />
+						<p:selectOneMenu id="tftipocama"
+							value="#{concentromedico.tipocamaseleccionado}"
+							style="margin-right:35px;margin-left:10px"
+							converter="tipocamaConverter">
+
+							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+							<f:selectItems value="#{concentromedico.listarTipocamas}"
+								var="tipocama" itemLabel="#{tipocama.nombre}"
+								itemValue="#{tipocama}" />
+						</p:selectOneMenu>
+						<p:outputLabel for="estado"
+							value="#{msj['concentromedico.estadoCama']}" />
+						<p:selectOneRadio id="estado"
+							value="#{concentromedico.estadocama}" layout="grid" columns="2"
+							style="margin-right:35px;margin-left:10px">
+							<f:selectItem itemLabel="Activa" itemValue="Activa" />
+							<f:selectItem itemLabel="Inactiva" itemValue="Inactiva" />
+						</p:selectOneRadio>
+
+						<h:panelGrid columns="2" id="panelbotonesCama"
+							style="margin:0 auto">
+							<p:commandButton id="botonCrearcama"
+								value="#{msj['concentromedico.btnCrearcama']}"
+								actionListener="#{concentromedico.crearcama}"
+								styleClass="ui-priority-primary"
+								style="margin-right:35px;margin-left:10px"
+								process="@this formulariocamas" update="panelcamas tablacamas">
+							</p:commandButton>
+						</h:panelGrid>
+
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator></p:separator>
+				<h:panelGrid columns="1" id="panelcamas">
+
+					<!-- Tabla camas -->
+					<p:dataTable var="cama" id="tablacamas"
+						value="#{concentromedico.listarcamas}" rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+
+
+						<p:column headerText="Idcama">
+							<h:outputText value="#{cama.idcama}" />
+						</p:column>
+
+						<p:column headerText="Estado">
+							<h:outputText value="#{cama.estadocama}" />
+						</p:column>
+
+						<p:column headerText="Tipo cama">
+							<h:outputText value="#{cama.tipocama.nombre}" />
+						</p:column>
+
+						<p:column headerText="Action">
+							<p:commandButton id="botonEditarcama"
+								value="#{msj['concentromedico.btnEditarcama']}"
+								actionListener="#{concentromedico.editarCama}"
+								styleClass="ui-priority-primary"
+								style="margin-right:35px;margin-left:10px"
+								oncomplete="PF('reportDialog').show()"
+								update=":formulariocamas:camaeditar">
+								<f:setPropertyActionListener value="#{cama}"
+									target="#{concentromedico.camaitemseleccionado}" />
+							</p:commandButton>
+						</p:column>
+						<p:column headerText="Elminar">
+							<p:commandButton value="Eliminar"
+								actionListener="#{concentromedico.eliminar(cama)}"
+								update="messages tablacamas" immediate="true">
+								<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
+									message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+					<p:dialog header="Editar cama" width="300" height="300"
+						widgetVar="reportDialog" modal="false" showEffect="fade"
+						hideEffect="fade" resizable="false" draggable="true">
+						<p:outputPanel id="camaeditar">
+							<p:panelGrid columns="2"
+								rendered="#{not empty concentromedico.camaitemseleccionado}"
+								style="text-align:center;margin: 0px auto;">
+								<p:outputLabel value="Id" />
+								<p:outputLabel
+									value="#{concentromedico.camaitemseleccionado.idcama}" />
+								<p:outputLabel for="estado"
+									value="#{msj['concentromedico.estadoCama']}" />
+								<p:selectOneRadio id="estadoeditado"
+									value="#{concentromedico.estadocama}" layout="grid" columns="2"
+									style="margin-right:35px;margin-left:10px">
+									<f:selectItem itemLabel="Activa" itemValue="Activa" />
+									<f:selectItem itemLabel="Inactiva" itemValue="Inactiva" />
+								</p:selectOneRadio>
+
+								<p:outputLabel for="tftipocama"
+									value="#{msj['concentromedico.tipocama']}" />
+								<p:selectOneMenu id="tftipocamaeditado"
+									value="#{concentromedico.tipocamaseleccionado}"
+									style="margin-right:35px;margin-left:10px"
+									converter="tipocamaConverter">
+
+									<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+									<f:selectItems value="#{concentromedico.listarTipocamas}"
+										var="tipocama" itemLabel="#{tipocama.nombre}"
+										itemValue="#{tipocama}" />
+								</p:selectOneMenu>
+								<p:commandButton id="botonEditarcama"
+									value="#{msj['concentromedico.btnEditarcama']}"
+									actionListener="#{concentromedico.guardarCamaEditado(concentromedico.camaitemseleccionado.idcama)}"
+									styleClass="ui-priority-primary"
+									style="margin-right:35px;margin-left:10px"
+									immediate="true"  update="panelcamas tablacamas">
+								</p:commandButton>
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+				</h:panelGrid>
+			</p:panel>
+
+		</h:form>
+		<p:separator></p:separator>
+		<h:form id="formularioEspecialidad">
+			<p:panel header="Especialidad">
+				<p:fieldset>
+					<h:panelGrid columns="7" id="panelopcionesespecialidades"
+						style="margin:0 auto">
+
+						<p:outputLabel for="tfespecialidad"
+							value="#{msj['concentromedico.especialidad']}" />
+						<p:selectOneMenu id="tfespecialidad"
+							value="#{concentromedico.especialidad}">
+
+							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+							<f:selectItems value="#{concentromedico.listarespecialidades}"
+								var="especialidad" itemLabel="#{especialidad.nombre}"
+								itemValue="#{especialidad}" />
+						</p:selectOneMenu>
+
+
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator></p:separator>
+				<h:panelGrid columns="1" id="panelespecialidad">
+					<!-- Tabla especialidad -->
+					<p:dataTable var="especialidad"
+						value="#{concentromedico.listarespecialidades}" rows="10"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+
+
+						<p:column headerText="Codigo especialidad">
+							<h:outputText value="#{especialidad.codigo}" />
+						</p:column>
+
+						<p:column headerText="Codigo ">
+							<h:outputText value="#{especialidad.nombre}" />
+						</p:column>
+
+						<p:column headerText="Estado">
+							<h:outputText value="#{especialidad.estadoespecialidad}" />
+						</p:column>
+						<p:column headerText="Elminar">
+							<p:growl id="messageconfirm" showDetail="true" sticky="true" />
+							<p:commandButton value="Eliminar"
+								actionListener="#{concentromedico.eliminar(especialidad)}"
+								update="messageconfirm" immediate="true">
+								<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
+									message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+				</h:panelGrid>
+			</p:panel>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton
+					value="#{msj['listarEspecialidad.eliminar.aceptar']}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton
+					value="#{msj['listarEspecialidad.eliminar.cancelar']}"
+					type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

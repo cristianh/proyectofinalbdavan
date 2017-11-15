@@ -13,7 +13,7 @@ public interface ICama {
 	
 	public void editarCama (Cama cama);
 
-	public void eliminarCama(Integer idcama);
+	public void eliminarCama(Cama idcama);
 
 	public List<Cama> listarCamas();
 
