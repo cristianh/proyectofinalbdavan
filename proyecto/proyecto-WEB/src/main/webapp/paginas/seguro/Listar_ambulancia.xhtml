@@ -11,54 +11,83 @@
 
 	<ui:define name="cuerpo">
 
-	<h:form id="formlsitarAmbulancia">
-	
-		<p:fieldset>
-					<h:panelGrid columns="3" id="panelbuscar" style="margin: 0 auto;">
-						<p:outputLabel for="lblbuscar" id="lblbuscar" value="#{msj['ambulancia.placa']}" />
-						<p:inputText id="tfbuscar"
-							value="#{controladorAmbulancia.placa}">
-						</p:inputText>
-						<p:commandButton id="btnBuscar" action="#{controladorAmbulancia.buscar}"
-							value="BUSCAR" update="formlsitarAmbulancia tabla">
-						</p:commandButton>
-					</h:panelGrid>
-				</p:fieldset>
-				<p:separator/>
-				<p:fieldset>
-			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
-				<p:dataTable var="ambulancia" value="#{controladorAmbulancia.listarAmbulancia}"
-					rows="10" paginator="true"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
-					
-					<p:column headerText="Id ambulancia">
-						<h:outputText value="#{ambulancia.idambulancia}" />
-					</p:column>
+		<h:form id="formlsitarAmbulancia">
 
-					<p:column headerText="codigo ">
-						<h:outputText value="#{ambulancia.codigoambulancia}" />
-					</p:column>
-					
-					<p:column headerText="placa ">
-						<h:outputText value="#{ambulancia.placaambulancia}" />
-					</p:column>
-					
-					<p:column headerText="marca">
-						<h:outputText value="#{ambulancia.marcaambulancia}" />
-					</p:column>
-					
-					<p:column headerText="estado ">
-						<h:outputText value="#{ambulancia.disponibilidadAmbu.nombre}" />
-					</p:column>
+			<p:fieldset>
+				<h:panelGrid columns="3" id="panelbuscar" style="margin: 0 auto;">
 
-				<p:column headerText="tipo ">
-						<h:outputText value="#{ambulancia.tipoAmbulancia.nonmbreTipoAmbulancia}" />
-					</p:column>
-				
-				</p:dataTable>
-			</h:panelGrid>
-		</p:fieldset>
+					<p:outputLabel for="lblbuscar" id="lblbuscar"
+						value="#{msj['ambulancia.placa']}" />
+					<p:inputText id="tfbuscar" value="#{controladorAmbulancia.placa}">
+					</p:inputText>
+					<p:commandButton id="btnBuscar"
+						action="#{controladorAmbulancia.buscarPorPlaca}" value="BUSCAR"
+						update="formlsitarAmbulancia tabla">
+					</p:commandButton>
+				</h:panelGrid>
+			</p:fieldset>
+
+
+
+			<p:fieldset>
+				<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
+					<p:dataTable var="ambulancia"
+						value="#{controladorAmbulancia.listarAmbulancia}" rows="10"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+
+						<p:column headerText="#{msj['ambulancia.idAmbulancia']}">
+							<h:outputText value="#{ambulancia.idambulancia}" />
+						</p:column>
+
+						<p:column headerText="#{msj['ambulancia.codigoAmbulancia']}">
+							<h:outputText value="#{ambulancia.codigoambulancia}" />
+						</p:column>
+
+						<p:column headerText="#{msj['ambulancia.placa']}">
+							<h:outputText value="#{ambulancia.placaambulancia}" />
+						</p:column>
+
+						<p:column headerText="#{msj['ambulancia.marca']}">
+							<h:outputText value="#{ambulancia.marcaambulancia}" />
+						</p:column>
+
+						<p:column headerText="#{msj['ambulancia.disponibilidad']} ">
+							<h:outputText value="#{ambulancia.disponibilidadAmbu.nombre}" />
+						</p:column>
+
+						<p:column headerText="#{msj['ambulancia.tipoambulancia']}">
+							<h:outputText
+								value="#{ambulancia.tipoAmbulancia.nonmbreTipoAmbulancia}" />
+						</p:column>
+
+
+						<p:column headerText="editar">
+
+						</p:column>
+
+						<p:column headerText="#{msj['ambulancia.eliminar']}">
+							<p:growl id="message" showDetail="true" />
+							<p:commandButton value="#{msj['ambulancia.btn.eliminar']}"
+								actionListener="#{controladorAmbulancia.eliminar(ambulancia)}"
+								process="@this formlsitarAmbulancia"
+								update="formlsitarAmbulancia message" immediate="true">
+								<p:confirm header="#{msj['ambulancia.eliminar.aceptar']}"
+									message="desea eliminar" icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+				</h:panelGrid>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="#{msj['ambulancia.eliminar.confirmar']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{msj['ambulancia.eliminar.cancelar']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:fieldset>
 		</h:form>
 
 	</ui:define>

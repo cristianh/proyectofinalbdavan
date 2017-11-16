@@ -63,33 +63,43 @@
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
-				<p:dialog header="Urgendica Detalle" width="300" height="300" widgetVar="reportDialog" modal="false"
-				showEffect="fade" hideEffect="fade" resizable="false" draggable="true">
-				<p:outputPanel id="reporteurgenciadetalle">
-					<p:panelGrid columns="2"
-						rendered="#{not empty conreporteciudadano.reuseleccionado}" style="text-align:center;margin: 0px auto;">
-						<p:outputLabel value="Nombre:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.nombre}" />
-						<p:outputLabel value="Apellido:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.apellido}" />
-						<p:outputLabel value="Cedula:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.cedula}" />
-						<p:outputLabel value="Telefono:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.telefono}" />
-						<p:outputLabel value="Direccion:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.direccion}" />
-						<p:outputLabel value="Fecha y hora:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.fechayhora}" />
-						<p:outputLabel value="Numero de afectados:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.numeroafectados}" />
-						<p:outputLabel value="Estado:" />
-						<p:outputLabel value="#{conreporteciudadano.reuseleccionado.estado}" />
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
+				<p:dialog header="Urgendica Detalle" width="300" height="300"
+					widgetVar="reportDialog" modal="false" showEffect="fade"
+					hideEffect="fade" resizable="false" draggable="true">
+					<p:outputPanel id="reporteurgenciadetalle">
+						<p:panelGrid columns="2"
+							rendered="#{not empty conreporteciudadano.reuseleccionado}"
+							style="text-align:center;margin: 0px auto;">
+							<p:outputLabel value="Nombre:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.nombre}" />
+							<p:outputLabel value="Apellido:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.apellido}" />
+							<p:outputLabel value="Cedula:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.cedula}" />
+							<p:outputLabel value="Telefono:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.telefono}" />
+							<p:outputLabel value="Direccion:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.direccion}" />
+							<p:outputLabel value="Fecha y hora:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.fechayhora}" />
+							<p:outputLabel value="Numero de afectados:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.numeroafectados}" />
+							<p:outputLabel value="Estado:" />
+							<p:outputLabel
+								value="#{conreporteciudadano.reuseleccionado.estado}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
 			</h:panelGrid>
 
-			
+
 		</h:form>
 
 	</ui:define>
