@@ -17,65 +17,65 @@
 	text-align: center;
 }
 </style>
-			<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
-				<p:dataTable var="especialidad" styleClass="myTable"
-					value="#{conEspecialidad.listarespecialidad}" rows="10"
-					paginator="true"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
 
-					<p:column headerText="Id especialidad">
-						<h:outputText value="#{especialidad.codigo}" />
-					</p:column>
+			<p:fieldset>
+				<h:panelGrid columns="5" id="tabla" style="margin: 0 auto;">
+					<p:dataTable var="especialidad" styleClass="myTable"
+						value="#{conEspecialidad.listarespecialidad}" rows="10"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
 
-					<p:column headerText="Nombre especialidad">
-						<h:outputText value="#{especialidad.nombre}" />
-					</p:column>
+						<p:column headerText="Id especialidad">
+							<h:outputText value="#{especialidad.codigo}" />
+						</p:column>
 
-					<p:column headerText="Estado especialidad">
-						<h:outputText value="#{especialidad.estadoespecialidad}" />
-<<<<<<< HEAD
-					</p:column>					
-=======
-					</p:column>
+						<p:column headerText="Nombre especialidad">
+							<h:outputText value="#{especialidad.nombre}" />
+						</p:column>
 
-					<p:column headerText="Elminar">
-						<p:growl id="message" showDetail="true" sticky="true"/>
-<<<<<<< HEAD
-					</p:column>
-						
-					<p:column headerText="Accion">
-						<p:growl id="message" showDetail="true" />
+						<p:column headerText="Estado especialidad">
+							<h:outputText value="#{especialidad.estadoespecialidad}" />
+						</p:column>
 
-=======
-=======
-					
-					
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
->>>>>>> 6a77826fba3c10fc556b566a3d021d0c1f814064
-					<p:column headerText="Accion">
-						<p:growl id="message" showDetail="true" />
->>>>>>> df09cbb23bb54bd1ad702d35d10c334bb59302c5
-						<p:commandButton value="Eliminar"
-							actionListener="#{conEspecialidad.eliminar(especialidad)}"
-							process="@this formlistarespecialidad"
-							update="formlistarespecialidad message">
-							<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
-								message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
-								icon="ui-icon-alert" />
-						</p:commandButton>
-					</p:column>
-					
-				</p:dataTable>
-			</h:panelGrid>
-			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-				<p:commandButton
-					value="#{msj['listarEspecialidad.eliminar.aceptar']}" type="button"
-					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-				<p:commandButton
-					value="#{msj['listarEspecialidad.eliminar.cancelar']}"
-					type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-			</p:confirmDialog>
+						<p:column headerText="Elminar">
+							<p:growl id="message" showDetail="true" sticky="true" />
+						</p:column>
+
+						<p:column headerText="Accion">
+							<p:growl id="message" showDetail="true" />
+						</p:column>
+
+						<p:column headerText="Accion">
+							<p:growl id="message" showDetail="true" />
+
+							<p:commandButton value="Eliminar"
+								actionListener="#{conEspecialidad.eliminar(especialidad)}"
+								process="@this formlistarespecialidad"
+								update="formlistarespecialidad message">
+								<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
+									message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+				</h:panelGrid>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton
+						value="#{msj['listarEspecialidad.eliminar.aceptar']}"
+						type="button" styleClass="ui-confirmdialog-yes"
+						icon="ui-icon-check" />
+					<p:commandButton
+						value="#{msj['listarEspecialidad.eliminar.cancelar']}"
+						type="button" styleClass="ui-confirmdialog-no"
+						icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:fieldset>
+
+
 		</h:form>
 
 	</ui:define>
