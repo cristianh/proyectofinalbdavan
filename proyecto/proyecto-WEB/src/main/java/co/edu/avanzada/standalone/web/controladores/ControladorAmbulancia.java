@@ -202,22 +202,16 @@ public class ControladorAmbulancia implements Serializable {
 
 	public void crearAmbulancia() {
 		try {
-<<<<<<< HEAD
+
 			Ambulancia ambulancia = new Ambulancia();
 
-=======
-			Ambulancia ambulancia = new Ambulancia();		
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
 			ambulancia.setIdambulancia(idAmbulancia);
 			ambulancia.setCodigoambulancia(codigoAmbulancia);
 			ambulancia.setMarcaambulancia(marcaAmbulancia);
 			ambulancia.setPlacaambulancia(placa);
 			ambulancia.setDisponibilidadAmbu(disponibilidadAmbulancia);
 			ambulancia.setTipoAmbulancia(tipoAmbulancia);
-<<<<<<< HEAD
 
-=======
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
 			ambulanciaEjb.crearAmbulancia(ambulancia);
 			limpiar();
 			FacesContext.getCurrentInstance().addMessage(null,

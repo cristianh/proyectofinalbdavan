@@ -22,7 +22,7 @@
 		rgba(33, 180, 226, 1) 51%, rgba(33, 145, 192, 1) 100%);
 	background: linear-gradient(to bottom, rgba(183, 222, 237, 1) 0%,
 		rgba(33, 180, 226, 1) 51%, rgba(33, 145, 192, 1) 100%);
-	filter: progid:    
+	filter: progid:      
 	DXImageTransform.Microsoft.gradient( startColorstr= '#b7deed',
 		endColorstr= '#2191c0', GradientType= 0);
 	font-size: 21px;
@@ -210,13 +210,11 @@
 
 <h:body>
 	<p:layout fullPage="true">
-		<p:layoutUnit position="north" style="margin-bottom: 0px;
-    height: 52px;" resizable="false" closable="true"
-			collapsible="true">
-<<<<<<< HEAD
-		
-=======
->>>>>>> a0442eb409b6381d527fbe3d74a5fbb00a4fa293
+		<p:layoutUnit position="north"
+			style="margin-bottom: 0px;
+    height: 52px;" resizable="false"
+			closable="true" collapsible="true">
+
 			<b:navBar brand="Darckcrusto" brandHref="#">
 				<!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
 				<b:navbarLinks pull="right">
@@ -227,24 +225,24 @@
 					<b:navLink value="Logout" href="#"></b:navLink>
 				</b:navbarLinks>
 			</b:navBar>
-<<<<<<< HEAD
+
 			<p:breadCrumb style="display:none">
-=======
-			<p:breadCrumb>
->>>>>>> a0442eb409b6381d527fbe3d74a5fbb00a4fa293
-				<p:menuitem value="Medico" url="#" />
-				<p:menuitem value="Sports" url="#" />
-				<p:menuitem value="Basketball" url="#" />
-				<p:menuitem value="NBA" url="#" />
-				<p:menuitem value="Teams" url="#" />
-				<p:menuitem value="L.A. Lakers" url="#" />
-				<p:menuitem value="Roster" url="#" />
-				<p:menuitem value="Kobe Bryant" url="#" />
-			</p:breadCrumb>
+</p:breadCrumb>
+				<p:breadCrumb>
+
+					<p:menuitem value="Medico" url="#" />
+					<p:menuitem value="Sports" url="#" />
+					<p:menuitem value="Basketball" url="#" />
+					<p:menuitem value="NBA" url="#" />
+					<p:menuitem value="Teams" url="#" />
+					<p:menuitem value="L.A. Lakers" url="#" />
+					<p:menuitem value="Roster" url="#" />
+					<p:menuitem value="Kobe Bryant" url="#" />
+				</p:breadCrumb>
 		</p:layoutUnit>
 
 
-		<p:layoutUnit position="west"  size="210" header="MENU"
+		<p:layoutUnit position="west" size="210" header="MENU"
 			resizable="false" closable="false" collapsible="true">
 			<h:form>
 				<p:panelMenu>
@@ -255,55 +253,41 @@
 						<p:menuitem value="Listar" outcome="listar_especialidad.xhtml"
 							icon="ui-icon-document" />
 					</p:submenu>
-<<<<<<< HEAD
-					
-					<p:submenu label="Personal">
-						<p:menuitem value="Crear" outcome="crear_personal.xhtml"
-=======
 
-					<p:submenu label="Personal">
-					</p:submenu>
+
 					<p:submenu label="Medicos">
 						<p:menuitem value="Crear" outcome="crear_persona.xhtml"
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
-							icon="ui-icon-home" />
-						<p:menuitem value="Listar" outcome="listar_personal.xhtml"
-							icon="ui-icon-document" />
-<<<<<<< HEAD
-=======
-
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
+						icon="ui-icon-home"  />
+					</p:submenu>
+				
+					<p:submenu label="Personal">
+						<p:menuitem value="Crear" outcome="crear_personal.xhtml"
+						 icon="ui-icon-home" />
+						<p:menuitem value="Listar" outcome="listar_personal.xhtml" 
+						icon="ui-icon-document" />
 					</p:submenu>
 
 					<p:submenu label="Ambulancias">
-
-						<p:menuitem value="Home" outcome="crear_ambulancia.xhtml"
+						<p:menuitem value="crear" outcome="crear_ambulancia.xhtml"
 							icon="ui-icon-home" />
-
-						<p:menuitem value="crear"  outcome="crear_ambulancia.xhtml"
-							icon="ui-icon-home" />
-						<p:menuitem value="listar"
-							 outcome="Listar_ambulancia.xhtml"
+						<p:menuitem value="listar" outcome="Listar_ambulancia.xhtml"
 							icon="ui-icon-document" />
 					</p:submenu>
-
+					
 					<p:submenu label="Urgencias">
-						<p:menuitem value="listar"
-						 outcome="listar_reporteurgencias.xhtml"
+						<p:menuitem value="listar" outcome="listar_reporteurgencias.xhtml"
 							icon="ui-icon-home" />
-<<<<<<< HEAD
 					</p:submenu>
-				
+
 					<p:submenu label="Personas">
-						<p:menuitem value="Crear" outcome="crear_persona.xhtml"
-=======
+						<p:menuitem value="Crear" outcome="crear_persona.xhtml" />
 						<p:menuitem value="listar"
 							url="http://www.primefaces.org/documentation"
 							icon="ui-icon-document" />
-					</p:submenu>	
+					</p:submenu>
+
 					<p:submenu label="Medicos">
 						<p:menuitem value="crear" url="http://www.primefaces.org"
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
 							icon="ui-icon-home" />
 						<p:menuitem value="Listar" outcome="listar_persona.xhtml"
 							icon="ui-icon-document" />
@@ -311,7 +295,7 @@
 				</p:panelMenu>
 			</h:form>
 		</p:layoutUnit>
-		<p:layoutUnit  size="380" position="center">
+		<p:layoutUnit size="380" position="center">
 
 			<ui:insert name="cuerpo" />
 

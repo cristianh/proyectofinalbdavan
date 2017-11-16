@@ -81,7 +81,7 @@ public class Main {
 	private static controladorEstadoPersonal controlestadop;
 	
 	
-	private static controladorReporteUrgencia reporte;
+//	private static controladorReporteUrgencia reporte;
 	
 	
 	public static void main(String[] args) throws NamingException {
@@ -127,7 +127,7 @@ public class Main {
 		controladorTipoAmbu = new controladorTipoAmbulancia();
 		
 		
-		reporte = new controladorReporteUrgencia();
+	//	reporte = new controladorReporteUrgencia();
 	//DARKLAST
 
 		// TODO Auto-generated method stub
@@ -138,7 +138,6 @@ public class Main {
 		
 		Disponibilidad dispo = new Disponibilidad("1", "disponible");
 		controladorDispoAmbu.crearDisponibilidad(dispo);
->>>>>>> 846c5bccc6f7b9df2e79726e21c4aca7c463d9dd
 		
 		// Urgencias
 
@@ -286,20 +285,20 @@ public class Main {
 		controladorpersonal.crearPersonal(per);
 		
 		
-		ReporteUrgencia repor = new ReporteUrgencia();
-		repor.setApellido("a");
-		repor.setCedula("4");
-		repor.setDireccion("f");
-		repor.setEstado("m");
-		repor.setFechayhora(new Date());
-		repor.setIdreporteurgencia(1);
-		repor.setNombre("s");
-		repor.setNumeroafectados(5);
-		repor.setTelefono("1");
-		repor.setTipourgencia(null);
-		
-		reporte.crearReporteUrgencia(repor);
-		
+//		ReporteUrgencia repor = new ReporteUrgencia();
+//		repor.setApellido("a");
+//		repor.setCedula("4");
+//		repor.setDireccion("f");
+//		repor.setEstado("m");
+//		repor.setFechayhora(new Date());
+//		repor.setIdreporteurgencia(1);
+//		repor.setNombre("s");
+//		repor.setNumeroafectados(5);
+//		repor.setTelefono("1");
+//		repor.setTipourgencia(null);
+//		
+//		reporte.crearReporteUrgencia(repor);
+//		
 	}
 	
 	

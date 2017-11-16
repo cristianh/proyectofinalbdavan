@@ -35,20 +35,14 @@
 					<p:column headerText="Estado especialidad">
 						<h:outputText value="#{especialidad.estadoespecialidad}" />
 					</p:column>
-<<<<<<< HEAD
 
-
-=======
-<<<<<<< HEAD
 					<p:column headerText="Elminar">
 						<p:growl id="message" showDetail="true" sticky="true"/>
-=======
-					
-					
->>>>>>> 6518433e75fd65e22ec3306edd30429292025299
+					</p:column>
+						
 					<p:column headerText="Accion">
 						<p:growl id="message" showDetail="true" />
->>>>>>> a0442eb409b6381d527fbe3d74a5fbb00a4fa293
+
 						<p:commandButton value="Eliminar"
 							actionListener="#{conEspecialidad.eliminar(especialidad)}"
 							process="@this formlistarespecialidad"
@@ -58,6 +52,7 @@
 								icon="ui-icon-alert" />
 						</p:commandButton>
 					</p:column>
+					
 				</p:dataTable>
 			</h:panelGrid>
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
