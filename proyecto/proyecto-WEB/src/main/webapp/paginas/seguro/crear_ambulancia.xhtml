@@ -14,7 +14,13 @@
 		<h:form id="formulariocrearAmbulancia">
 			<p:messages id="messages" autoUpdate="true" closable="true" />
 			<p:panel header="Ambulancia">
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> df09cbb23bb54bd1ad702d35d10c334bb59302c5
 				<p:fieldset>
 					<h:panelGrid columns="4" id="paneltabla"
 						style="margin: 0 auto; padding:12px">
@@ -101,14 +107,11 @@
 
 				<h:panelGrid columns="4" id="paneltabla"
 					style="margin: 0 auto; padding:12px">
+>>>>>>> 6a77826fba3c10fc556b566a3d021d0c1f814064
 					<p:fieldset>
 						<h:panelGrid columns="4" id="paneltabla"
 							style="margin: 0 auto; padding:12px">
 
-							<p:outputLabel for="tfAmbulancia" id="lblidAmbulancia"
-								value="#{msj['ambulancia.idAmbulancia']}" />
-							<p:inputText id="tfAmbulancia"
-								value="#{controladorAmbulancia.idAmbulancia}" />
 							<p:outputLabel for="tfAmbulancia" id="lblidAmbulancia"
 								value="#{msj['ambulancia.idAmbulancia']}" />
 							<p:inputText id="tfAmbulancia"
@@ -124,10 +127,8 @@
 								value="#{msj['ambulancia.marca']}" />
 							<p:inputText id="tfMarcaambulancia"
 								value="#{controladorAmbulancia.marcaAmbulancia}" />
-							<p:outputLabel for="tfMarcaambulancia" id="lblMarcaambulancia"
-								value="#{msj['ambulancia.marca']}" />
-							<p:inputText id="tfMarcaambulancia"
-								value="#{controladorAmbulancia.marcaAmbulancia}" />
+							
+
 
 
 
@@ -173,18 +174,6 @@
 							</p:selectOneMenu>
 						</h:panelGrid>
 					</p:fieldset>
-					<p:fieldset>
-						<h:panelGrid columns="2" id="panelbotones" style="margin: 0 auto;">
-							<p:commandButton id="botonregistrar"
-								value="#{msj['ambulancia.btn.registrar']}"
-								action="#{controladorAmbulancia.crearAmbulancia}"
-								styleClass="ui-priority-primary"
-								update=" formulariocrearAmbulancia messages"
-								process="@this formulariocrearAmbulancia">
-							</p:commandButton>
-						</h:panelGrid>
-					</p:fieldset>
-
 					<p:separator />
 					<p:fieldset>
 						<h:panelGrid columns="2" id="panelbotones" style="margin: 0 auto;">
@@ -197,8 +186,15 @@
 							</p:commandButton>
 						</h:panelGrid>
 					</p:fieldset>
+<<<<<<< HEAD
+=======
 				</h:panelGrid>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6518433e75fd65e22ec3306edd30429292025299
+>>>>>>> 6a77826fba3c10fc556b566a3d021d0c1f814064
+>>>>>>> df09cbb23bb54bd1ad702d35d10c334bb59302c5
 			</p:panel>
 
 		</h:form>

@@ -49,6 +49,11 @@ public class Funcionario implements Serializable {
 	
 	@OneToMany(mappedBy="idmedico",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<PersonalAmbulancia> personalmedico;
+	
+	@OneToMany(mappedBy="funcionario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<LoginUsuario> login;
+	
+	
 
 	/**
 	 * @param idfuncionario
