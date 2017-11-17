@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -15,10 +17,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="t_ambulancia")
-@NamedQueries({ @NamedQuery(name = "Ambulancia.listarambulancia", query = "SELECT ambu FROM Ambulancia ambu"),
-	@NamedQuery(name = "Ambulancia.listarbuscarambulancia", query = "SELECT ambu FROM Ambulancia ambu where ambu.placaambulancia=:estado ")})
-
+@NamedNativeQueries({ @NamedNativeQuery(name = "Ambulancia.listarambulancia", query = "SELECT * FROM t_ambulancia",resultClass=Ambulancia.class),
+	@NamedNativeQuery(name = "Ambulancia.listarbuscarambulancia", query = "SELECT * FROM t_ambulancia  where placaambulancia=:estado",resultClass=Ambulancia.class) })
 public class Ambulancia implements Serializable {
 
 	private static final long serialVersionUID = 1L;

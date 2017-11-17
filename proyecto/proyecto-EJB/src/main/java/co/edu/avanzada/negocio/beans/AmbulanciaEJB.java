@@ -64,23 +64,21 @@ public class AmbulanciaEJB implements IAmbulancia {
 	}
 	
 	
+	public List<Ambulancia> listarAmbulancia(){
+		List<Ambulancia> result = entity.createNamedQuery("Ambulancia.listarambulancia").getResultList();
+		return result;
+	}
+	
 	public List<Ambulancia>  BuscarListaAmbulancia(String placa) {
 		List<Ambulancia> ambulancia = null;
 		
 		try{
-			Query resultado = entity.createQuery("SELECT ambu FROM Ambulancia ambu where placaambulancia=:estado");
+			Query resultado = entity.createNamedQuery("Ambulancia.listarbuscarambulancia");
 			resultado.setParameter("estado", placa);
 			ambulancia = resultado.getResultList();
 			return ambulancia;
 		} catch (Exception ex){
 			throw new ExcepcionNegocio("No se encuentra una ambulancia con estos parametros de busqueda");
-		}
-		
+		}	
 	}
-
-	public List<Ambulancia> listarAmbulancia(){
-		List<Ambulancia> result = entity.createQuery("SELECT ambu FROM Ambulancia ambu").getResultList();
-		return result;
-	}
-	
 }
