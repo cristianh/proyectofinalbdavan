@@ -1,4 +1,3 @@
-//package entidades;
 
 package co.edu.eam.ingesoft.persistencia.entidades;
 

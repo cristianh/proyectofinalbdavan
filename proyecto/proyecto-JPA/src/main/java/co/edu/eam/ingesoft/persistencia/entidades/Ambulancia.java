@@ -10,15 +10,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
-@NamedNativeQueries({ @NamedNativeQuery(name = "Ambulancia.listarambulancia", query = "SELECT * FROM t_ambulancia",resultClass=Ambulancia.class),
-	@NamedNativeQuery(name = "Ambulancia.listarbuscarambulancia", query = "SELECT * FROM t_ambulancia  where placaambulancia=:estado",resultClass=Ambulancia.class) })
+@Table(name="t_ambulancia")
+@NamedNativeQueries({ @NamedNativeQuery(name = "Ambulancia.listarambulancia",
+query = "SELECT * FROM t_ambulancia",resultClass=Ambulancia.class),
+	@NamedNativeQuery(name = "Ambulancia.listarbuscarambulancia",
+	query = "SELECT * FROM t_ambulancia  where placaambulancia=:estado",resultClass=Ambulancia.class) })
+
 public class Ambulancia implements Serializable {
 
 	private static final long serialVersionUID = 1L;

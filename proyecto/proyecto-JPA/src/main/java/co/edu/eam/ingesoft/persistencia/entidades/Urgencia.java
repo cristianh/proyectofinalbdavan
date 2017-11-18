@@ -7,8 +7,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="t_urgencia")
-@NamedQueries({ @NamedQuery(name = "ReporteUrgencia.listarreportesurgencia", query = "SELECT u FROM Urgencia u"),
-	@NamedQuery(name = "ReporteUrgencia.buscarlistarreportesurgencia", query = "SELECT u FROM Urgencia u where u.idurgencia=:id") })
+
+@NamedNativeQueries({ @NamedNativeQuery(name = "Urgencia.listarurgencia", 
+query = "SELECT * FROM t_urgencia",resultClass=Urgencia.class),
+	@NamedNativeQuery(name = "Urgencia.listarbuscaruegencia", 
+	query = "SELECT * FROM t_urgencia  where idurgencia=:estado",resultClass=Urgencia.class) })
+
+
 public class Urgencia implements Serializable {
 	
 	/**
