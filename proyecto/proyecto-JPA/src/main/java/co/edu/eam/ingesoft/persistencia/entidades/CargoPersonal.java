@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_CargoPersonal")
+@Table(name="T_cargopersonal")
 
 @NamedQueries({ @NamedQuery(name = "CargoPersonal.listarcargopersonal", query = "SELECT tip FROM CargoPersonal tip"),
 	@NamedQuery(name = "CargoPersonal.listarbuscarcargopersonal", query = "SELECT tip FROM CargoPersonal tip where tip.idCargoPersonal=:codigo") })

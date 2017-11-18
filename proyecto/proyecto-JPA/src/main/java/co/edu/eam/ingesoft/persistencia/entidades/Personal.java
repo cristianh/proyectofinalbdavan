@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name="T_Personal")
+@Table(name="t_personal")
 @NamedQueries({ @NamedQuery(name = "Personal.listarpersonal", query = "SELECT per FROM Personal per"),
 	@NamedQuery(name = "Personal.listarbuscarpersonal", query = "SELECT pa FROM Personal pa where pa.nombre=:nombre and pa.numeroDocumento=:cedula") })
 

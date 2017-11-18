@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_TipoAmbulancia")
+@Table(name="t_tipoambulancia")
 @NamedQueries({ @NamedQuery(name = "TipoAmbulancia.listartipoAmbulancia", query = "SELECT tip FROM TipoAmbulancia tip"),
 	@NamedQuery(name = "TipoAmbulancia.listarbuscartipoAmbulancia", query = "SELECT tip FROM TipoAmbulancia tip where tip.idTipoAmbulancia=:codigo") })
 

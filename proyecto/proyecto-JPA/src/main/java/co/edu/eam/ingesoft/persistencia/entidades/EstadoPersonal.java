@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_estadopersonal")
+@Table(name="t_estadopersonal")
 @NamedQueries({ @NamedQuery(name = "EstadoPersonal.listarestadopersonal", query = "SELECT per FROM EstadoPersonal per"),
 	@NamedQuery(name = "EstadoPersonal.listarbuscaresatdopersonal", query = "SELECT per FROM EstadoPersonal per where per.idEstadoPersonal=:estado") })
 

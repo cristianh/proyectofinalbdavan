@@ -67,8 +67,10 @@ public class ControladorAmbulancia implements Serializable {
 	@PostConstruct
 	public void initializar() {
 		listarDisponibilidad = disponibilidadEjb.ListarDisponibilidad();
+		System.out.println(listarDisponibilidad);
 		listarTipoAmbulancia = tipoAmbulanciaEjb.ListarTipoAmbulancia();
 		listarAmbulancia = ambulanciaEjb.listarAmbulancia();
+		
 
 	}
 

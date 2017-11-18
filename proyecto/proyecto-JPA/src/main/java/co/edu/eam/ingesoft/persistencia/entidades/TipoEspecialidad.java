@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.criteria.CriteriaBuilder.In;
 
 @Entity
-@Table(name="T_TipoEspecialidadp")
+@Table(name="T_tipopspecialidadp")
 public class TipoEspecialidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
