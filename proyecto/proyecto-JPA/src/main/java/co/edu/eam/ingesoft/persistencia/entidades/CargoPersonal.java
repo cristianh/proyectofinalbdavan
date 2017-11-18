@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -12,8 +14,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="T_cargopersonal")
 
-@NamedQueries({ @NamedQuery(name = "CargoPersonal.listarcargopersonal", query = "SELECT tip FROM CargoPersonal tip"),
-	@NamedQuery(name = "CargoPersonal.listarbuscarcargopersonal", query = "SELECT tip FROM CargoPersonal tip where tip.idCargoPersonal=:codigo") })
+@NamedNativeQueries({ @NamedNativeQuery(name = "CargoPersonal.listarcargoPersonal",
+query = "SELECT * FROM T_CargoPersonal",resultClass=CargoPersonal.class),
+	@NamedNativeQuery(name = "CargoPersonal.listarbuscarcargoPersonal",
+	query = "SELECT * FROM T_CargoPersonal  where idCargoPersonal=:estado",resultClass=CargoPersonal.class) })
+
 
 public class CargoPersonal implements Serializable {
 

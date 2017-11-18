@@ -1,4 +1,3 @@
-//package entidades;
 
 package co.edu.eam.ingesoft.persistencia.entidades;
 
@@ -10,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -17,8 +18,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_especialidad")
-@NamedQueries({ @NamedQuery(name = "Especialidad.listarespecialidades", query = "SELECT e FROM Especialidad e"),
-		@NamedQuery(name = "Especialidad.listarespecialidadesporestado", query = "SELECT e FROM Especialidad e where e.estadoespecialidad=:estado") })
+
+@NamedNativeQueries({ @NamedNativeQuery(name = "Especialidad.listarespecialidad",
+query = "SELECT * FROM t_especialidad",resultClass=Especialidad.class),
+	@NamedNativeQuery(name = "Ambulancia.listarbuscarespecialidad",
+	query = "SELECT * FROM t_especialidad  where placaambulancia=:estado",resultClass=Especialidad.class) })
+
 
 public class Especialidad implements Serializable {
 	private static final long serialVersionUID = 1L;

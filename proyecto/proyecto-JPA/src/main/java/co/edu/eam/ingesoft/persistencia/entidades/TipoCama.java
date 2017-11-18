@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -13,8 +15,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_tipocama")
-@NamedQueries({ @NamedQuery(name = "Tipocama.listartipocama", query = "SELECT ca FROM TipoCama ca"),
-	@NamedQuery(name = "Tipocama.buscarlistartipocama", query = "SELECT ca FROM TipoCama ca where ca.idtipocama=:id") })
+
+@NamedNativeQueries({ @NamedNativeQuery(name = "Ambulancia.listartipoCama",
+query = "SELECT * FROM t_tipocama",resultClass=TipoCama.class),
+	@NamedNativeQuery(name = "Ambulancia.listarbuscartipoCama",
+	query = "SELECT * FROM t_tipocama  where idtipocama=:estado",resultClass=TipoCama.class) })
+
+
 public class TipoCama implements Serializable {
 
 	/**

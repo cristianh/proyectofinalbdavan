@@ -6,14 +6,26 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
+<<<<<<< HEAD
 @Table(name="t_tipoambulancia")
 @NamedQueries({ @NamedQuery(name = "TipoAmbulancia.listartipoAmbulancia", query = "SELECT tip FROM TipoAmbulancia tip"),
 	@NamedQuery(name = "TipoAmbulancia.listarbuscartipoAmbulancia", query = "SELECT tip FROM TipoAmbulancia tip where tip.idTipoAmbulancia=:codigo") })
+=======
+@Table(name="T_TipoAmbulancia")
+
+@NamedNativeQueries({ @NamedNativeQuery(name = "TipoAmbulancia.listartipoambulancia",
+query = "SELECT * FROM T_TipoAmbulancia",resultClass=TipoAmbulancia.class),
+	@NamedNativeQuery(name = "TipoAmbulancia.listarbuscartipoambulancia",
+	query = "SELECT * FROM T_TipoAmbulancia  where placaambulancia=:estado",resultClass=TipoAmbulancia.class) })
+
+>>>>>>> 4adad58439582b7ca3d687f631e2ae0e782e8f2e
 
 public class TipoAmbulancia implements Serializable {
 

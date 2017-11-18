@@ -61,24 +61,23 @@ public class PersonalEJB implements IPersonal{
 		}
 	}
 
-	public List<Personal> BuscarListaPersonal(String nombre, String cedula ) {
-		List<Personal> personal = null;
-
-		try {
-			Query resultado = entity.createQuery("SELECT pa FROM Personal pa where pa.nombre=:nombre and pa.cedula=:cedula");
-			resultado.setParameter("nombre", nombre);
-			resultado.setParameter("cedula", cedula);
-			personal = resultado.getResultList();
-			return personal;
-		} catch (Exception ex) {
-			throw new ExcepcionNegocio("No se encuentra una personal con estos parametros de busqueda");
-		}
-
-	}
-
-	public List<Personal> listarPersonal() {
-		List<Personal> result = entity.createQuery("SELECT per FROM Personal per").getResultList();
+	public List<Personal> listarPersonal(){
+		List<Personal> result = entity.createNamedQuery("Personal.listarpersonal").getResultList();
 		return result;
 	}
+	
+	public List<Personal>  BuscarListaPersonal (String numeroDocumento,  String nombre) {
+		List<Personal> personal = null;
+		
+		try{
+			Query resultado = entity.createNamedQuery("Personal.listarbuscarpersonal");
+			resultado.setParameter("estado", numeroDocumento);
+			personal = resultado.getResultList();
+			return personal;
+		} catch (Exception ex){
+			throw new ExcepcionNegocio("No se encuentra una personal con estos parametros de busqueda");
+		}	
+	}
+
 
 }

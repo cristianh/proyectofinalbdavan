@@ -9,14 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="t_cama")
-@NamedQueries({ @NamedQuery(name = "Cama.listarcamas", query = "SELECT ca FROM Cama ca"),
-	@NamedQuery(name = "Cama.buscarlistarcamas", query = "SELECT ca FROM Cama ca where ca.idcama=:id") })
+@NamedNativeQueries({ @NamedNativeQuery(name = "Cama.listarcama",
+query = "SELECT * FROM t_cama",resultClass=Cama.class),
+	@NamedNativeQuery(name = "Cama.listarbuscarcama",
+	query = "SELECT * FROM t_cama  where idcama=:estado",resultClass=Cama.class) })
+
 public class Cama implements Serializable{
 
 	/**

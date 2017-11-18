@@ -8,7 +8,13 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="t_personaambulancia")
+@Table(name="t_personalambulancia")
+
+@NamedNativeQueries({ @NamedNativeQuery(name = "PersonalAmbulancia.listarpersonalambulancia",
+query = "SELECT * FROM t_personalambulancia",resultClass=PersonalAmbulancia.class),
+	@NamedNativeQuery(name = "PersonalAmbulancia.listarbuscarpersonalambulancia",
+	query = "SELECT * FROM t_personalambulancia  where idpersonalambulancia=:estado",resultClass=PersonalAmbulancia.class) })
+
 public class PersonalAmbulancia implements Serializable {
 	
 	/**
