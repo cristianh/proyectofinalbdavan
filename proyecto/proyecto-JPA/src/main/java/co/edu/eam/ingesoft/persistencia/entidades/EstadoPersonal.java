@@ -5,14 +5,20 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="T_estadopersonal")
-@NamedQueries({ @NamedQuery(name = "EstadoPersonal.listarestadopersonal", query = "SELECT per FROM EstadoPersonal per"),
-	@NamedQuery(name = "EstadoPersonal.listarbuscaresatdopersonal", query = "SELECT per FROM EstadoPersonal per where per.idEstadoPersonal=:estado") })
+
+@NamedNativeQueries({ @NamedNativeQuery(name = "EstadoPersonal.listarestadoPersonal",
+query = "SELECT * FROM T_estadopersonal",resultClass=EstadoPersonal.class),
+	@NamedNativeQuery(name = "EstadoPersonal.listarbuscarestadoPersonal",
+	query = "SELECT * FROM T_estadopersonal  where idEstadoPersonal=:estado",resultClass=EstadoPersonal.class) })
+
 
 public class EstadoPersonal implements Serializable{
 
