@@ -76,7 +76,7 @@ public class CamaEJB implements ICama {
 		// TODO Auto-generated method stub
 		List<Cama> result = null;
 		try {
-			result = entity.createNamedQuery("Cama.listarcamas").getResultList();
+			result = entity.createNamedQuery("Cama.listarcama").getResultList();
 			System.out.println(result);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage().toString());

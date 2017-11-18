@@ -53,7 +53,7 @@ public class EspecialidadEJB implements IEspecialidad {
 	}
 
 	public List<Especialidad> ListarEspecialidad() {
-		List<Especialidad> resultList = manager.createQuery("Select esp from Especialidad esp").getResultList();
+		List<Especialidad> resultList = manager.createQuery("Select esp from Especialidad esp where estadoespecialidad='Activa'").getResultList();
 		return resultList;
 	}
 

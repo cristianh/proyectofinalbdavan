@@ -12,20 +12,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-<<<<<<< HEAD
-@Table(name="t_estadopersonal")
-@NamedQueries({ @NamedQuery(name = "EstadoPersonal.listarestadopersonal", query = "SELECT per FROM EstadoPersonal per"),
-	@NamedQuery(name = "EstadoPersonal.listarbuscaresatdopersonal", query = "SELECT per FROM EstadoPersonal per where per.idEstadoPersonal=:estado") })
-=======
 @Table(name="T_estadopersonal")
 
 @NamedNativeQueries({ @NamedNativeQuery(name = "EstadoPersonal.listarestadoPersonal",
 query = "SELECT * FROM T_estadopersonal",resultClass=EstadoPersonal.class),
 	@NamedNativeQuery(name = "EstadoPersonal.listarbuscarestadoPersonal",
 	query = "SELECT * FROM T_estadopersonal  where idEstadoPersonal=:estado",resultClass=EstadoPersonal.class) })
-
->>>>>>> 4adad58439582b7ca3d687f631e2ae0e782e8f2e
-
 public class EstadoPersonal implements Serializable{
 
 	@Id

@@ -61,11 +61,13 @@
 					<h:panelGrid columns="2" id="panelbotones" style="margin:0 auto">
 						<p:commandButton id="botonCrearcentro"
 							value="#{msj['concentromedico.btnCrearCentro']}"
-							actionListener="#{concentromedico.crearcentromedico}"
-							styleClass="ui-priority-primary" />
+							action="#{concentromedico.crearcentromedico}"
+							styleClass="ui-priority-primary" 
+							update=" formulariocentromedico messages"
+							process="@this formulariocentromedico" />
 						<p:commandButton id="botonEditarcentro"
 							value="#{msj['concentromedico.btnEditar']}"
-							actionListener="#{concentromedico.editarmedico}"
+							action="#{concentromedico.editarmedico}"
 							styleClass="ui-priority-primary" />
 					</h:panelGrid>
 				</p:fieldset>
@@ -118,7 +120,7 @@
 
 					<!-- Tabla camas -->
 					<p:dataTable var="cama" id="tablacamas"
-						value="#{concentromedico.listarcamas}" rows="10" paginator="true"
+						value="#{concentromedico.listarcamas}"  rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
 
@@ -193,8 +195,8 @@
 									value="#{msj['concentromedico.btnEditarcama']}"
 									actionListener="#{concentromedico.guardarCamaEditado(concentromedico.camaitemseleccionado.idcama)}"
 									styleClass="ui-priority-primary"
-									style="margin-right:35px;margin-left:10px"
-									immediate="true"  update="panelcamas tablacamas">
+									style="margin-right:35px;margin-left:10px" immediate="true"
+									update="panelcamas tablacamas">
 								</p:commandButton>
 							</p:panelGrid>
 						</p:outputPanel>
@@ -213,24 +215,31 @@
 						<p:outputLabel for="tfespecialidad"
 							value="#{msj['concentromedico.especialidad']}" />
 						<p:selectOneMenu id="tfespecialidad"
-							value="#{concentromedico.especialidad}">
+							value="#{concentromedico.especialidadseleccionadacombo}" converter="especialidadConverter">
 
 							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
 
-							<f:selectItems value="#{concentromedico.listarespecialidades}"
+							<f:selectItems value="#{concentromedico.listarespecialidadescombo}"
 								var="especialidad" itemLabel="#{especialidad.nombre}"
 								itemValue="#{especialidad}" />
 						</p:selectOneMenu>
-
-
+						<p:commandButton id="botonGuardarEspecialidad"
+								value="#{msj['concentromedico.btnGuardarEspecialidad']}"
+								actionListener="#{concentromedico.GuardarEspecialidad}"
+								styleClass="ui-priority-primary"
+								style="margin-right:35px;margin-left:10px"
+								process="@this formularioEspecialidad" update="panelespecialidad tablaespecialidad">
+							</p:commandButton>
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator></p:separator>
 				<h:panelGrid columns="1" id="panelespecialidad">
 					<!-- Tabla especialidad -->
-					<p:dataTable var="especialidad"
-						value="#{concentromedico.listarespecialidades}" rows="10"
-						paginator="true"
+					<p:dataTable id="tablaespecialidad" var="especialidad"
+						value="#{concentromedico.listarespecialidades}"
+						selectionMode="single"
+						selection="#{concentromedico.especialidadseleccionada}"
+						rowKey="#{especialidad.codigo}" rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
 

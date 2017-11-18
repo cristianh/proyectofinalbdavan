@@ -18,19 +18,18 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-<<<<<<< HEAD
+
 @Table(name="t_personal")
-@NamedQueries({ @NamedQuery(name = "Personal.listarpersonal", query = "SELECT per FROM Personal per"),
-	@NamedQuery(name = "Personal.listarbuscarpersonal", query = "SELECT pa FROM Personal pa where pa.nombre=:nombre and pa.numeroDocumento=:cedula") })
-=======
-@Table(name="T_Personal")
 @NamedNativeQueries({ @NamedNativeQuery(name = "Personal.listarpersonal",
 query = "SELECT * FROM T_Personal",resultClass=Personal.class),
 	@NamedNativeQuery(name = "Personal.listarbuscarpersonal",
 	query = "SELECT * FROM T_Personal  where numeroDocumento=:estado",resultClass=Personal.class) })
->>>>>>> 4adad58439582b7ca3d687f631e2ae0e782e8f2e
-
 public class Personal implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="idPersonal", unique=true)
