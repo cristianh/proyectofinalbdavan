@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+
+		<h:form id="formularioenviarAtencion">
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+			<p:panel header="EnviarAtencion">
+
+				<p:fieldset>
+					<h:panelGrid columns="6" id="paneltabla" style="margin:0 auto">
+
+						<p:outputLabel for="tfnombre" value="Nombre:" />
+						<p:inputText id="tfnombre"
+							value="#{conreporteciudadano.nombreciudadano}"
+							style="margin-bottom:5px" required="true"
+							requiredMessage="Campo requerido" />
+						<p:message for="tfnombre" />
+
+						<p:outputLabel for="tfapellido" value="Apellido:"
+							style="margin-left:21px" />
+						<p:inputText id="tfapellido"
+							value="#{conreporteciudadano.apellidoCiudadano}"
+							style="margin-bottom:5px" required="true"
+							requiredMessage="Campo requerido" />
+						<p:message for="tfapellido" />
+
+						<p:outputLabel for="tfCedula" value="Cedula:" />
+						<p:inputText id="tfCedula" required="true"
+							requiredMessage="Campo requerido"
+							value="#{conreporteciudadano.cedula}" style="margin-bottom:5px" />
+						<p:message for="tfCedula" required="true"
+							requiredMessage="Campo requerido" />
+
+						<p:outputLabel id="lbltelefono" value="telefono:"
+							style="margin-bottom:5px;margin-left:21px" />
+						<p:inputText id="tftelefono"
+							value="#{conreporteciudadano.telefono}" style="margin-bottom:5px" />
+						<p:message for="tftelefono" />
+
+						<p:outputLabel for="tfdireccion" value="Direccion:"
+							style="margin-bottom:5px" />
+						<p:inputText id="tfdireccion"
+							value="#{conreporteciudadano.direccion}"
+							style="margin-bottom:5px" required="true"
+							requiredMessage="Campo requerido" />
+						<p:message for="tfdireccion" />
+
+						<p:outputLabel for="tfcantidadper" value="N° personas afectadas:"
+							style="margin-left:21px" />
+						<p:spinner id="tfcantidadper" label="1"
+							value="#{conreporteciudadano.numeroafectados}" required="true"
+							requiredMessage="Campo requerido" max="6" min="1" />
+						<p:message for="tfcantidadper" />
+
+						<p:outputLabel for="comboTipourgencia" value="Tipo urgencia:" />
+						<p:selectOneMenu id="comboTipourgencia"
+							value="#{conreporteciudadano.tipourgenciaseleccionada}"
+							converter="reporteurgenciaConverter">
+
+							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+							<f:selectItems value="#{conreporteciudadano.listartipourgencia}"
+								var="tipourgencia" itemLabel="#{tipourgencia.nombre}"
+								itemValue="#{tipourgencia}" />
+
+							<f:ajax event="change" execute="@this"
+								listener="#{conreporteciudadano.TipoUrgenciaseleccionado}" />
+
+						</p:selectOneMenu>
+						<p:message for="comboTipourgencia" />
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator />
+				<p:fieldset>
+					<h:panelGrid columns="4" id="panel">
+						<p:outputLabel for="ftidAtenciom" value="Id atencion" />
+						<p:inputText id="ftidAtenciom"
+							value=" " />
+					</h:panelGrid>
+				</p:fieldset>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

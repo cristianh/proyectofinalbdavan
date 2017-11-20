@@ -10,6 +10,7 @@ import co.edu.avanzada.standalone.controlador.controladorCargoPersonal;
 import co.edu.avanzada.standalone.controlador.controladorCiudad;
 import co.edu.avanzada.standalone.controlador.controladorDepartamento;
 import co.edu.avanzada.standalone.controlador.controladorDisponibilidadAmbu;
+import co.edu.avanzada.standalone.controlador.controladorEnviarAtencionUrgencia;
 import co.edu.avanzada.standalone.controlador.controladorEps;
 import co.edu.avanzada.standalone.controlador.controladorEspecialidad;
 import co.edu.avanzada.standalone.controlador.controladorEstadoPersonal;
@@ -32,6 +33,7 @@ import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 import co.edu.eam.ingesoft.persistencia.entidades.ReporteUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Departamento;
 import co.edu.eam.ingesoft.persistencia.entidades.Disponibilidad;
+import co.edu.eam.ingesoft.persistencia.entidades.EnviarAtencionUrgencia;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
 import co.edu.eam.ingesoft.persistencia.entidades.Especialidad;
 import co.edu.eam.ingesoft.persistencia.entidades.EstadoPersonal;
@@ -68,7 +70,7 @@ public class Main {
 	private static controladorOperador controladoroperador;
 	private static controladorTipoUrgencia controladortipourgencia;
 	private static controladorUrgencia controladorurgencia;
-	private static controladorReporteUrgencia controladorreportarurgencia;
+
 
 	
 	private static controladorAmbulancia controladorambulancia;
@@ -80,6 +82,7 @@ public class Main {
 	private static controladorCargoPersonal controlcargoper;
 	private static controladorEstadoPersonal controlestadop;
 	
+	private static controladorEnviarAtencionUrgencia enviarAtencion;
 	
 //	private static controladorReporteUrgencia reporte;
 	
@@ -102,7 +105,7 @@ public class Main {
 		controladortipofuncionario= new controladorTipofuncionario();
 		controladortipourgencia=new controladorTipoUrgencia();
 		controladorurgencia=new controladorUrgencia();
-		controladorreportarurgencia=new  controladorReporteUrgencia();
+		
 		controladoroperador=new controladorOperador();
 		
 		controladorpersonal = new controladorPersonal();
@@ -126,6 +129,7 @@ public class Main {
 		controladorDispoAmbu = new controladorDisponibilidadAmbu();
 		controladorTipoAmbu = new controladorTipoAmbulancia();
 		
+		enviarAtencion = new controladorEnviarAtencionUrgencia();
 		
 	//	reporte = new controladorReporteUrgencia();
 	//DARKLAST
@@ -284,21 +288,17 @@ public class Main {
 		controlestadop.crearEstadoPersonal(esp);
 		controladorpersonal.crearPersonal(per);
 		
+
 		
-//		ReporteUrgencia repor = new ReporteUrgencia();
-//		repor.setApellido("a");
-//		repor.setCedula("4");
-//		repor.setDireccion("f");
-//		repor.setEstado("m");
-//		repor.setFechayhora(new Date());
-//		repor.setIdreporteurgencia(1);
-//		repor.setNombre("s");
-//		repor.setNumeroafectados(5);
-//		repor.setTelefono("1");
-//		repor.setTipourgencia(null);
-//		
-//		reporte.crearReporteUrgencia(repor);
-//		
+		EnviarAtencionUrgencia atencion = new EnviarAtencionUrgencia();
+		atencion.setIdatencion("123");
+		atencion.setAmbulancia(amb);
+		atencion.setAuxiliar(per);
+		atencion.setConductor(per);
+		atencion.setParamedico(per);
+		atencion.setReporteUrgencia(null);
+		
+		enviarAtencion.crearAtencionUrgencia(atencion);
 	}
 	
 	
