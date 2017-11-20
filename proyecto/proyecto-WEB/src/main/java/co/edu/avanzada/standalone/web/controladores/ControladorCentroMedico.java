@@ -379,6 +379,7 @@ public class ControladorCentroMedico implements Serializable {
 	public void setListarespecialidadestabla(List<Especialidad> listarespecialidadestabla) {
 		this.listarespecialidadestabla = listarespecialidadestabla;
 	}
+
 	public Especialidad getEspecialidadseleccionadacombo() {
 		return especialidadseleccionadacombo;
 	}
