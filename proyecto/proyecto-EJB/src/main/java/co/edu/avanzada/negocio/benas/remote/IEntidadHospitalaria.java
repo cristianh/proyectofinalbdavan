@@ -6,9 +6,9 @@ public interface IEntidadHospitalaria {
 
 	public void crearEntidadHospitalaria(EntidadHospitalaria entidadHospitalaria); 
 
-	public EntidadHospitalaria  buscarEntidadHospitalaria(Integer idEntidadHospitalaria);
+	public EntidadHospitalaria  buscarEntidadHospitalaria(String idEntidadHospitalaria);
 	
 	public void editarEntidadHospitalaria (EntidadHospitalaria entidadHospitalaria);
 
-	public void eliminarEntidadHospitalaria(Integer idEntidadHospitalaria);
+	public void eliminarEntidadHospitalaria(String idEntidadHospitalaria);
 }

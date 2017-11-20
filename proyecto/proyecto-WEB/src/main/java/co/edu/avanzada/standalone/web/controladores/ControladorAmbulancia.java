@@ -70,11 +70,6 @@ public class ControladorAmbulancia implements Serializable {
 		System.out.println(listarDisponibilidad);
 		listarTipoAmbulancia = tipoAmbulanciaEjb.ListarTipoAmbulancia();
 		listarAmbulancia = ambulanciaEjb.listarAmbulancia();
-<<<<<<< HEAD
-=======
-		
-
->>>>>>> 61132012ffa4e6973c3eef626cccef0d70640097
 	}
 
 	public AmbulanciaEJB getAmbulanciaEjb() {

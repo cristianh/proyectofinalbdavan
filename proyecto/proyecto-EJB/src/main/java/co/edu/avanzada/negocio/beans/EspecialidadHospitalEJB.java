@@ -11,16 +11,13 @@ import co.edu.eam.ingesoft.persistencia.entidades.EntidadHospitalaria;
 
 @LocalBean
 @Stateless
-@Remote
-
 public class EspecialidadHospitalEJB {
 
 	@PersistenceContext
 	EntityManager entity;
 
 	public void crearEntidadHospitalaria(EntidadHospitalaria entidadHospitalaria) {
-		EntidadHospitalaria busquedaEntidadHospitalaria = buscarEntidadHospitalaria(
-				entidadHospitalaria.getIdentidadhospitalaria());
+		EntidadHospitalaria busquedaEntidadHospitalaria = buscarEntidadHospitalaria(entidadHospitalaria.getIdentidadhospitalaria());
 		if (busquedaEntidadHospitalaria == null) {
 			entity.persist(entidadHospitalaria);
 			System.out.println("EntidadHospitalaria registrada");
@@ -32,11 +29,11 @@ public class EspecialidadHospitalEJB {
 
 	/**
 	 * 
-	 * @param idEntidadHospitalaria
+	 * @param string
 	 * @return
 	 */
-	public EntidadHospitalaria buscarEntidadHospitalaria(Integer idEntidadHospitalaria) {
-		return entity.find(EntidadHospitalaria.class, idEntidadHospitalaria);
+	public EntidadHospitalaria buscarEntidadHospitalaria(String string) {
+		return entity.find(EntidadHospitalaria.class, string);
 	}
 
 	/**
@@ -47,7 +44,7 @@ public class EspecialidadHospitalEJB {
 		entity.merge(entidadHospitalaria);
 	}
 
-	public void eliminarEntidadHospitalaria(Integer idEntidadHospitalaria) {
+	public void eliminarEntidadHospitalaria(String idEntidadHospitalaria) {
 		EntidadHospitalaria busquedaEntidadHospitalaria = buscarEntidadHospitalaria(idEntidadHospitalaria);
 		if (busquedaEntidadHospitalaria != null) {
 			entity.remove(idEntidadHospitalaria);

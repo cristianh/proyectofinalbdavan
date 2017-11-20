@@ -22,6 +22,7 @@ import co.edu.eam.ingesoft.persistencia.entidades.Especialidad;
 import co.edu.eam.ingesoft.persistencia.entidades.GradocomplejidadHospital;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoCama;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoCentroMedico;
+import co.edu.eam.ingesoft.persistencia.entidades.UrgenciaAmbulancia;
 
 @ViewScoped
 @Named("concentromedico")
@@ -102,7 +103,7 @@ public class ControladorCentroMedico implements Serializable {
 
 	private String nombreCentromedico;
 
-	private Integer codigoCentromedico;
+	private String codigoCentromedico;
 
 	private String tipoCentromedico;
 
@@ -214,11 +215,11 @@ public class ControladorCentroMedico implements Serializable {
 		this.nombreCentromedico = nombreCentromedico;
 	}
 
-	public Integer getCodigoCentromedico() {
+	public String getCodigoCentromedico() {
 		return codigoCentromedico;
 	}
 
-	public void setCodigoCentromedico(Integer codigoCentromedico) {
+	public void setCodigoCentromedico(String codigoCentromedico) {
 		this.codigoCentromedico = codigoCentromedico;
 	}
 
@@ -441,20 +442,16 @@ public class ControladorCentroMedico implements Serializable {
 
 	public void crearcentromedico() {
 		try {
-			entidadhospitalaria = new EntidadHospitalaria();
-			entidadhospitalaria.setGradocomplejidad(complejidadcentromedico);
-			entidadhospitalaria.setEstado(estadocama);
-			entidadhospitalaria.setIdentidadhospitalaria(codigoCentromedico);
-			entidadhospitalaria.setNombreentidadhospitalaria(nombreCentromedico);
-			entidadhospitalaria.setEspecialidades(listarespecialidadestabla);
-			entidadhospitalaria.setCamas((List<Cama>) camatableseleccionada);
+			entidadhospitalaria = new EntidadHospitalaria(codigoCentromedico,nombreCentromedico,complejidadcentromedico,estadocama,listarcamas,listarespecialidadestabla);
+			System.out.println(entidadhospitalaria);
+			//String identidadhospitalaria, String nombreentidadhospitalaria,GradocomplejidadHospital gradocomplejidad, String estado, List<Cama> camas,List<UrgenciaAmbulancia> urgenciaambulancia, List<Especialidad> especialidades
 			entidadhospitalariaEJB.crearEntidadHospitalaria(entidadhospitalaria);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Centro medico creado", "La cama a sido eliminada."));
 		} catch (Exception e) {
 			// TODO: handle exception
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					e.getMessage().toString(), "La cama a sido eliminada."));
+					e.getMessage().toString(), "El centro medico a sido eliminado."));
 		}
 	}
 
@@ -464,9 +461,8 @@ public class ControladorCentroMedico implements Serializable {
 
 	public void GuardarEspecialidad() {
 		System.out.println(listarespecialidadestabla);
-		/*List<Especialidad> especialidadbuscada=especialidadEJB.BuscarListaEspecialidad(especialidadseleccionadacombo.getCodigo());
-		listarespecialidades.addAll(0, especialidadbuscada);
-		setListarespecialidades(listarespecialidades);*/
+		listarespecialidadescombo=listarespecialidadestabla;
+		
 	}
 
 }

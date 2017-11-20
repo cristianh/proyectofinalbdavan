@@ -15,8 +15,7 @@ import co.edu.eam.ingesoft.persistencia.entidades.EntidadHospitalaria;
 @LocalBean
 @Stateless
 @Remote (IEntidadHospitalaria.class)
-
-public class EntidadHospitalariaEJB implements Serializable{
+public class EntidadHospitalariaEJB implements IEntidadHospitalaria{
 
 	/**
 	 * 
@@ -27,14 +26,13 @@ public class EntidadHospitalariaEJB implements Serializable{
 	EntityManager entity;
 	
 	public void crearEntidadHospitalaria(EntidadHospitalaria entidadHospitalaria){
-		EntidadHospitalaria busquedaEntidadHospitalaria = buscarEntidadHospitalaria(entidadHospitalaria.getIdentidadhospitalaria());
-		if(busquedaEntidadHospitalaria == null){
-			entity.persist(entidadHospitalaria);
-			System.out.println("EntidadHospitalaria registrada");
-		}else {
-			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio("Ya existe un registro asociado");
-		}
 		
+		try {
+			entity.persist(entidadHospitalaria);
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new co.edu.avanzada.negocio.excepciones.ExcepcionNegocio(e.getMessage().toString());
+		}
 	}
 	
 	/**
@@ -42,7 +40,7 @@ public class EntidadHospitalariaEJB implements Serializable{
 	 * @param idEntidadHospitalaria
 	 * @return
 	 */
-	public EntidadHospitalaria buscarEntidadHospitalaria(Integer idEntidadHospitalaria){
+	public EntidadHospitalaria buscarEntidadHospitalaria(String idEntidadHospitalaria){
 		return entity.find(EntidadHospitalaria.class, idEntidadHospitalaria);
 	}
 
@@ -54,7 +52,9 @@ public class EntidadHospitalariaEJB implements Serializable{
 		entity.merge(entidadHospitalaria);
 	}
 	
-	public void eliminarEntidadHospitalaria(Integer idEntidadHospitalaria){
+
+	public void eliminarEntidadHospitalaria(String idEntidadHospitalaria) {
+		// TODO Auto-generated method stub
 		EntidadHospitalaria busquedaEntidadHospitalaria = buscarEntidadHospitalaria(idEntidadHospitalaria);
 		if(busquedaEntidadHospitalaria != null){
 			entity.remove(idEntidadHospitalaria);
@@ -62,6 +62,8 @@ public class EntidadHospitalariaEJB implements Serializable{
 			throw new ExcepcionNegocio("Error al borrar la entidadHospitalaria");
 		}
 	}
+
+	
 	
 
 }

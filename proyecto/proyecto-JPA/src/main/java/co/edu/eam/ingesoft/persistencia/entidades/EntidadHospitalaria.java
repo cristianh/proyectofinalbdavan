@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class EntidadHospitalaria implements Serializable {
 
 	@Id
-	private Integer identidadhospitalaria;
+	private String identidadhospitalaria;
 	
 	@Column(name="nombreentidadhospitalaria")
 	private String nombreentidadhospitalaria;
@@ -29,7 +29,7 @@ public class EntidadHospitalaria implements Serializable {
 	private List<UrgenciaAmbulancia> urgenciaambulancia;
 	
 	
-	@OneToMany(mappedBy="entidadhospitalaria")
+	@OneToMany(mappedBy="entidadhospitalaria",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Especialidad> especialidades;
 	
 	
@@ -45,19 +45,17 @@ public class EntidadHospitalaria implements Serializable {
 	 * @param gradocomplejidad
 	 * @param estado
 	 * @param camas
-	 * @param urgenciaambulancia
-	 * @param especialidad
+	 * @param especialidades
 	 */
-	public EntidadHospitalaria(Integer identidadhospitalaria, String nombreentidadhospitalaria,
+	public EntidadHospitalaria(String identidadhospitalaria, String nombreentidadhospitalaria,
 			GradocomplejidadHospital gradocomplejidad, String estado, List<Cama> camas,
-			List<UrgenciaAmbulancia> urgenciaambulancia, List<Especialidad> especialidades) {
+			List<Especialidad> especialidades) {
 		super();
 		this.identidadhospitalaria = identidadhospitalaria;
 		this.nombreentidadhospitalaria = nombreentidadhospitalaria;
 		this.gradocomplejidad = gradocomplejidad;
 		this.estado = estado;
 		this.camas = camas;
-		this.urgenciaambulancia = urgenciaambulancia;
 		this.especialidades = especialidades;
 	}
 
@@ -65,11 +63,14 @@ public class EntidadHospitalaria implements Serializable {
 
 
 
-	public Integer getIdentidadhospitalaria() {
+
+
+
+	public String getIdentidadhospitalaria() {
 		return identidadhospitalaria;
 	}
 
-	public void setIdentidadhospitalaria(Integer identidadhospitalaria) {
+	public void setIdentidadhospitalaria(String identidadhospitalaria) {
 		this.identidadhospitalaria = identidadhospitalaria;
 	}
 

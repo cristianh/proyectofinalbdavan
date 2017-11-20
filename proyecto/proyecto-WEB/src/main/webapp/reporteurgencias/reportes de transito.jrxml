@@ -4,8 +4,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables">
 		<![CDATA[IlRfVElQT1VSR0VOQ0lBIiBBUyAsMzEyLDc4LDM2ZTE1MWZiLTlmYjgtNDdmZi1iY2YyLTFhZGVm
 MjM2ZDk2NTsiVF9SRVBPUlRFVVJHRU5DSUEiIEFTICw2NSwzNiw0NzgwNjZlMC1lYTc3LTQwMGIt
-OWQxMi01MzIyOWJkODFhMDM7
-]]>
+OWQxMi01MzIyOWJkODFhMDM7]]>
 	</property>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle"/>
 	<queryString language="SQL">
@@ -36,7 +35,7 @@ OWQxMi01MzIyOWJkODFhMDM7
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Reporte Urgencias por tipo]]></text>
+					<text><![CDATA[Reporte Urgencias por Año]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -45,10 +44,10 @@ OWQxMi01MzIyOWJkODFhMDM7
 		<band height="13"/>
 	</pageHeader>
 	<detail>
-		<band height="292">
+		<band height="564">
 			<barChart>
 				<chart evaluationTime="Report">
-					<reportElement x="160" y="0" width="250" height="251" uuid="6f94fdcf-ec32-4eec-9b92-06713358296e"/>
+					<reportElement x="160" y="0" width="250" height="251" uuid="871d5b3d-5204-4db7-9c3d-0c91dd494690"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -56,8 +55,9 @@ OWQxMi01MzIyOWJkODFhMDM7
 				<categoryDataset>
 					<categorySeries>
 						<seriesExpression><![CDATA[$F{nombre}]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{nombre}]]></categoryExpression>
+						<categoryExpression><![CDATA[$F{numeroafectados}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{numeroafectados}]]></valueExpression>
+						<labelExpression><![CDATA[$F{nombre}]]></labelExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>
@@ -71,13 +71,27 @@ OWQxMi01MzIyOWJkODFhMDM7
 					</valueAxisFormat>
 				</barPlot>
 			</barChart>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="180" y="280" width="200" height="200" uuid="df41202f-57ae-4e16-9065-cee4a8d895c4"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{numeroafectados}]]></keyExpression>
+					<valueExpression><![CDATA[$F{numeroafectados}]]></valueExpression>
+					<labelExpression><![CDATA[$F{nombre}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="30"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="219">
+		<band height="25">
 			<textField>
 				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f580e745-c235-4324-9a8b-bd530b90f8d8"/>
 				<textElement textAlignment="Right"/>
