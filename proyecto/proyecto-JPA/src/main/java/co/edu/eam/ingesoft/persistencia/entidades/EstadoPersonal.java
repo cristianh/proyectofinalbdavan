@@ -18,8 +18,6 @@ import javax.persistence.Table;
 query = "SELECT * FROM T_estadopersonal",resultClass=EstadoPersonal.class),
 	@NamedNativeQuery(name = "EstadoPersonal.listarbuscarestadoPersonal",
 	query = "SELECT * FROM T_estadopersonal  where idEstadoPersonal=:estado",resultClass=EstadoPersonal.class) })
-
-
 public class EstadoPersonal implements Serializable{
 
 	@Id

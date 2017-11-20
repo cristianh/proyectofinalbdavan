@@ -13,14 +13,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_TipoAmbulancia")
-
+@Table(name="t_tipoambulancia")
 @NamedNativeQueries({ @NamedNativeQuery(name = "TipoAmbulancia.listartipoambulancia",
 query = "SELECT * FROM T_TipoAmbulancia",resultClass=TipoAmbulancia.class),
 	@NamedNativeQuery(name = "TipoAmbulancia.listarbuscartipoambulancia",
 	query = "SELECT * FROM T_TipoAmbulancia  where placaambulancia=:estado",resultClass=TipoAmbulancia.class) })
-
-
 public class TipoAmbulancia implements Serializable {
 
 	@Id

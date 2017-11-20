@@ -10,13 +10,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Disponibilidad")
+@Table(name="t_disponibilidad")
 @NamedQueries({ @NamedQuery(name = "Disponibilidad.listardisponibilidad", query = "SELECT d FROM Disponibilidad d"),
 	@NamedQuery(name = "Disponibilidad.listarbuscardisponibilidad", query = "SELECT d FROM Disponibilidad d where d.idDisponibilidad=:codigo") })
 
 
 public class Disponibilidad implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String idDisponibilidad;
 	

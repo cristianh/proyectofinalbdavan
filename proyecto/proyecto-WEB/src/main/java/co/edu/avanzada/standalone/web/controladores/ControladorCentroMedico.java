@@ -11,11 +11,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import co.edu.avanzada.negocio.beans.CamaEJB;
+import co.edu.avanzada.negocio.beans.EntidadHospitalariaEJB;
 import co.edu.avanzada.negocio.beans.EspecialidadEJB;
 import co.edu.avanzada.negocio.beans.GradoComplejidadEJB;
 import co.edu.avanzada.negocio.beans.TipoCamaEJB;
 import co.edu.avanzada.negocio.beans.TipoCentroMedicoEJB;
 import co.edu.eam.ingesoft.persistencia.entidades.Cama;
+import co.edu.eam.ingesoft.persistencia.entidades.EntidadHospitalaria;
 import co.edu.eam.ingesoft.persistencia.entidades.Especialidad;
 import co.edu.eam.ingesoft.persistencia.entidades.GradocomplejidadHospital;
 import co.edu.eam.ingesoft.persistencia.entidades.TipoCama;
@@ -49,6 +51,9 @@ public class ControladorCentroMedico implements Serializable {
 	@EJB
 	private TipoCentroMedicoEJB tipocentromedicoEJB;
 
+	@EJB
+	private EntidadHospitalariaEJB entidadhospitalariaEJB;
+
 	// Entitys
 
 	private Cama cama;
@@ -62,21 +67,28 @@ public class ControladorCentroMedico implements Serializable {
 	// seleccion items
 
 	private TipoCama tipocamaseleccionado;
-	
+
 	private TipoCama tipocamaseleccionadoeditado;
 
 	private GradocomplejidadHospital nivelcentromedicoseleccionado;
-	
+
 	private Cama camaitemseleccionado;
+
+	private Cama camatableseleccionada;
+
+	private Especialidad especialidadseleccionada;
 	
-	
+	private Especialidad especialidadseleccionadacombo;
+
+	private EntidadHospitalaria entidadhospitalaria;
 
 	// List
-
 
 	private List<Cama> listarcamas;
 
 	private List<Especialidad> listarespecialidades;
+	
+	private List<Especialidad> listarespecialidadescombo;
 
 	private List<GradocomplejidadHospital> listarnivelCentromedico;
 
@@ -88,15 +100,15 @@ public class ControladorCentroMedico implements Serializable {
 
 	private String nombreCentromedico;
 
-	private String codigoCentromedico;
+	private Integer codigoCentromedico;
 
 	private String tipoCentromedico;
 
 	private String direccionCentromedico;
 
 	private String estadocama;
-	
-	//editado
+
+	// editado
 	private String estadocamaedotado;
 
 	@PostConstruct
@@ -105,7 +117,7 @@ public class ControladorCentroMedico implements Serializable {
 		System.out.println(listarTipocentroMedico);
 		listarnivelCentromedico = gradocomplejidadhospitalEJB.ListarGradocomplejidadhospital();
 		listarcamas = camaEJB.listarCamas();
-		listarespecialidades = especialidadEJB.ListarEspecialidad();
+		listarespecialidadescombo = especialidadEJB.ListarEspecialidad();
 		listarTipocentroMedico = tipocentromedicoEJB.ListarTipocentromedico();
 		System.out.println(listarTipocentroMedico);
 		estadocama = "Activa";
@@ -199,11 +211,11 @@ public class ControladorCentroMedico implements Serializable {
 		this.nombreCentromedico = nombreCentromedico;
 	}
 
-	public String getCodigoCentromedico() {
+	public Integer getCodigoCentromedico() {
 		return codigoCentromedico;
 	}
 
-	public void setCodigoCentromedico(String codigoCentromedico) {
+	public void setCodigoCentromedico(Integer codigoCentromedico) {
 		this.codigoCentromedico = codigoCentromedico;
 	}
 
@@ -282,8 +294,6 @@ public class ControladorCentroMedico implements Serializable {
 	public void setTipocamaseleccionado(TipoCama tipocamaseleccionado) {
 		this.tipocamaseleccionado = tipocamaseleccionado;
 	}
-	
-	
 
 	public TipoCentroMedicoEJB getTipocentromedicoEJB() {
 		return tipocentromedicoEJB;
@@ -293,7 +303,6 @@ public class ControladorCentroMedico implements Serializable {
 		this.tipocentromedicoEJB = tipocentromedicoEJB;
 	}
 
-
 	public Cama getCamaitemseleccionado() {
 		return camaitemseleccionado;
 	}
@@ -301,9 +310,6 @@ public class ControladorCentroMedico implements Serializable {
 	public void setCamaitemseleccionado(Cama camaitemseleccionado) {
 		this.camaitemseleccionado = camaitemseleccionado;
 	}
-	
-	
-	
 
 	public TipoCama getTipocamaseleccionadoeditado() {
 		return tipocamaseleccionadoeditado;
@@ -312,8 +318,6 @@ public class ControladorCentroMedico implements Serializable {
 	public void setTipocamaseleccionadoeditado(TipoCama tipocamaseleccionadoeditado) {
 		this.tipocamaseleccionadoeditado = tipocamaseleccionadoeditado;
 	}
-	
-	
 
 	public String getEstadocamaedotado() {
 		return estadocamaedotado;
@@ -323,12 +327,54 @@ public class ControladorCentroMedico implements Serializable {
 		this.estadocamaedotado = estadocamaedotado;
 	}
 
-	public void crearcentromedico() {
-
+	public Especialidad getEspecialidadseleccionada() {
+		return especialidadseleccionada;
 	}
 
-	public void editarmedico() {
+	public void setEspecialidadseleccionada(Especialidad especialidadseleccionada) {
+		this.especialidadseleccionada = especialidadseleccionada;
+	}
 
+	public Cama getCamatableseleccionada() {
+		return camatableseleccionada;
+	}
+
+	public EntidadHospitalariaEJB getEntidadhospitalariaEJB() {
+		return entidadhospitalariaEJB;
+	}
+
+	public void setEntidadhospitalariaEJB(EntidadHospitalariaEJB entidadhospitalariaEJB) {
+		this.entidadhospitalariaEJB = entidadhospitalariaEJB;
+	}
+
+	public EntidadHospitalaria getEntidadhospitalaria() {
+		return entidadhospitalaria;
+	}
+
+	public void setEntidadhospitalaria(EntidadHospitalaria entidadhospitalaria) {
+		this.entidadhospitalaria = entidadhospitalaria;
+	}
+
+	public void setCamatableseleccionada(Cama camatableseleccionada) {
+		this.camatableseleccionada = camatableseleccionada;
+	}
+	
+
+	public List<Especialidad> getListarespecialidadescombo() {
+		return listarespecialidadescombo;
+	}
+
+	public void setListarespecialidadescombo(List<Especialidad> listarespecialidadescombo) {
+		this.listarespecialidadescombo = listarespecialidadescombo;
+	}
+	
+
+	public Especialidad getEspecialidadseleccionadacombo() {
+		return especialidadseleccionadacombo;
+	}
+
+	public void setEspecialidadseleccionadacombo(Especialidad especialidadseleccionadacombo) {
+		this.especialidadseleccionadacombo = especialidadseleccionadacombo;
 	}
 
 	// Cama metodos
@@ -346,24 +392,32 @@ public class ControladorCentroMedico implements Serializable {
 
 	public void guardarCamaEditado(Integer codigo) {
 		try {
-			System.out.println("encontrado"+codigo);
-			Cama buscarcama=camaEJB.buscarCama(codigo);
+			System.out.println("encontrado" + codigo);
+			Cama buscarcama = camaEJB.buscarCama(codigo);
 			setTipocamaseleccionado(tipocamaseleccionado);
 			buscarcama.setTipocama(tipocamaseleccionado);
-			System.out.println("encontrado"+tipocamaseleccionado);
+			System.out.println("encontrado" + tipocamaseleccionado);
 			setTipocamaseleccionado(tipocamaseleccionado);
 			buscarcama.setEstadocama(estadocama);
-			System.out.println("encontrado"+estadocama);
+			System.out.println("encontrado" + estadocama);
 
 			camaEJB.crearCama(buscarcama);
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-	}	
+	}
+
 	public void editarCama() {
-		
-	}	
+
+	}
+
+	public void listarespecialidadescombo() {
+		listarespecialidades = null;
+		System.out.println(especialidadseleccionada.getCodigo());
+		listarespecialidades = especialidadEJB.BuscarListaEspecialidad(especialidadseleccionada.getCodigo());
+		setListarespecialidades(listarespecialidades);
+	}
 
 	public void eliminar(Cama cama) {
 		camaEJB.eliminarCama(cama);
@@ -372,6 +426,35 @@ public class ControladorCentroMedico implements Serializable {
 		listarcamas = camaEJB.listarCamas();
 		setListarcamas(listarcamas);
 		return;
+	}
+
+	public void crearcentromedico() {
+		try {
+			entidadhospitalaria = new EntidadHospitalaria();
+			entidadhospitalaria.setGradocomplejidad(complejidadcentromedico);
+			entidadhospitalaria.setEstado(estadocama);
+			entidadhospitalaria.setIdentidadhospitalaria(codigoCentromedico);
+			entidadhospitalaria.setNombreentidadhospitalaria(nombreCentromedico);
+			entidadhospitalaria.setEspecialidad(especialidadseleccionada);
+			entidadhospitalaria.setCamas((List<Cama>) camatableseleccionada);
+			entidadhospitalariaEJB.crearEntidadHospitalaria(entidadhospitalaria);
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Centro medico creado", "La cama a sido eliminada."));
+		} catch (Exception e) {
+			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage().toString(), "La cama a sido eliminada."));
+		}
+	}
+
+	public void editarmedico() {
+
+	}
+
+	public void GuardarEspecialidad() {
+		Especialidad especialidadbuscada=(Especialidad) especialidadEJB.BuscarListaEspecialidad(especialidadseleccionadacombo.getCodigo());
+		listarespecialidades.add(especialidadbuscada);
+		setListarespecialidades(listarespecialidades);
 	}
 
 }

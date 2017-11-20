@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_CargoPersonal")
+@Table(name="T_cargopersonal")
 
 @NamedNativeQueries({ @NamedNativeQuery(name = "CargoPersonal.listarcargoPersonal",
 query = "SELECT * FROM T_CargoPersonal",resultClass=CargoPersonal.class),

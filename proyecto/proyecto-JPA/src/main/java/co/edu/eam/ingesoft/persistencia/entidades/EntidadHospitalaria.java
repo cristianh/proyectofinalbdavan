@@ -15,11 +15,12 @@ public class EntidadHospitalaria implements Serializable {
 	@Column(name="nombreentidadhospitalaria")
 	private String nombreentidadhospitalaria;
 	
-	@Column(name="gradocomplejidad")
-	private Integer gradocomplejidad;
+	@ManyToOne
+	@JoinColumn(name="grado complejidad")
+	private GradocomplejidadHospital gradocomplejidad;
 	
-	@Column(name="estado",length=1)
-	private char estado;
+	@Column(name="estado")
+	private String estado;
 	
 	@OneToMany(mappedBy="entidadhospitalaria",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Cama> camas;
@@ -37,16 +38,33 @@ public class EntidadHospitalaria implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
+	/**
+	 * @param identidadhospitalaria
+	 * @param nombreentidadhospitalaria
+	 * @param gradocomplejidad
+	 * @param estado
+	 * @param camas
+	 * @param urgenciaambulancia
+	 * @param especialidad
+	 */
 	public EntidadHospitalaria(Integer identidadhospitalaria, String nombreentidadhospitalaria,
-			Integer gradocomplejidad, char estado) {
+			GradocomplejidadHospital gradocomplejidad, String estado, List<Cama> camas,
+			List<UrgenciaAmbulancia> urgenciaambulancia, Especialidad especialidad) {
 		super();
 		this.identidadhospitalaria = identidadhospitalaria;
 		this.nombreentidadhospitalaria = nombreentidadhospitalaria;
 		this.gradocomplejidad = gradocomplejidad;
 		this.estado = estado;
+		this.camas = camas;
+		this.urgenciaambulancia = urgenciaambulancia;
+		this.especialidad = especialidad;
 	}
-	
-	
+
+
+
+
 
 	public Integer getIdentidadhospitalaria() {
 		return identidadhospitalaria;
@@ -64,19 +82,49 @@ public class EntidadHospitalaria implements Serializable {
 		this.nombreentidadhospitalaria = nombreentidadhospitalaria;
 	}
 
-	public Integer getGradocomplejidad() {
+	
+
+	public GradocomplejidadHospital getGradocomplejidad() {
 		return gradocomplejidad;
 	}
 
-	public void setGradocomplejidad(Integer gradocomplejidad) {
+
+
+	public void setGradocomplejidad(GradocomplejidadHospital gradocomplejidad) {
 		this.gradocomplejidad = gradocomplejidad;
 	}
 
-	public char getEstado() {
+
+
+	public List<UrgenciaAmbulancia> getUrgenciaambulancia() {
+		return urgenciaambulancia;
+	}
+
+
+
+	public void setUrgenciaambulancia(List<UrgenciaAmbulancia> urgenciaambulancia) {
+		this.urgenciaambulancia = urgenciaambulancia;
+	}
+
+
+
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+
+
+
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
+	}
+
+
+
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(char estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
