@@ -2,6 +2,7 @@ package co.edu.eam.ingesoft.persistencia.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,25 +13,35 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
-@Table(name="T_Personal")
-@NamedNativeQueries({ @NamedNativeQuery(name = "Personal.listarpersonal",
-query = "SELECT * FROM T_Personal",resultClass=Personal.class),
-	@NamedNativeQuery(name = "Personal.listarbuscarpersonal",
-	query = "SELECT * FROM T_Personal  where numeroDocumento=:estado",resultClass=Personal.class) })
+@Table(name = "T_Personal")
+@NamedNativeQueries({
+		@NamedNativeQuery(name = "Personal.listarpersonal", query = "SELECT * FROM T_Personal", resultClass = Personal.class),
+		@NamedNativeQuery(name = "Personal.listarbuscarpersonal", query = "SELECT * FROM T_Personal where numeroDocumento=:estado", resultClass = Personal.class),     
+		
+		@NamedNativeQuery(name = "Personal.listarConductores",
+		query = "SELECT * FROM T_Personal  tp join T_CargoPersonal cp on tp.CargoPersonal=cp.idCargoPersonal where cp.nombre=:conductor", resultClass = Personal.class),
+		
+		@NamedNativeQuery(name = "Personal.listarAuxiliriares",
+		query = "SELECT * FROM T_Personal tp join T_CargoPersonal cp on tp.CargoPersonal=cp.idCargoPersonal where cp.nombre=:auxiliar", resultClass = Personal.class),
+		
+		@NamedNativeQuery(name = "Personal.listarParamedicos", 
+		query = "SELECT * FROM T_Personal tp join T_CargoPersonal cp on tp.CargoPersonal=cp.idCargoPersonal where cp.nombre=:paramedico", resultClass = Personal.class),
+
+})
 
 public class Personal implements Serializable {
 
 	@Id
-	@Column(name="idPersonal", unique=true)
+	@Column(name = "idPersonal", unique = true)
 	private String idPersonal;
 
-	@Column(name = "numeroDocumento", length = 20, unique=true)
+	@Column(name = "numeroDocumento", length = 20, unique = true)
 	private String numeroDocumento;
 
 	@Column(name = "nombre", length = 50, nullable = false)
@@ -49,20 +60,20 @@ public class Personal implements Serializable {
 	private String email;
 
 	@ManyToOne
-	@JoinColumn(name="CargoPersonal")
+	@JoinColumn(name = "CargoPersonal")
 	private CargoPersonal cargoPersonal;
-	
+
 	@ManyToOne
-	@JoinColumn(name="EstadoPersonal")
+	@JoinColumn(name = "EstadoPersonal")
 	private EstadoPersonal estadoPersonal;
-	
-	@Column(name="direccion")
+
+	@Column(name = "direccion")
 	private String direccion;
-	
-	@Column(name="salario")
+
+	@Column(name = "salario")
 	private Double salario;
-	
-	@Column(name="fechaIngreso")
+
+	@Column(name = "fechaIngreso")
 	private Date fechaIngreso;
 
 	/**
@@ -71,7 +82,6 @@ public class Personal implements Serializable {
 	public Personal() {
 		super();
 	}
-
 
 	/**
 	 * @param idPersonal
@@ -86,10 +96,14 @@ public class Personal implements Serializable {
 	 * @param direccion
 	 * @param salario
 	 * @param fechaIngreso
+	 * @param conductor
+	 * @param auxiliar
+	 * @param paramedico
 	 */
 	public Personal(String idPersonal, String numeroDocumento, String nombre, String apellido, Integer telefono,
 			Date fechanacimiento, String email, CargoPersonal cargoPersonal, EstadoPersonal estadoPersonal,
-			String direccion, Double salario, Date fechaIngreso) {
+			String direccion, Double salario, Date fechaIngreso, List<EnviarAtencionUrgencia> conductor,
+			List<EnviarAtencionUrgencia> auxiliar, List<EnviarAtencionUrgencia> paramedico) {
 		super();
 		this.idPersonal = idPersonal;
 		this.numeroDocumento = numeroDocumento;
@@ -103,6 +117,7 @@ public class Personal implements Serializable {
 		this.direccion = direccion;
 		this.salario = salario;
 		this.fechaIngreso = fechaIngreso;
+
 	}
 
 	public String getIdPersonal() {
@@ -192,18 +207,14 @@ public class Personal implements Serializable {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
-	
-	
 
 	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-
 	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -223,7 +234,6 @@ public class Personal implements Serializable {
 		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -296,7 +306,6 @@ public class Personal implements Serializable {
 			return false;
 		return true;
 	}
-
 
 	@Override
 	public String toString() {

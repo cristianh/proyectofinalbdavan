@@ -16,7 +16,7 @@ import co.edu.eam.ingesoft.persistencia.entidades.Personal;
 @LocalBean
 @Stateless
 @Remote(IPersonal.class)
-public class PersonalEJB implements IPersonal{
+public class PersonalEJB implements IPersonal {
 
 	@PersistenceContext
 	EntityManager entity;
@@ -61,23 +61,62 @@ public class PersonalEJB implements IPersonal{
 		}
 	}
 
-	public List<Personal> listarPersonal(){
+	public List<Personal> listarPersonal() {
 		List<Personal> result = entity.createNamedQuery("Personal.listarpersonal").getResultList();
 		return result;
 	}
-	
-	public List<Personal>  BuscarListaPersonal (String numeroDocumento,  String nombre) {
+
+	public List<Personal> BuscarListaPersonal(String numeroDocumento, String nombre) {
 		List<Personal> personal = null;
-		
-		try{
+
+		try {
 			Query resultado = entity.createNamedQuery("Personal.listarbuscarpersonal");
 			resultado.setParameter("estado", numeroDocumento);
 			personal = resultado.getResultList();
 			return personal;
-		} catch (Exception ex){
+		} catch (Exception ex) {
 			throw new ExcepcionNegocio("No se encuentra una personal con estos parametros de busqueda");
-		}	
+		}
+	}
+	
+	
+
+	public List<Personal> listarBuscarConductorPersonal () {
+		List<Personal> personal = null;
+		try {
+			Query result = entity.createNamedQuery("Personal.listarConductores");
+			//result.setParameter("conductor", conductor);
+			personal = result.getResultList();
+			return personal;
+		} catch (Exception ex) {
+			throw new ExcepcionNegocio("No se encuentra un conductor con estos parametros de busqueda");
+		}
 	}
 
-
+	public List<Personal> listarAuxiliarPersonal () {
+		List<Personal> personal = null;
+		try {
+			Query result = entity.createNamedQuery("Personal.listarAuxiliriares");
+			//result.setParameter("auxiliar", auxiliar);
+			personal = result.getResultList();
+			return personal;
+		} catch (Exception ex) {
+			throw new ExcepcionNegocio("No se encuentra un auxiliar con estos parametros de busqueda");
+		}
+	}
+	
+	
+	public List<Personal> listarParamedicoPersonal () {
+		List<Personal> personal = null;
+		try {
+			Query result = entity.createNamedQuery("Personal.listarAuxiliriares");
+			//result.setParameter("paramedico", paramedico);
+			personal = result.getResultList();
+			return personal;
+		} catch (Exception ex) {
+			throw new ExcepcionNegocio("No se encuentra un auxiliar con estos parametros de busqueda");
+		}
+	}
+	
+	
 }

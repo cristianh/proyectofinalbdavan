@@ -69,7 +69,6 @@ public class ControladorAmbulancia implements Serializable {
 		listarDisponibilidad = disponibilidadEjb.ListarDisponibilidad();
 		listarTipoAmbulancia = tipoAmbulanciaEjb.ListarTipoAmbulancia();
 		listarAmbulancia = ambulanciaEjb.listarAmbulancia();
-
 	}
 
 	public AmbulanciaEJB getAmbulanciaEjb() {
