@@ -74,9 +74,6 @@
 						<f:selectItems value="#{controladorPersonal.listarcargopersonal}"
 							var="cargo" itemLabel="#{cargo.nombre}" itemValue="#{cargo}" />
 
-						<f:ajax event="change" execute="@this"
-							listener="#{controladorPersonal.cargopersonal}" />
-
 					</p:selectOneMenu>
 
 
@@ -111,8 +108,7 @@
 							var="estado" itemLabel="#{estado.nombreEstadoPersonal}"
 							itemValue="#{estado}" />
 
-						<f:ajax event="change" execute="@this"
-							listener="#{controladorPersonal.estadopersonal}" />
+						
 
 					</p:selectOneMenu>
 

@@ -89,6 +89,8 @@ public class ControladorCentroMedico implements Serializable {
 	private List<Especialidad> listarespecialidades;
 	
 	private List<Especialidad> listarespecialidadescombo;
+	
+	private List<Especialidad> listarespecialidadestabla;
 
 	private List<GradocomplejidadHospital> listarnivelCentromedico;
 
@@ -117,7 +119,8 @@ public class ControladorCentroMedico implements Serializable {
 		System.out.println(listarTipocentroMedico);
 		listarnivelCentromedico = gradocomplejidadhospitalEJB.ListarGradocomplejidadhospital();
 		listarcamas = camaEJB.listarCamas();
-		listarespecialidadescombo = especialidadEJB.ListarEspecialidad();
+		listarespecialidades=especialidadEJB.ListarEspecialidad();
+		//listarespecialidadescombo = especialidadEJB.ListarEspecialidad();
 		listarTipocentroMedico = tipocentromedicoEJB.ListarTipocentromedico();
 		System.out.println(listarTipocentroMedico);
 		estadocama = "Activa";
@@ -369,6 +372,13 @@ public class ControladorCentroMedico implements Serializable {
 	}
 	
 
+	public List<Especialidad> getListarespecialidadestabla() {
+		return listarespecialidadestabla;
+	}
+
+	public void setListarespecialidadestabla(List<Especialidad> listarespecialidadestabla) {
+		this.listarespecialidadestabla = listarespecialidadestabla;
+	}
 	public Especialidad getEspecialidadseleccionadacombo() {
 		return especialidadseleccionadacombo;
 	}
@@ -435,7 +445,7 @@ public class ControladorCentroMedico implements Serializable {
 			entidadhospitalaria.setEstado(estadocama);
 			entidadhospitalaria.setIdentidadhospitalaria(codigoCentromedico);
 			entidadhospitalaria.setNombreentidadhospitalaria(nombreCentromedico);
-			entidadhospitalaria.setEspecialidad(especialidadseleccionada);
+			entidadhospitalaria.setEspecialidades(listarespecialidadestabla);
 			entidadhospitalaria.setCamas((List<Cama>) camatableseleccionada);
 			entidadhospitalariaEJB.crearEntidadHospitalaria(entidadhospitalaria);
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -452,9 +462,10 @@ public class ControladorCentroMedico implements Serializable {
 	}
 
 	public void GuardarEspecialidad() {
-		Especialidad especialidadbuscada=(Especialidad) especialidadEJB.BuscarListaEspecialidad(especialidadseleccionadacombo.getCodigo());
-		listarespecialidades.add(especialidadbuscada);
-		setListarespecialidades(listarespecialidades);
+		System.out.println(listarespecialidadestabla);
+		/*List<Especialidad> especialidadbuscada=especialidadEJB.BuscarListaEspecialidad(especialidadseleccionadacombo.getCodigo());
+		listarespecialidades.addAll(0, especialidadbuscada);
+		setListarespecialidades(listarespecialidades);*/
 	}
 
 }

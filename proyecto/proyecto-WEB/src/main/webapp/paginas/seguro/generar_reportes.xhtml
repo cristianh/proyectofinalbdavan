@@ -1,0 +1,27 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/inicio.xhtml">
+
+	<ui:define name="cuerpo">
+		<h:form id="formularioreportes">
+			<p:commandButton id="botonreportes"
+				value="#{msj['persona.btnregistrar']}"
+				actionListener="#{controladorReporte.ExportarReporte}"
+				styleClass="ui-priority-primary" ajax="true"
+				update=" formularioreportes"
+				process="@this formularioreportes" />
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

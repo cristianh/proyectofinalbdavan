@@ -36,6 +36,10 @@ public class Especialidad implements Serializable {
 
 	@Column(name = "estadoespecialidad", nullable = false, length = 20)
 	private String estadoespecialidad;
+	
+	@ManyToOne
+	@JoinColumn(name="entidadhospitalaria")
+	private EntidadHospitalaria entidadhospitalaria;
 
 	
 

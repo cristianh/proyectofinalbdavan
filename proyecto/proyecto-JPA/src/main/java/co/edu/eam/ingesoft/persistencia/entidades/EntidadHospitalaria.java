@@ -29,9 +29,8 @@ public class EntidadHospitalaria implements Serializable {
 	private List<UrgenciaAmbulancia> urgenciaambulancia;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="especialidad")
-	private Especialidad especialidad;
+	@OneToMany(mappedBy="entidadhospitalaria")
+	private List<Especialidad> especialidades;
 	
 	
 	public EntidadHospitalaria() {
@@ -51,7 +50,7 @@ public class EntidadHospitalaria implements Serializable {
 	 */
 	public EntidadHospitalaria(Integer identidadhospitalaria, String nombreentidadhospitalaria,
 			GradocomplejidadHospital gradocomplejidad, String estado, List<Cama> camas,
-			List<UrgenciaAmbulancia> urgenciaambulancia, Especialidad especialidad) {
+			List<UrgenciaAmbulancia> urgenciaambulancia, List<Especialidad> especialidades) {
 		super();
 		this.identidadhospitalaria = identidadhospitalaria;
 		this.nombreentidadhospitalaria = nombreentidadhospitalaria;
@@ -59,7 +58,7 @@ public class EntidadHospitalaria implements Serializable {
 		this.estado = estado;
 		this.camas = camas;
 		this.urgenciaambulancia = urgenciaambulancia;
-		this.especialidad = especialidad;
+		this.especialidades = especialidades;
 	}
 
 
@@ -108,14 +107,14 @@ public class EntidadHospitalaria implements Serializable {
 
 
 
-	public Especialidad getEspecialidad() {
-		return especialidad;
+	public List<Especialidad> getEspecialidades() {
+		return especialidades;
 	}
 
 
 
-	public void setEspecialidad(Especialidad especialidad) {
-		this.especialidad = especialidad;
+	public void setEspecialidades(List<Especialidad> especialidades) {
+		this.especialidades = especialidades;
 	}
 
 

@@ -19,7 +19,9 @@ import javax.persistence.Table;
 @NamedNativeQueries({ @NamedNativeQuery(name = "Ambulancia.listarambulancia",
 query = "SELECT * FROM t_ambulancia",resultClass=Ambulancia.class),
 	@NamedNativeQuery(name = "Ambulancia.listarbuscarambulancia",
-	query = "SELECT * FROM t_ambulancia  where placaambulancia=:estado",resultClass=Ambulancia.class) })
+	query = "SELECT * FROM t_ambulancia  where placaambulancia=:estado",resultClass=Ambulancia.class),
+	@NamedNativeQuery(name = "Ambulancia.listarambulanciareporte",query = "SELECT amb.TIPOAMBULANCIA,amb.CODIGOAMBULANCIA,amb.IDAMBULANCIA FROM T_AMBULANCIA amb,T_TIPOAMBULANCIA tipa where amb.TIPOAMBULANCIA=tipa.IDTIPOAMBULANCIA",resultClass=Ambulancia.class)})
+
 public class Ambulancia implements Serializable {
 
 	private static final long serialVersionUID = 1L;

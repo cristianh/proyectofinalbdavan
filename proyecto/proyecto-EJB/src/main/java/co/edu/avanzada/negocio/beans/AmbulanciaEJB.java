@@ -1,5 +1,6 @@
 package co.edu.avanzada.negocio.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -12,6 +13,7 @@ import javax.persistence.Query;
 import co.edu.avanzada.negocio.benas.remote.IAmbulancia;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
+import co.edu.eam.ingesoft.persistencia.entidades.Ciudad;
 
 @LocalBean
 @Stateless
@@ -79,5 +81,11 @@ public class AmbulanciaEJB implements IAmbulancia {
 		} catch (Exception ex){
 			throw new ExcepcionNegocio("No se encuentra una ambulancia con estos parametros de busqueda");
 		}	
+	}
+	
+	
+	public ArrayList<Ambulancia> reporteAmbulancia(){
+		ArrayList<Ambulancia> result = (ArrayList<Ambulancia>) entity.createNamedQuery("Ambulancia.listarambulancia").getResultList();
+		return (ArrayList<Ambulancia>) result;
 	}
 }

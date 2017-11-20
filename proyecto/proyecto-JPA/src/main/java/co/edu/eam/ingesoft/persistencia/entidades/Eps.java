@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -16,6 +18,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_eps")
 @NamedQueries({ @NamedQuery(name = "Eps.listareps", query = "Select e from Eps e") })
+@NamedNativeQueries({ @NamedNativeQuery(name = "Eps.listarEps",
+query = "SELECT nombre,ideps FROM t_eps",resultClass=Eps.class)})
 public class Eps implements Serializable {
 
 	/**

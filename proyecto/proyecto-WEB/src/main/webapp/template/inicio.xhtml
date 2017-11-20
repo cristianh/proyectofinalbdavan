@@ -225,22 +225,6 @@
 					<b:navLink value="Logout" href="#"></b:navLink>
 				</b:navbarLinks>
 			</b:navBar>
-
-
-			<p:breadCrumb style="display:none">
-			</p:breadCrumb>
-			<p:breadCrumb>
-
-				<p:menuitem value="Medico" url="#" />
-				<p:menuitem value="Sports" url="#" />
-				<p:menuitem value="Basketball" url="#" />
-				<p:menuitem value="NBA" url="#" />
-				<p:menuitem value="Teams" url="#" />
-				<p:menuitem value="L.A. Lakers" url="#" />
-				<p:menuitem value="Roster" url="#" />
-				<p:menuitem value="Kobe Bryant" url="#" />
-			</p:breadCrumb>
-
 		</p:layoutUnit>
 
 
@@ -279,6 +263,11 @@
 
 					<p:submenu label="Urgencias">
 						<p:menuitem value="listar" outcome="listar_reporteurgencias.xhtml"
+							icon="ui-icon-home" />
+					</p:submenu>
+					
+					<p:submenu label="Reportes">
+						<p:menuitem value="Generar" outcome="generar_reportes.xhtml"
 							icon="ui-icon-home" />
 					</p:submenu>
 

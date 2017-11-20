@@ -62,7 +62,7 @@
 						<p:commandButton id="botonCrearcentro"
 							value="#{msj['concentromedico.btnCrearCentro']}"
 							action="#{concentromedico.crearcentromedico}"
-							styleClass="ui-priority-primary" 
+							styleClass="ui-priority-primary"
 							update=" formulariocentromedico messages"
 							process="@this formulariocentromedico" />
 						<p:commandButton id="botonEditarcentro"
@@ -120,7 +120,7 @@
 
 					<!-- Tabla camas -->
 					<p:dataTable var="cama" id="tablacamas"
-						value="#{concentromedico.listarcamas}"  rows="10" paginator="true"
+						value="#{concentromedico.listarcamas}" rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
 
@@ -208,66 +208,58 @@
 		<p:separator></p:separator>
 		<h:form id="formularioEspecialidad">
 			<p:panel header="Especialidad">
+			<h:panelGrid columns="1" id="panelespecialidad">
+				<!-- Tabla especialidad -->
+				<p:dataTable id="tablaespecialidad" var="especialidad"
+					value="#{concentromedico.listarespecialidades}"
+					selection="#{concentromedico.listarespecialidadestabla}"
+					rowKey="#{especialidad.codigo}" rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+					<f:facet name="header" style="width:40px">
+            				Checkbox
+        				</f:facet>
+					<p:column selectionMode="multiple"
+						style="width:16px;text-align:center" />
+					<p:column headerText="Codigo especialidad">
+						<h:outputText value="#{especialidad.codigo}" />
+					</p:column>
+
+					<p:column headerText="Codigo ">
+						<h:outputText value="#{especialidad.nombre}" />
+					</p:column>
+
+					<p:column headerText="Estado">
+						<h:outputText value="#{especialidad.estadoespecialidad}" />
+					</p:column>
+					<p:column headerText="Elminar">
+						<p:growl id="messageconfirm" showDetail="true" sticky="true" />
+						<p:commandButton value="Eliminar"
+							actionListener="#{concentromedico.eliminar(especialidad)}"
+							update="messageconfirm" immediate="true">
+							<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
+								message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
+			<p:separator></p:separator>
+			
 				<p:fieldset>
 					<h:panelGrid columns="7" id="panelopcionesespecialidades"
 						style="margin:0 auto">
-
-						<p:outputLabel for="tfespecialidad"
-							value="#{msj['concentromedico.especialidad']}" />
-						<p:selectOneMenu id="tfespecialidad"
-							value="#{concentromedico.especialidadseleccionadacombo}" converter="especialidadConverter">
-
-							<f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-
-							<f:selectItems value="#{concentromedico.listarespecialidadescombo}"
-								var="especialidad" itemLabel="#{especialidad.nombre}"
-								itemValue="#{especialidad}" />
-						</p:selectOneMenu>
 						<p:commandButton id="botonGuardarEspecialidad"
-								value="#{msj['concentromedico.btnGuardarEspecialidad']}"
-								actionListener="#{concentromedico.GuardarEspecialidad}"
-								styleClass="ui-priority-primary"
-								style="margin-right:35px;margin-left:10px"
-								process="@this formularioEspecialidad" update="panelespecialidad tablaespecialidad">
-							</p:commandButton>
+							value="#{msj['concentromedico.btnGuardarEspecialidad']}"
+							actionListener="#{concentromedico.GuardarEspecialidad}"
+							styleClass="ui-priority-primary"
+							style="margin-right:35px;margin-left:10px"
+							process="@this formularioEspecialidad"
+							update="panelespecialidad tablaespecialidad">
+						</p:commandButton>
 					</h:panelGrid>
 				</p:fieldset>
-				<p:separator></p:separator>
-				<h:panelGrid columns="1" id="panelespecialidad">
-					<!-- Tabla especialidad -->
-					<p:dataTable id="tablaespecialidad" var="especialidad"
-						value="#{concentromedico.listarespecialidades}"
-						selectionMode="single"
-						selection="#{concentromedico.especialidadseleccionada}"
-						rowKey="#{especialidad.codigo}" rows="10" paginator="true"
-						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
-
-
-						<p:column headerText="Codigo especialidad">
-							<h:outputText value="#{especialidad.codigo}" />
-						</p:column>
-
-						<p:column headerText="Codigo ">
-							<h:outputText value="#{especialidad.nombre}" />
-						</p:column>
-
-						<p:column headerText="Estado">
-							<h:outputText value="#{especialidad.estadoespecialidad}" />
-						</p:column>
-						<p:column headerText="Elminar">
-							<p:growl id="messageconfirm" showDetail="true" sticky="true" />
-							<p:commandButton value="Eliminar"
-								actionListener="#{concentromedico.eliminar(especialidad)}"
-								update="messageconfirm" immediate="true">
-								<p:confirm header="#{msj['listarEspecialidad.confirmar']}"
-									message="#{msj['listarEspecialidad.mensajeConfirmacion']}"
-									icon="ui-icon-alert" />
-							</p:commandButton>
-						</p:column>
-
-					</p:dataTable>
-				</h:panelGrid>
 			</p:panel>
 
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">

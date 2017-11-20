@@ -6,64 +6,55 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name="t_reporteurgencia")
+@Table(name = "t_reporteurgencia")
 @NamedQueries({ @NamedQuery(name = "ReporteUrgencia.listarpersonas", query = "SELECT r FROM ReporteUrgencia r"),
-	@NamedQuery(name = "ReporteUrgencia.buscarlistapersonas", query = "SELECT r FROM ReporteUrgencia r where r.idreporteurgencia=:id"),
-	@NamedQuery(name = "ReporteUrgencia.listarordenar", query = "SELECT r FROM ReporteUrgencia r ORDER BY r.estado DESC, r.fechayhora DESC")})
+		@NamedQuery(name = "ReporteUrgencia.buscarlistapersonas", query = "SELECT r FROM ReporteUrgencia r where r.idreporteurgencia=:id"),
+		@NamedQuery(name = "ReporteUrgencia.listarordenar", query = "SELECT r FROM ReporteUrgencia r ORDER BY r.estado DESC, r.fechayhora DESC") })
+@NamedNativeQueries({
+		@NamedNativeQuery(name = "ReporteUrgencia.listarreporte", query = "SELECT tu.nombre AS nombre,count(numeroafectados) AS numeroafectados from t_reporteurgencia tr,t_tipoUrgencia tu where tr.tipourgencia=tu.idtipourgencia and to_char(tr.fechayhora,'yyyy')='2017' GROUP BY tu.nombre", resultClass = ReporteUrgencia.class) })
 public class ReporteUrgencia implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idreporteurgencia;
-	
-	@Column(name="nombre",nullable=false,length=50)
+
+	@Column(name = "nombre", nullable = false, length = 50)
 	private String nombre;
-	
-	@Column(name="apellido",nullable=true,length=50)
+
+	@Column(name = "apellido", nullable = true, length = 50)
 	private String apellido;
-	
-	@Column(name="cedula",nullable=false,length=50)
+
+	@Column(name = "cedula", nullable = false, length = 50)
 	private String cedula;
 
-	@Column(name="telefono" ,nullable=true,length=50)
+	@Column(name = "telefono", nullable = true, length = 50)
 	private String telefono;
-	
-	@Column(name="direccion",nullable=false,length=100)
+
+	@Column(name = "direccion", nullable = false, length = 100)
 	private String direccion;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechayhora;
-	
-	@Column(name="estado")
+
+	@Column(name = "estado")
 	private String estado;
-	
-	@Column(name="numeroafectados")
+
+	@Column(name = "numeroafectados")
 	private Integer numeroafectados;
-	
+
 	@ManyToOne
-	@JoinColumn(name="tipourgencia")
+	@JoinColumn(name = "tipourgencia")
 	private TipoUrgencia tipourgencia;
-	
-	
-	
-	
-	
+
 	public ReporteUrgencia() {
 		// TODO Auto-generated constructor stub
 	}
-
-
-	
-
-
-	
 
 	/**
 	 * @param nombre
@@ -86,111 +77,89 @@ public class ReporteUrgencia implements Serializable {
 		this.tipourgencia = tipourgencia;
 	}
 
-
 	public Date getFechayhora() {
 		return fechayhora;
 	}
-
 
 	public void setFechayhora(Date fechayhora) {
 		this.fechayhora = fechayhora;
 	}
 
-
 	public String getEstado() {
 		return estado;
 	}
-
 
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-
 	public Integer getIdreporteurgencia() {
 		return idreporteurgencia;
 	}
-
 
 	public void setIdreporteurgencia(Integer idreporteurgencia) {
 		this.idreporteurgencia = idreporteurgencia;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
 	public String getApellido() {
 		return apellido;
 	}
-
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
-
 	public String getCedula() {
 		return cedula;
 	}
-
 
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
 
-
 	public String getTelefono() {
 		return telefono;
 	}
-
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-
 	public String getDireccion() {
 		return direccion;
 	}
-
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
-
 	public Integer getNumeroafectados() {
 		return numeroafectados;
 	}
-
 
 	public void setNumeroafectados(Integer numeroafectados) {
 		this.numeroafectados = numeroafectados;
 	}
 
-
 	public TipoUrgencia getTipourgencia() {
 		return tipourgencia;
 	}
-
 
 	public void setTipourgencia(TipoUrgencia tipourgencia) {
 		this.tipourgencia = tipourgencia;
 	}
 
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -199,7 +168,6 @@ public class ReporteUrgencia implements Serializable {
 		result = prime * result + ((idreporteurgencia == null) ? 0 : idreporteurgencia.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -218,7 +186,6 @@ public class ReporteUrgencia implements Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "ReporteUrgencia [idreporteurgencia=" + idreporteurgencia + ", nombre=" + nombre + ", apellido="
@@ -226,10 +193,4 @@ public class ReporteUrgencia implements Serializable {
 				+ ", numeroafectados=" + numeroafectados + ", tipourgencia=" + tipourgencia + "]";
 	}
 
-
-	
-
-
-	
-	
 }

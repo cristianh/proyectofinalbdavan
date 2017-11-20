@@ -1,5 +1,7 @@
 package co.edu.avanzada.negocio.beans;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -7,9 +9,11 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import co.edu.avanzada.negocio.benas.remote.IReporteUrgencia;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
+import co.edu.eam.ingesoft.persistencia.entidades.Eps;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
 import co.edu.eam.ingesoft.persistencia.entidades.ReporteUrgencia;
 
@@ -76,6 +80,20 @@ public class ReporteUrgenciaEJB implements IReporteUrgencia
 			System.out.println(e.getMessage().toString());
 		}
 		return resultadoTransaccion;
+	}
+	
+	public ArrayList<ReporteUrgencia> reporteUrgencia(){
+		/*Query resultado = em.createNamedQuery("ReporteUrgencia.reporte");
+		resultado.setParameter("ano", fecha);
+		ArrayList<ReporteUrgencia> result = (ArrayList<ReporteUrgencia>) resultado.getResultList();
+		return result;*
+		/*Query resultado = em.createNamedQuery("ReporteUrgencia.reporte");
+		resultado.setParameter("ano","2017");
+		ArrayList<ReporteUrgencia> result = (ArrayList<ReporteUrgencia>) resultado.getResultList();
+		System.out.println(result);
+		return  result;*/
+		ArrayList<ReporteUrgencia> result = (ArrayList<ReporteUrgencia>) em.createNamedQuery("ReporteUrgencia.listarreporte").getResultList();
+		return (ArrayList<ReporteUrgencia>) result;
 	}
 
 }

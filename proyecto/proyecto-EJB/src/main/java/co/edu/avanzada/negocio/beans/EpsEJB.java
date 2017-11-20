@@ -1,5 +1,6 @@
 package co.edu.avanzada.negocio.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -10,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import co.edu.avanzada.negocio.benas.remote.IEpsremote;
 import co.edu.avanzada.negocio.excepciones.ExcepcionNegocio;
+import co.edu.eam.ingesoft.persistencia.entidades.Ambulancia;
 import co.edu.eam.ingesoft.persistencia.entidades.Eps;
 import co.edu.eam.ingesoft.persistencia.entidades.Genero;
 import co.edu.eam.ingesoft.persistencia.entidades.Persona;
@@ -67,6 +69,11 @@ public class EpsEJB implements IEpsremote {
 	public List<Eps> BuscarListaEps(String codigoeps) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public ArrayList<Eps> reporteEps(){
+		ArrayList<Eps> result = (ArrayList<Eps>) em.createNamedQuery("Eps.listarEps").getResultList();
+		return (ArrayList<Eps>) result;
 	}
 
 }

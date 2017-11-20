@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportes de transito" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1da8a2d-3ecf-463f-8c08-3e2ffc8369da">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[IlRfVElQT1VSR0VOQ0lBIiBBUyAsMzEyLDc4LDM2ZTE1MWZiLTlmYjgtNDdmZi1iY2YyLTFhZGVm
+MjM2ZDk2NTsiVF9SRVBPUlRFVVJHRU5DSUEiIEFTICw2NSwzNiw0NzgwNjZlMC1lYTc3LTQwMGIt
+OWQxMi01MzIyOWJkODFhMDM7
+]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT tu.nombre AS nombre,count(numeroafectados) AS numeroafectados from t_reporteurgencia tr,t_tipoUrgencia tu where tr.tipourgencia=tu.idtipourgencia and to_char(tr.fechayhora,'yyyy')='2017' GROUP BY tu.nombre]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="numeroafectados" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="NUMEROAFECTADOS"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="8f4d755a-516d-4bda-b9d1-7d848aa04bdf"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="77b3f719-d2ef-40f4-8154-8649e7ead4ec"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[EAM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="7ca484ec-94d3-4ba1-96e7-e72a6e457e33"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Reporte Urgencias por tipo]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<detail>
+		<band height="292">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="160" y="0" width="250" height="251" uuid="6f94fdcf-ec32-4eec-9b92-06713358296e"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{nombre}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{nombre}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{numeroafectados}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="219">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f580e745-c235-4324-9a8b-bd530b90f8d8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="263a0bf5-c6bf-4834-a44a-21fb615ad2e8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="bd410f20-4156-4f9f-9ef8-e49017adc174"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
