@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.edu.avanzada.negocio.beans.FuncionarioEJB;
+import co.edu.avanzada.negocio.beans.PersonalEJB;
 import co.edu.avanzada.standalone.web.controladores.ControladorSession;
 
 
@@ -36,7 +37,7 @@ public class SessionFilter implements Filter{
 		
 		HttpServletResponse resp = (HttpServletResponse) arg1;
 		HttpServletRequest req = (HttpServletRequest) arg0;
-		FuncionarioEJB usuario = sesscioncontroler.getFuncionario();
+		PersonalEJB usuario = sesscioncontroler.getPersonal();
 		if(usuario==null){
 			resp.sendRedirect(req.getContextPath()+"/paginas/publico/login.xhtml");
 		}else{

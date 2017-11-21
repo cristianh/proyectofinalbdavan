@@ -221,12 +221,11 @@
 					<b:navLink value="    " href="#"></b:navLink>
 				</b:navbarLinks>
 				<b:navbarLinks pull="right" styleClass="hidden-xs">
-					<b:navLink value="Bienvenido" href="#"></b:navLink>
-					<b:navLink value="Logout" href="#"></b:navLink>
+					<b:navLink value="Bienvenido" href="#"></b:navLink>	
+					<b:navLink value="Logout" actionListener="#{sessionControler.logout}" rendered="#{not empty sessionControler.usuario}" href=""></b:navLink>
 				</b:navbarLinks>
 			</b:navBar>
 		</p:layoutUnit>
-
 
 		<p:layoutUnit position="west" size="210" header="MENU"
 			resizable="false" closable="false" collapsible="true">

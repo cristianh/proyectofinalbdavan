@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,20 +21,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "T_Personal")
+@Table(name = "t_personal")
 @NamedNativeQueries({
-		@NamedNativeQuery(name = "Personal.listarpersonal", query = "SELECT * FROM T_Personal", resultClass = Personal.class),
-		@NamedNativeQuery(name = "Personal.listarbuscarpersonal", query = "SELECT * FROM T_Personal where numeroDocumento=:estado", resultClass = Personal.class),     
-		
-		@NamedNativeQuery(name = "Personal.listarConductores",
-		query = "SELECT * FROM T_Personal  tp join T_CargoPersonal cp on tp.CargoPersonal=cp.idCargoPersonal where cp.nombre=:conductor", resultClass = Personal.class),
-		
-		@NamedNativeQuery(name = "Personal.listarAuxiliriares",
-		query = "SELECT * FROM T_Personal tp join T_CargoPersonal cp on tp.CargoPersonal=cp.idCargoPersonal where cp.nombre=:auxiliar", resultClass = Personal.class),
-		
-		@NamedNativeQuery(name = "Personal.listarParamedicos", 
-		query = "SELECT * FROM T_Personal tp join T_CargoPersonal cp on tp.CargoPersonal=cp.idCargoPersonal where cp.nombre=:paramedico", resultClass = Personal.class),
-
+		@NamedNativeQuery(name = "Personal.listarpersonal", query = "SELECT * FROM t_personal", resultClass = Personal.class),
+		@NamedNativeQuery(name = "Personal.listarbuscarpersonal", query = "SELECT * FROM t_personal where numeroDocumento=:estado", resultClass = Personal.class)
 })
 
 
@@ -81,7 +73,7 @@ public class Personal implements Serializable {
 
 	@Column(name = "fechaIngreso")
 	private Date fechaIngreso;
-
+	
 	/**
 	 * 
 	 */

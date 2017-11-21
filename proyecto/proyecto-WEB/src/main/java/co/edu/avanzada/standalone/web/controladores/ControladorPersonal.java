@@ -50,7 +50,7 @@ public class ControladorPersonal implements Serializable {
 
 	@PostConstruct
 	public void initializar() {
-		listarpersonal = personalEJB.listarPersonal();
+		//listarpersonal = personalEJB.listarPersonal();
 		listarcargopersonal = cargoPersonalEJB.listarCargoPersonal();
 		listarestadopersonal = estadoPersonalEJB.listarEstadoPersonal();
 	}
